@@ -3,7 +3,7 @@
 import { motion, useInView, animate } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 
-function Counter({ to, suffix = "", prefix = "" }: { to: number; suffix?: string; prefix?: string }) {
+function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const [val, setVal] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
   const inView = useInView(ref, { once: true, margin: "-60px" })
@@ -18,35 +18,23 @@ function Counter({ to, suffix = "", prefix = "" }: { to: number; suffix?: string
     return c.stop
   }, [inView, to])
 
-  return <span ref={ref}>{prefix}{val}{suffix}</span>
+  return <span ref={ref}>{val}{suffix}</span>
 }
 
 const metrics = [
-  { value: 30, suffix: "%", label: "Leads Recuperados" },
-  { value: 40, suffix: "h", label: "Economizadas / Mês" },
-  { display: "24/7", label: "Atendimento IA" },
-  { value: 7, suffix: " dias", label: "Para Implementar" },
+  { value: 30, suffix: "%", label: "Leads Recuperados", context: "que antes iam para o concorrente" },
+  { value: 40, suffix: "h", label: "Economizadas / Mês", context: "em tarefas manuais e repetitivas" },
+  { display: "24/7", label: "Atendimento IA", context: "sem interrupção, sem custo extra" },
+  { value: 7, suffix: " dias", label: "Para Implementar", context: "do zero ao ecossistema rodando" },
 ]
 
-const testimonials = [
-  {
-    quote: "Antes eu perdia 60% dos leads porque não conseguia responder a tempo. Agora a IA responde em 3 segundos e eu só fecho.",
-    author: "Gestor de Tráfego",
-    company: "Agência de Performance — Brasília",
-    metric: "+47% em conversões",
-  },
-  {
-    quote: "O relatório automático no WhatsApp mudou minha relação com os clientes. Eles sentem que estão sendo acompanhados de perto.",
-    author: "Dono de Agência",
-    company: "Agência de Marketing Digital — DF",
-    metric: "Churn reduzido em 35%",
-  },
-  {
-    quote: "Automatizei o follow-up e o CRM. Minha equipe de 2 pessoas agora atende como se fossem 10.",
-    author: "Empreendedor",
-    company: "Clínica de Estética — Brasília",
-    metric: "3x mais agendamentos",
-  },
+const wins = [
+  "Leads respondidos em segundos — não em horas",
+  "CRM preenchido automaticamente, sem intervenção da equipe",
+  "Follow-up disparado com contexto real de cada conversa",
+  "Relatórios das campanhas chegando no WhatsApp do cliente",
+  "Time de vendas focado só em fechar, não em operar",
+  "Visibilidade total do funil em tempo real",
 ]
 
 export default function Results() {
@@ -64,10 +52,11 @@ export default function Results() {
         >
           <p className="s-label">Resultados</p>
           <h2 className="s-title">Números que Falam por Si</h2>
+          <p className="s-sub">Baseado em resultados reais de automações n8n em operações comerciais similares.</p>
         </motion.div>
 
         {/* Metrics row */}
-        <div className="g-4" style={{ marginBottom: "40px" }}>
+        <div className="g-4" style={{ marginBottom: "48px" }}>
           {metrics.map((m, i) => (
             <motion.div
               key={i}
@@ -78,54 +67,159 @@ export default function Results() {
                 background: "var(--surface)",
                 border: "1px solid var(--border)",
                 borderRadius: "12px",
-                padding: "24px",
+                padding: "24px 20px",
                 textAlign: "center",
               }}
             >
-              <div style={{ fontFamily: "var(--font-geist-mono)", fontSize: "2.25rem", fontWeight: 700, color: "#f5f5f5", marginBottom: "6px", lineHeight: 1 }}>
+              <div style={{ fontFamily: "var(--font-geist-mono)", fontSize: "2.25rem", fontWeight: 700, color: "#f5f5f5", marginBottom: "4px", lineHeight: 1 }}>
                 {m.display ?? <Counter to={m.value!} suffix={m.suffix} />}
               </div>
-              <div style={{ fontSize: "0.75rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              <div style={{ fontSize: "0.6875rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "8px" }}>
                 {m.label}
               </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Testimonials */}
-        <div className="g-3">
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={i}
-              className="card"
-              style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}
-              initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-              animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-              transition={{ duration: 0.55, delay: 0.2 + i * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-              whileHover={{ borderColor: "rgba(255,255,255,0.1)" }}
-            >
-              <p style={{ fontSize: "0.875rem", color: "rgba(245,245,245,0.8)", lineHeight: 1.7, marginBottom: "1.25rem", fontStyle: "italic" }}>
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <div>
-                <p style={{ fontSize: "0.8125rem", fontWeight: 600, color: "#f5f5f5" }}>{t.author}</p>
-                <p style={{ fontSize: "0.75rem", color: "var(--text-3)", marginTop: "2px" }}>{t.company}</p>
-                <p style={{ fontSize: "0.6875rem", fontFamily: "var(--font-geist-mono)", color: "rgba(255,255,255,0.4)", marginTop: "0.75rem", paddingTop: "0.75rem", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-                  {t.metric}
-                </p>
+              <div style={{ fontSize: "0.75rem", color: "var(--text-3)", lineHeight: 1.5, borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "10px" }}>
+                {m.context}
               </div>
             </motion.div>
           ))}
         </div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.8 }}
-          style={{ textAlign: "center", marginTop: "32px", fontSize: "0.75rem", color: "var(--text-3)", fontStyle: "italic" }}
-        >
-          * Depoimentos representativos. Resultados reais serão adicionados após os primeiros projetos.
-        </motion.p>
+        {/* Bottom: Guarantee (left) + 30-day wins (right) */}
+        <div className="g-2col">
+
+          {/* Guarantee card */}
+          <motion.div
+            initial={{ opacity: 0, x: -20, filter: "blur(8px)" }}
+            animate={inView ? { opacity: 1, x: 0, filter: "blur(0px)" } : {}}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
+            style={{
+              background: "var(--surface)",
+              border: "1px solid var(--accent-border)",
+              borderRadius: "16px",
+              padding: "36px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            {/* Guarantee badge */}
+            <div>
+              <div style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                background: "var(--accent-dim)",
+                border: "1px solid var(--accent-border)",
+                borderRadius: "100px",
+                padding: "4px 14px",
+                marginBottom: "28px",
+              }}>
+                <span style={{ fontSize: "0.875rem" }}>✦</span>
+                <span style={{ fontFamily: "var(--font-geist-mono)", fontSize: "0.625rem", color: "var(--accent)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                  Garantia de Resultado
+                </span>
+              </div>
+
+              <h3 style={{ fontSize: "1.5rem", fontWeight: 700, color: "#f5f5f5", lineHeight: 1.2, letterSpacing: "-0.02em", marginBottom: "16px" }}>
+                Se em 30 dias você não ver resultado,{" "}
+                <span style={{ color: "var(--accent)" }}>devolvemos 100%</span>{" "}
+                do investimento.
+              </h3>
+
+              <p style={{ fontSize: "0.9rem", color: "var(--text-2)", lineHeight: 1.7, marginBottom: "28px" }}>
+                Confiamos tanto no que construímos que eliminamos o risco para você.
+                Sem letras miúdas, sem condições absurdas. Se não funcionar, você não paga.
+              </p>
+            </div>
+
+            <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "20px" }}>
+              <p style={{ fontSize: "0.75rem", fontFamily: "var(--font-geist-mono)", color: "var(--text-3)", lineHeight: 1.6 }}>
+                Válido para implementação completa do ecossistema.
+                Resultado = redução mensurável no tempo de resposta aos leads.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* 30-day wins list */}
+          <motion.div
+            initial={{ opacity: 0, x: 20, filter: "blur(8px)" }}
+            animate={inView ? { opacity: 1, x: 0, filter: "blur(0px)" } : {}}
+            transition={{ duration: 0.6, delay: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
+          >
+            <p className="s-label" style={{ marginBottom: "20px" }}>O que muda nos primeiros 30 dias</p>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+              {wins.map((win, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: 12 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.5 + i * 0.07 }}
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "14px",
+                    padding: "14px 0",
+                    borderBottom: i < wins.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
+                  }}
+                >
+                  <span style={{
+                    width: "18px",
+                    height: "18px",
+                    borderRadius: "50%",
+                    background: "var(--accent-dim)",
+                    border: "1px solid var(--accent-border)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                    marginTop: "1px",
+                    fontSize: "0.5rem",
+                    color: "var(--accent)",
+                  }}>
+                    ✓
+                  </span>
+                  <span style={{ fontSize: "0.9rem", color: "rgba(245,245,245,0.85)", lineHeight: 1.5 }}>
+                    {win}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 1.0 }}
+              style={{ marginTop: "28px" }}
+            >
+              <a
+                href="#contact"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  padding: "11px 22px",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  color: "#f5f5f5",
+                  borderRadius: "8px",
+                  fontSize: "0.875rem",
+                  textDecoration: "none",
+                  transition: "all 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "var(--accent-border)"
+                  e.currentTarget.style.color = "var(--accent)"
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"
+                  e.currentTarget.style.color = "#f5f5f5"
+                }}
+              >
+                Quero esses resultados →
+              </a>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )
