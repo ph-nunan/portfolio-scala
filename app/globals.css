@@ -163,22 +163,12 @@ input, select, textarea {
   .hiw-grid { grid-template-columns: 1fr; }
 }
 
-/* ─── Ecosystem grid (12-col base) ─── */
-.eco-grid  { display: grid; grid-template-columns: repeat(12, 1fr); gap: 12px; }
-.eco-span3 { grid-column: span 3; }
-.eco-r2-1  { grid-column: 2 / span 3; }
-.eco-r2-2  { grid-column: 5 / span 3; }
-.eco-r2-3  { grid-column: 8 / span 3; }
-.eco-full  { grid-column: 1 / -1; }
-
-@media (max-width: 900px) {
-  .eco-grid  { grid-template-columns: repeat(6, 1fr); }
-  .eco-span3 { grid-column: span 3; }
-  .eco-r2-1, .eco-r2-2, .eco-r2-3 { grid-column: span 2; }
-}
-@media (max-width: 600px) {
-  .eco-grid  { grid-template-columns: repeat(2, 1fr); }
-  .eco-span3, .eco-r2-1, .eco-r2-2, .eco-r2-3 { grid-column: span 1; }
+/* ─── Ecosystem pipeline interativo ─── */
+.eco-pipeline-desktop { display: block; }
+.eco-pipeline-mobile  { display: none;  }
+@media (max-width: 768px) {
+  .eco-pipeline-desktop { display: none;  }
+  .eco-pipeline-mobile  { display: block; }
 }
 
 /* ─── Navbar ─── */
