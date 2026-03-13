@@ -137,6 +137,12 @@ body {
   90% { transform: translate(-10%, 10%); }
 }
 
+/* ─── HowItWorks split layout ─── */
+.hiw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+@media (max-width: 768px) {
+  .hiw-grid { grid-template-columns: 1fr; }
+}
+
 /* ─── Ecosystem grid (12-col base) ─── */
 .eco-grid  { display: grid; grid-template-columns: repeat(12, 1fr); gap: 12px; }
 .eco-span3 { grid-column: span 3; }
