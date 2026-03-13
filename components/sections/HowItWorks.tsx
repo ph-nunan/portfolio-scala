@@ -32,11 +32,11 @@ export default function HowItWorks() {
             initial={{ opacity: 0, x: -24, filter: "blur(8px)" }}
             animate={inView ? { opacity: 1, x: 0, filter: "blur(0px)" } : {}}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+            className="card-lg"
             style={{
               background: "var(--surface)",
               border: "1px solid var(--border)",
               borderRadius: "16px",
-              padding: "36px",
               display: "flex",
               flexDirection: "column",
             }}

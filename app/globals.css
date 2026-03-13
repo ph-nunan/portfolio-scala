@@ -20,13 +20,25 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%; /* iOS: evita zoom de texto ao rotacionar */
+  text-size-adjust: 100%;
+}
 body {
   background-color: var(--bg);
   color: var(--text);
   font-family: var(--font-geist-sans), -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+/* iOS Safari: evita zoom automático em inputs com font-size < 16px */
+input, select, textarea, button {
+  font-size: max(16px, 1em);
+}
+/* Corrige o font-size apenas nos inputs — sem afetar botões visualmente */
+input, select, textarea {
+  font-size: 16px;
 }
 
 /* ─── Layout ─── */
@@ -246,6 +258,12 @@ body {
   .hero-stats-card { flex-direction: column !important; }
   .hero-stats-card > div { border-left: none !important; border-top: 1px solid rgba(255,255,255,0.06); }
   .hero-stats-card > div:first-child { border-top: none; }
+}
+
+/* ─── Cards com padding grande — reduz em mobile ─── */
+.card-lg { padding: 36px; }
+@media (max-width: 640px) {
+  .card-lg { padding: 24px; }
 }
 
 /* ─── Hero live feed — hide detail col on very small screens ─── */
