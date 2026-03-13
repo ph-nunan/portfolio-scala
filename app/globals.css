@@ -1,22 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0a0a0a;
-  --surface: #111111;
-  --surface-2: #161616;
-  --border: rgba(255, 255, 255, 0.06);
-  --border-hover: rgba(255, 255, 255, 0.1);
-  --text: #f5f5f5;
-  --text-2: #888888;
-  --text-3: #4a4a4a;
-  --accent: #4ade80;
-  --accent-dim: rgba(74, 222, 128, 0.08);
-  --accent-border: rgba(74, 222, 128, 0.3);
+  /* ── Paleta Scala ── */
+  --bg: #1a1a1a;           /* Charcoal Profundo */
+  --surface: #242424;      /* Cinza Escuro — cards, seções alt */
+  --surface-2: #1e1e1e;    /* Fundo de inputs, tags */
+  --border: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(255, 255, 255, 0.14);
+  --text: #f5f5f0;         /* Off-White */
+  --text-2: #9a9a9a;       /* Cinza Médio — secundário */
+  --text-3: #6b6b6b;       /* Cinza Escuro — legendas, placeholders */
+
+  /* Accent = branco luminoso para CTAs e destaques de alto contraste */
+  --accent: #ffffff;
+  --accent-dim: rgba(255, 255, 255, 0.05);
+  --accent-border: rgba(255, 255, 255, 0.15);
+
+  /* Prata Metálico — ícones, linhas, badges secundários */
+  --silver: #d0d0d0;
+
+  /* Aliases retrocompatíveis com as fontes antigas */
+  --font-geist-sans: var(--font-dm-sans);
+  --font-geist-mono: var(--font-space-grotesk);
 }
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-space-grotesk);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,7 +38,7 @@ html {
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: var(--font-geist-sans), -apple-system, sans-serif;
+  font-family: var(--font-dm-sans), -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -53,19 +63,21 @@ input, select, textarea {
 }
 .s-head { margin-bottom: 56px; }
 .s-label {
-  font-family: var(--font-geist-mono);
+  font-family: var(--font-space-grotesk);
   font-size: 0.6875rem;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-3);
   margin-bottom: 12px;
 }
 .s-title {
+  font-family: var(--font-space-grotesk);
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.15;
-  color: #f5f5f5;
+  color: var(--text);
   margin-bottom: 12px;
 }
 .s-sub {
@@ -114,7 +126,7 @@ input, select, textarea {
 
 /* ─── Tag ─── */
 .tag {
-  font-family: var(--font-geist-mono);
+  font-family: var(--font-space-grotesk);
   font-size: 0.6875rem;
   color: var(--text-3);
   background: var(--surface-2);
@@ -208,10 +220,16 @@ input, select, textarea {
 .nav-hamburger     { display: none; }
 .nav-mobile-menu   { display: block; }
 
+/* Logo: lockup no desktop, monograma no mobile */
+.nav-logo-full { display: flex; }
+.nav-logo-icon { display: none; }
+
 @media (max-width: 768px) {
   .nav-links-desktop { display: none; }
   .nav-cta-desktop   { display: none; }
   .nav-hamburger     { display: flex; }
+  .nav-logo-full     { display: none; }
+  .nav-logo-icon     { display: flex; }
 }
 
 /* ─── Floating CTA ─── */
@@ -295,7 +313,7 @@ input, select, textarea {
 /* ─── Scrollbar ─── */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 2px; }
 ::selection { background: rgba(255,255,255,0.1); }
 
 /* ─── Marquee ─── */

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 
 const links = [
   { label: "Serviços", href: "#services" },
@@ -36,15 +37,21 @@ export default function Navbar() {
         right: 0,
         zIndex: 50,
         transition: "background 0.3s, border-color 0.3s",
-        background: scrolled ? "rgba(10,10,10,0.85)" : "transparent",
+        background: scrolled ? "rgba(26,26,26,0.92)" : "transparent",
         backdropFilter: scrolled ? "blur(16px)" : "none",
         borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent",
       }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px", height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         {/* Logo */}
-        <a href="#" style={{ color: "#f5f5f5", fontWeight: 600, fontSize: "0.9375rem", letterSpacing: "-0.02em", textDecoration: "none" }}>
-          Scala
+        <a href="#" style={{ display: "flex", alignItems: "center", textDecoration: "none", flexShrink: 0 }}>
+          {/* Lockup completo no desktop, só monograma no mobile */}
+          <span className="nav-logo-full">
+            <Image src="/logo-lockup.png" alt="Scala" width={140} height={36} style={{ objectFit: "contain" }} priority />
+          </span>
+          <span className="nav-logo-icon">
+            <Image src="/logo-icon.png" alt="Scala" width={32} height={32} style={{ objectFit: "contain" }} priority />
+          </span>
         </a>
 
         {/* Desktop links */}
@@ -109,7 +116,7 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
             style={{
-              background: "rgba(10,10,10,0.96)",
+              background: "rgba(26,26,26,0.97)",
               backdropFilter: "blur(20px)",
               borderTop: "1px solid rgba(255,255,255,0.06)",
               padding: "8px 24px 20px",
