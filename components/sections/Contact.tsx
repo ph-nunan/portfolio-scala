@@ -12,6 +12,9 @@ const benefits = [
 
 const roles = ["Gestor de Tráfego", "Dono de Agência", "Empresário", "Marketing", "Vendas", "Outro"]
 
+const VAGAS_TOTAL = 5
+const VAGAS_OCUPADAS = 3
+
 type FormData = {
   nome: string
   email: string
@@ -89,7 +92,7 @@ export default function Contact() {
                   animate={inView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.2 + i * 0.08 }}
                 >
-                  <span style={{ width: "16px", height: "16px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.15)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "2px", fontSize: "0.5rem", color: "rgba(255,255,255,0.5)" }}>
+                  <span style={{ width: "16px", height: "16px", borderRadius: "50%", border: "1px solid var(--accent-border)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "2px", fontSize: "0.5rem", color: "var(--accent)" }}>
                     ✓
                   </span>
                   <span style={{ fontSize: "0.875rem", color: "var(--text-2)", lineHeight: 1.6 }}>{b}</span>
@@ -104,9 +107,24 @@ export default function Contact() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
+            {/* Urgency bar */}
+            <div style={{ marginBottom: "16px", padding: "12px 16px", background: "var(--surface)", border: "1px solid var(--accent-border)", borderRadius: "8px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
+                <span style={{ fontSize: "0.75rem", color: "var(--text-2)" }}>
+                  Vagas disponíveis este mês
+                </span>
+                <span style={{ fontSize: "0.75rem", fontFamily: "var(--font-geist-mono)", color: "var(--accent)", fontWeight: 600 }}>
+                  {VAGAS_TOTAL - VAGAS_OCUPADAS} de {VAGAS_TOTAL}
+                </span>
+              </div>
+              <div style={{ height: "4px", background: "rgba(255,255,255,0.06)", borderRadius: "4px" }}>
+                <div style={{ width: `${(VAGAS_OCUPADAS / VAGAS_TOTAL) * 100}%`, height: "100%", background: "var(--accent)", borderRadius: "4px", transition: "width 1s ease" }} />
+              </div>
+            </div>
+
             {status === "success" ? (
               <div className="card" style={{ textAlign: "center", padding: "48px 32px" }}>
-                <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>✓</div>
+                <div style={{ fontSize: "2rem", marginBottom: "1rem", color: "var(--accent)" }}>✓</div>
                 <h3 style={{ fontSize: "1.0625rem", fontWeight: 600, marginBottom: "0.5rem", color: "#f5f5f5" }}>
                   Recebemos seus dados!
                 </h3>
@@ -185,14 +203,30 @@ export default function Contact() {
                     fontSize: "0.875rem",
                     border: "none",
                     marginTop: "4px",
-                    background: status === "loading" ? "rgba(245,245,245,0.7)" : "#f5f5f5",
+                    background: status === "loading" ? "rgba(74,222,128,0.5)" : "var(--accent)",
                     color: "#0a0a0a",
                     cursor: status === "loading" ? "not-allowed" : "pointer",
-                    transition: "background 0.2s",
+                    transition: "opacity 0.2s",
                   }}
+                  onMouseEnter={(e) => { if (status !== "loading") e.currentTarget.style.opacity = "0.88" }}
+                  onMouseLeave={(e) => { e.currentTarget.style.opacity = "1" }}
                 >
                   {status === "loading" ? "Enviando..." : "Quero Meu Diagnóstico Gratuito"}
                 </button>
+
+                {/* WhatsApp alternative */}
+                <div style={{ textAlign: "center" }}>
+                  <a
+                    href="https://wa.me/5561999999999?text=Olá%2C%20tenho%20interesse%20no%20diagnóstico%20gratuito%20da%20Scala"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: "0.75rem", color: "var(--text-3)", textDecoration: "none", transition: "color 0.2s" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-3)")}
+                  >
+                    Prefere falar pelo WhatsApp? →
+                  </a>
+                </div>
 
                 {status === "error" && (
                   <p style={{ textAlign: "center", fontSize: "0.75rem", color: "rgba(255,100,100,0.8)" }}>

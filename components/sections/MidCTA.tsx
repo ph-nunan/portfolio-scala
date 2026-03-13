@@ -1,18 +1,36 @@
 "use client"
 
 import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useState } from "react"
+
+const tickets = [
+  { label: "R$ 500", value: 500 },
+  { label: "R$ 1.000", value: 1000 },
+  { label: "R$ 2.000", value: 2000 },
+  { label: "R$ 5.000", value: 5000 },
+  { label: "R$ 10.000", value: 10000 },
+]
+
+function formatBRL(n: number) {
+  return n.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 })
+}
 
 export default function MidCTA() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: "-80px" })
+
+  const [leads, setLeads] = useState(100)
+  const [ticket, setTicket] = useState(2000)
+
+  // 78% não atendidos → 35% perdidos sem follow-up → ~25% converteriam com automação
+  const perda = Math.round(leads * 0.78 * 0.35 * ticket * 0.25)
 
   return (
     <section ref={ref} className="s-wrap">
       <div className="s-inner" style={{ textAlign: "center" }}>
         <motion.p
           className="s-label"
-          style={{ justifyContent: "center", display: "block" }}
+          style={{ display: "block" }}
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
@@ -24,24 +42,88 @@ export default function MidCTA() {
           initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
           animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-          style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "20px" }}
+          style={{
+            fontSize: "clamp(2rem, 4vw, 3rem)",
+            fontWeight: 700,
+            letterSpacing: "-0.03em",
+            lineHeight: 1.1,
+            marginBottom: "40px",
+            color: "#f5f5f5",
+          }}
         >
-          Quanto você está perdendo
-          <br />
-          <span style={{ color: "var(--text-2)" }}>por mês sem automação?</span>
+          Quanto você está perdendo por mês?
         </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
+        {/* Calculator card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          style={{ color: "var(--text-2)", fontSize: "1rem", lineHeight: 1.7, marginBottom: "40px", maxWidth: "480px", margin: "0 auto 40px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="card"
+          style={{ maxWidth: "480px", margin: "0 auto 32px", textAlign: "left" }}
         >
-          A maioria das empresas perde entre{" "}
-          <span style={{ color: "#f5f5f5", fontWeight: 500 }}>R$ 5.000</span> e{" "}
-          <span style={{ color: "#f5f5f5", fontWeight: 500 }}>R$ 30.000/mês</span>{" "}
-          em leads que não são atendidos a tempo.
-        </motion.p>
+          {/* Leads slider */}
+          <div style={{ marginBottom: "24px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
+              <label style={{ fontSize: "0.75rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)" }}>
+                Leads por mês
+              </label>
+              <span style={{ fontSize: "0.875rem", fontWeight: 600, color: "#f5f5f5", fontFamily: "var(--font-geist-mono)" }}>
+                {leads}
+              </span>
+            </div>
+            <input
+              type="range"
+              min={20}
+              max={500}
+              step={10}
+              value={leads}
+              onChange={(e) => setLeads(Number(e.target.value))}
+              style={{ width: "100%", accentColor: "var(--accent)" }}
+            />
+          </div>
+
+          {/* Ticket selector */}
+          <div style={{ marginBottom: "24px" }}>
+            <label style={{ display: "block", fontSize: "0.75rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", marginBottom: "10px" }}>
+              Ticket médio
+            </label>
+            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+              {tickets.map((t) => (
+                <button
+                  key={t.value}
+                  onClick={() => setTicket(t.value)}
+                  style={{
+                    padding: "6px 14px",
+                    borderRadius: "6px",
+                    fontSize: "0.75rem",
+                    fontFamily: "var(--font-geist-mono)",
+                    border: ticket === t.value ? "1px solid var(--accent-border)" : "1px solid rgba(255,255,255,0.08)",
+                    background: ticket === t.value ? "var(--accent-dim)" : "transparent",
+                    color: ticket === t.value ? "var(--accent)" : "var(--text-2)",
+                    cursor: "pointer",
+                    transition: "all 0.15s",
+                  }}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Result */}
+          <div style={{ padding: "20px", background: "var(--surface-2)", borderRadius: "8px", textAlign: "center" }}>
+            <p style={{ fontSize: "0.6875rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "8px" }}>
+              Perda estimada por mês
+            </p>
+            <div style={{ fontSize: "2.5rem", fontWeight: 700, fontFamily: "var(--font-geist-mono)", color: "#f5f5f5", letterSpacing: "-0.03em", lineHeight: 1 }}>
+              {formatBRL(perda)}
+            </div>
+            <p style={{ fontSize: "0.75rem", color: "var(--text-3)", marginTop: "8px" }}>
+              em leads que não foram atendidos a tempo
+            </p>
+          </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 14 }}
@@ -55,19 +137,18 @@ export default function MidCTA() {
               alignItems: "center",
               gap: "8px",
               padding: "12px 28px",
-              background: "#f5f5f5",
+              background: "var(--accent)",
               color: "#0a0a0a",
               borderRadius: "8px",
               fontWeight: 600,
               fontSize: "0.875rem",
               textDecoration: "none",
-              transition: "background 0.2s",
+              transition: "opacity 0.2s",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "#e0e0e0")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "#f5f5f5")}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.88")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
-            Calcular Minha Perda
-            <span style={{ opacity: 0.5 }}>→</span>
+            Recuperar Esses Leads →
           </a>
         </motion.div>
       </div>

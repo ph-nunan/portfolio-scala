@@ -12,10 +12,14 @@ const links = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [scrollDeep, setScrollDeep] = useState(false)
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 24)
+    const fn = () => {
+      setScrolled(window.scrollY > 24)
+      setScrollDeep(window.scrollY > 400)
+    }
     window.addEventListener("scroll", fn, { passive: true })
     return () => window.removeEventListener("scroll", fn)
   }, [])
@@ -37,20 +41,21 @@ export default function Navbar() {
         borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent",
       }}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px", height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         {/* Logo */}
-        <a href="#" className="text-white font-semibold text-base tracking-tight">
+        <a href="#" style={{ color: "#f5f5f5", fontWeight: 600, fontSize: "0.9375rem", letterSpacing: "-0.02em", textDecoration: "none" }}>
           Scala
         </a>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-7">
+        <div className="nav-links-desktop">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              style={{ color: "var(--text-2)", fontSize: "0.8125rem" }}
-              className="hover:text-white transition-colors duration-200"
+              style={{ color: "var(--text-2)", fontSize: "0.8125rem", textDecoration: "none", transition: "color 0.2s" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#f5f5f5")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-2)")}
             >
               {l.label}
             </a>
@@ -58,43 +63,40 @@ export default function Navbar() {
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden md:block">
+        <div className="nav-cta-desktop">
           <a
             href="#contact"
-            className="text-sm text-white px-4 py-2 rounded-lg transition-all duration-200"
             style={{
-              border: "1px solid rgba(255,255,255,0.1)",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              padding: "7px 16px",
+              borderRadius: "8px",
               fontSize: "0.8125rem",
+              textDecoration: "none",
+              transition: "all 0.25s",
+              border: scrollDeep ? "1px solid var(--accent-border)" : "1px solid rgba(255,255,255,0.1)",
+              background: scrollDeep ? "var(--accent-dim)" : "transparent",
+              color: scrollDeep ? "var(--accent)" : "#f5f5f5",
             }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.background = "rgba(255,255,255,0.05)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.background = "transparent")
-            }
           >
-            Diagnóstico Gratuito
+            {scrollDeep && (
+              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--accent)", display: "inline-block", animation: "pulse 2s ease-in-out infinite", flexShrink: 0 }} />
+            )}
+            {scrollDeep ? "3 vagas disponíveis" : "Diagnóstico Gratuito"}
           </a>
         </div>
 
         {/* Hamburger */}
         <button
-          className="md:hidden p-2 text-white"
+          className="nav-hamburger"
           onClick={() => setOpen((v) => !v)}
           aria-label="Menu"
+          style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", display: "flex", flexDirection: "column", gap: "5px" }}
         >
-          <span
-            className="block w-5 h-px bg-white transition-all duration-200"
-            style={{ transform: open ? "rotate(45deg) translateY(4px)" : "none" }}
-          />
-          <span
-            className="block w-5 h-px bg-white mt-1.5 transition-all duration-200"
-            style={{ opacity: open ? 0 : 1 }}
-          />
-          <span
-            className="block w-5 h-px bg-white mt-1.5 transition-all duration-200"
-            style={{ transform: open ? "rotate(-45deg) translateY(-4px)" : "none" }}
-          />
+          <span style={{ display: "block", width: "20px", height: "1px", background: "#f5f5f5", transition: "all 0.2s", transform: open ? "rotate(45deg) translateY(6px)" : "none" }} />
+          <span style={{ display: "block", width: "20px", height: "1px", background: "#f5f5f5", transition: "all 0.2s", opacity: open ? 0 : 1 }} />
+          <span style={{ display: "block", width: "20px", height: "1px", background: "#f5f5f5", transition: "all 0.2s", transform: open ? "rotate(-45deg) translateY(-6px)" : "none" }} />
         </button>
       </div>
 
@@ -110,18 +112,23 @@ export default function Navbar() {
               background: "rgba(10,10,10,0.96)",
               backdropFilter: "blur(20px)",
               borderTop: "1px solid rgba(255,255,255,0.06)",
+              padding: "8px 24px 20px",
             }}
-            className="md:hidden px-6 py-4"
+            className="nav-mobile-menu"
           >
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="block py-3 text-sm transition-colors duration-200"
                 style={{
+                  display: "block",
+                  padding: "14px 0",
+                  fontSize: "0.875rem",
                   color: "var(--text-2)",
+                  textDecoration: "none",
                   borderBottom: "1px solid rgba(255,255,255,0.05)",
+                  transition: "color 0.2s",
                 }}
               >
                 {l.label}
@@ -130,8 +137,17 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className="block mt-4 text-center py-3 text-sm text-white rounded-lg"
-              style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+              style={{
+                display: "block",
+                marginTop: "16px",
+                textAlign: "center",
+                padding: "12px",
+                fontSize: "0.875rem",
+                color: "#f5f5f5",
+                textDecoration: "none",
+                borderRadius: "8px",
+                border: "1px solid rgba(255,255,255,0.1)",
+              }}
             >
               Diagnóstico Gratuito
             </a>

@@ -9,6 +9,9 @@
   --text: #f5f5f5;
   --text-2: #888888;
   --text-3: #4a4a4a;
+  --accent: #4ade80;
+  --accent-dim: rgba(74, 222, 128, 0.08);
+  --accent-border: rgba(74, 222, 128, 0.3);
 }
 
 @theme inline {
@@ -132,6 +135,31 @@ body {
   70% { transform: translate(0, 15%); }
   80% { transform: translate(3%, 35%); }
   90% { transform: translate(-10%, 10%); }
+}
+
+/* ─── Navbar ─── */
+.nav-links-desktop { display: flex; align-items: center; gap: 28px; }
+.nav-cta-desktop   { display: block; }
+.nav-hamburger     { display: none; }
+.nav-mobile-menu   { display: block; }
+
+@media (max-width: 768px) {
+  .nav-links-desktop { display: none; }
+  .nav-cta-desktop   { display: none; }
+  .nav-hamburger     { display: flex; }
+}
+
+/* ─── Floating CTA ─── */
+.floating-cta-wrap {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  display: none;
+}
+@media (max-width: 768px) {
+  .floating-cta-wrap { display: block; }
 }
 
 /* ─── Scrollbar ─── */

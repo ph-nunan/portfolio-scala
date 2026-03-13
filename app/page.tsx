@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar"
+import FloatingCTA from "@/components/FloatingCTA"
 import Hero from "@/components/sections/Hero"
 import Problem from "@/components/sections/Problem"
 import Ecosystem from "@/components/sections/Ecosystem"
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <main>
       <Navbar />
+      <FloatingCTA />
       <Hero />
       <Problem />
       <Ecosystem />
