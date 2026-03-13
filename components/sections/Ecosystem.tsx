@@ -7,7 +7,7 @@ const steps = [
   {
     num: "01", icon: "↗", label: "Tráfego",
     tagline: "Google & Meta Ads via IA",
-    description: "A IA monitora e otimiza suas campanhas em tempo real — ajusta lances, pausa o que não converte e escala o que funciona. Você define os objetivos uma vez; a automação executa 24/7.",
+    description: "A IA cria, monitora e otimiza suas campanhas em tempo real, por comandos simples — ajusta lances, pausa o que não converte e escala o que funciona. Você define os objetivos uma vez; a automação executa 24/7.",
     features: [
       "Otimização de lances via API do Google e Meta Ads",
       "Alertas automáticos de anomalia em CPL e ROAS",
@@ -75,7 +75,7 @@ const steps = [
     tagline: "Relatórios automáticos ao cliente",
     description: "Após o fechamento, o cliente recebe relatórios personalizados via WhatsApp automaticamente — performance das campanhas, resultados do período e insights acionáveis. Retenção no piloto automático.",
     features: [
-      "Relatório de campanha gerado e enviado automaticamente",
+      "Relatório de campanha gerado e enviado automaticamente no WhatsApp ou email",
       "Dashboard personalizado por cliente",
       "Touchpoints de retenção e upsell programados",
     ],
@@ -87,7 +87,6 @@ export default function Ecosystem() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: "-80px" })
   const [active, setActive] = useState(0)
-  const [mobileOpen, setMobileOpen] = useState<number | null>(null)
 
   const step = steps[active]
 
@@ -107,9 +106,8 @@ export default function Ecosystem() {
           <p className="s-sub">Cada etapa é automatizada e conectada à próxima. Clique para explorar.</p>
         </motion.div>
 
-        {/* ── DESKTOP PIPELINE ── */}
+        {/* ── PIPELINE ── */}
         <motion.div
-          className="eco-pipeline-desktop"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -187,7 +185,7 @@ export default function Ecosystem() {
                       transition: "color 0.2s",
                     }}>{s.num}</span>
                     {/* Label */}
-                    <span style={{
+                    <span className="eco-node-label" style={{
                       fontSize: "0.6875rem",
                       color: isActive ? "#f5f5f5" : "var(--text-3)",
                       fontWeight: isActive ? 500 : 400,
@@ -224,7 +222,7 @@ export default function Ecosystem() {
                 justifyContent: "space-between",
                 flexWrap: "wrap", gap: "12px",
               }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
                   <span style={{
                     fontFamily: "var(--font-geist-mono)", fontSize: "0.625rem",
                     color: "var(--accent)", background: "var(--accent-dim)",
@@ -248,7 +246,7 @@ export default function Ecosystem() {
               </div>
 
               {/* Panel body */}
-              <div style={{ padding: "28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px" }}>
+              <div className="eco-panel-body">
                 <p style={{ fontSize: "0.9rem", color: "var(--text-2)", lineHeight: 1.75 }}>
                   {step.description}
                 </p>
@@ -318,89 +316,6 @@ export default function Ecosystem() {
             >próximo →</button>
           </motion.div>
         </motion.div>
-
-        {/* ── MOBILE ACCORDION ── */}
-        <div className="eco-pipeline-mobile">
-          {steps.map((s, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.04 + i * 0.05 }}
-              style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}
-            >
-              <button
-                onClick={() => setMobileOpen(mobileOpen === i ? null : i)}
-                style={{
-                  width: "100%", background: "none", border: "none",
-                  padding: "16px 0", cursor: "pointer",
-                  display: "flex", alignItems: "center", gap: "14px", textAlign: "left",
-                }}
-              >
-                <div style={{
-                  width: "32px", height: "32px", borderRadius: "50%", flexShrink: 0,
-                  background: mobileOpen === i ? "var(--accent-dim)" : "var(--surface)",
-                  border: `1px solid ${mobileOpen === i ? "var(--accent-border)" : "rgba(255,255,255,0.08)"}`,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: "0.8125rem",
-                  color: mobileOpen === i ? "var(--accent)" : "var(--text-3)",
-                  transition: "all 0.2s", flexShrink: 0,
-                }}>{s.icon}</div>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "2px" }}>
-                    <span style={{ fontFamily: "var(--font-geist-mono)", fontSize: "0.5rem", color: "var(--text-3)" }}>
-                      {s.num}
-                    </span>
-                    <span style={{
-                      fontSize: "0.875rem", fontWeight: 500,
-                      color: mobileOpen === i ? "#f5f5f5" : "var(--text-2)",
-                      transition: "color 0.2s",
-                    }}>{s.label}</span>
-                  </div>
-                  <span style={{ fontSize: "0.75rem", color: "var(--text-3)" }}>{s.tagline}</span>
-                </div>
-                <span style={{
-                  fontFamily: "var(--font-geist-mono)", fontSize: "1rem",
-                  color: "var(--text-3)", flexShrink: 0, lineHeight: 1,
-                  transform: mobileOpen === i ? "rotate(45deg)" : "rotate(0deg)",
-                  transition: "transform 0.2s",
-                }}>+</span>
-              </button>
-
-              <AnimatePresence initial={false}>
-                {mobileOpen === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.28, ease: [0.21, 0.47, 0.32, 0.98] }}
-                    style={{ overflow: "hidden" }}
-                  >
-                    <div style={{ paddingBottom: "20px", paddingLeft: "46px" }}>
-                      <p style={{ fontSize: "0.875rem", color: "var(--text-2)", lineHeight: 1.7, marginBottom: "16px" }}>
-                        {s.description}
-                      </p>
-                      <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "14px" }}>
-                        {s.features.map((f, fi) => (
-                          <div key={fi} style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
-                            <span style={{ color: "var(--accent)", fontSize: "0.6rem", marginTop: "3px", flexShrink: 0 }}>✓</span>
-                            <span style={{ fontSize: "0.8125rem", color: "rgba(245,245,245,0.75)", lineHeight: 1.5 }}>{f}</span>
-                          </div>
-                        ))}
-                      </div>
-                      <span style={{
-                        fontFamily: "var(--font-geist-mono)", fontSize: "0.5rem",
-                        color: "var(--accent)", background: "var(--accent-dim)",
-                        border: "1px solid var(--accent-border)",
-                        padding: "3px 10px", borderRadius: "100px", letterSpacing: "0.08em",
-                      }}>{s.kpi}</span>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
-        </div>
 
       </div>
     </section>

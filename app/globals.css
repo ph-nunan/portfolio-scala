@@ -163,12 +163,43 @@ input, select, textarea {
   .hiw-grid { grid-template-columns: 1fr; }
 }
 
-/* ─── Ecosystem pipeline interativo ─── */
-.eco-pipeline-desktop { display: block; }
-.eco-pipeline-mobile  { display: none;  }
+/* ─── Founder section ─── */
+.founder-layout {
+  display: flex;
+  gap: 72px;
+  align-items: flex-start;
+}
+.founder-photo-col {
+  position: relative;
+  width: 300px;
+  flex-shrink: 0;
+}
 @media (max-width: 768px) {
-  .eco-pipeline-desktop { display: none;  }
-  .eco-pipeline-mobile  { display: block; }
+  .founder-layout    { flex-direction: column; gap: 48px; }
+  .founder-photo-col { width: 100%; max-width: 320px; }
+}
+
+/* ─── Services packages grid ─── */
+.pkg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .pkg-grid { grid-template-columns: 1fr; max-width: 480px; }
+}
+
+/* ─── Ecosystem pipeline interativo ─── */
+.eco-panel-body {
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+@media (max-width: 640px) {
+  .eco-panel-body { grid-template-columns: 1fr; gap: 20px; }
+  .eco-node-label { display: none; }
 }
 
 /* ─── Navbar ─── */

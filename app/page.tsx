@@ -11,6 +11,7 @@ import HowItWorks from "@/components/sections/HowItWorks"
 import Results from "@/components/sections/Results"
 import KPIs from "@/components/sections/KPIs"
 import TechStack from "@/components/sections/TechStack"
+import Founder from "@/components/sections/Founder"
 import FAQ from "@/components/sections/FAQ"
 import Contact from "@/components/sections/Contact"
 import Footer from "@/components/sections/Footer"
@@ -46,7 +47,10 @@ export default function Home() {
       <KPIs />
       <TechStack />
 
-      {/* 8. Conversão final */}
+      {/* 8. Humanização — founder após toda a prova técnica */}
+      <Founder />
+
+      {/* 9. Conversão final */}
       <FAQ />
       <Contact />
       <Footer />

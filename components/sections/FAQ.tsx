@@ -5,36 +5,44 @@ import { useRef, useState } from "react"
 
 const faqs = [
   {
-    q: "Preciso entender de tecnologia para usar as automações?",
-    a: "Não. Cuidamos de toda a parte técnica: configuração, integração e treinamento. Você só precisa usar os resultados — leads respondidos, CRM preenchido e relatórios prontos.",
+    q: "Vocês criam as campanhas de Meta Ads e Google Ads do zero, ou só otimizam o que já existe?",
+    a: "Fazemos tudo: criamos do zero, configuramos, monitoramos, otimizamos e geramos relatórios — tudo via automação com IA. Você define o objetivo e o orçamento; a automação executa e ajusta em tempo real. Se você já tem campanhas rodando, integramos e melhoramos o que existe.",
   },
   {
-    q: "Quanto tempo leva para implementar?",
-    a: "7 dias úteis para o setup completo. Isso inclui configuração dos fluxos no n8n, integração com seu CRM e WhatsApp, e treinamento da sua equipe.",
+    q: "Como funciona a automação de Meta Ads e Google Ads na prática?",
+    a: "A IA conecta diretamente nas APIs oficiais do Meta e Google. Ela monitora performance em tempo real, ajusta lances automaticamente, pausa criativos com baixo CTR e escala o que está convertendo — tudo por regras que você aprova uma vez. Quando a campanha fecha o ciclo, o relatório já está no WhatsApp do seu cliente.",
+  },
+  {
+    q: "Os relatórios de campanha chegam automaticamente para o meu cliente?",
+    a: "Sim. Geramos relatórios em PDF com as métricas da campanha — CPL, ROAS, conversões — e enviamos automaticamente por WhatsApp ou e-mail para o seu cliente, no dia e horário que você definir. Sem montar planilha, sem copiar print, sem lembrar de mandar.",
+  },
+  {
+    q: "Quanto tempo economizo nas campanhas por mês?",
+    a: "Em média, 8 a 12 horas por cliente por mês. Ajuste de lances, análise de performance, geração de relatório — tudo automatizado. Você foca em estratégia e em fechar novos clientes.",
+  },
+  {
+    q: "Preciso entender de tecnologia para usar as automações?",
+    a: "Não. Cuidamos de toda a parte técnica: configuração, integração e treinamento. Você só precisa usar os resultados — leads respondidos, CRM preenchido e relatórios prontos no WhatsApp.",
   },
   {
     q: "A IA de atendimento parece robótica?",
     a: "Não. O agente é treinado com o contexto do seu negócio, tom de voz, produtos e objeções comuns. O objetivo é que o lead não perceba a diferença — e os nossos resultados comprovam isso.",
   },
   {
-    q: "Funciona para qualquer tipo de negócio?",
-    a: "Sim. O ecossistema é modular: você pode contratar apenas o atendimento automático, apenas o CRM automatizado, ou o pacote completo. Adaptamos à sua realidade.",
+    q: "E se eu já uso um CRM?",
+    a: "Integramos com qualquer CRM via API ou webhook: HubSpot, Kommo, Pipedrive, RD Station, Salesforce — e até planilhas Google. Não precisa trocar o que já funciona.",
+  },
+  {
+    q: "Quanto tempo leva para implementar?",
+    a: "7 dias úteis para o setup completo. Isso inclui configuração dos fluxos no n8n, integração com seu CRM, WhatsApp e plataformas de anúncio, e treinamento da sua equipe.",
   },
   {
     q: "Qual a diferença de um chatbot comum?",
     a: "Um chatbot comum segue um fluxo fixo de perguntas e respostas. Nossa IA tem memória, contexto, integração com CRM e aprende com as conversas. É como ter um vendedor treinado disponível 24/7.",
   },
   {
-    q: "E se eu já uso um CRM?",
-    a: "Integramos com qualquer CRM via API ou webhook: HubSpot, Kommo, Pipedrive, RD Station, Salesforce — e até planilhas Google. Não precisa trocar o que já funciona.",
-  },
-  {
-    q: "Quanto custa?",
-    a: "A partir de R$ 2.500/mês, dependendo dos módulos contratados. Mas antes de falar em preço, fazemos um diagnóstico gratuito para entender exatamente o que faz sentido para o seu negócio.",
-  },
-  {
     q: "Quais ferramentas vocês usam?",
-    a: "Usamos o n8n como plataforma central de automação — open-source, sem lock-in, sem limite de execuções. Integramos com OpenAI, Evolution API, Meta, Google, e qualquer ferramenta com API.",
+    a: "Usamos o n8n como plataforma central de automação — open-source, sem lock-in, sem limite de execuções. Integramos com OpenAI, Evolution API, Meta Ads API, Google Ads API, e qualquer ferramenta com API.",
   },
 ]
 

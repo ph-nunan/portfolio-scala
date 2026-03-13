@@ -112,7 +112,7 @@ export default function MidCTA() {
           </div>
 
           {/* Result */}
-          <div style={{ padding: "20px", background: "var(--surface-2)", borderRadius: "8px", textAlign: "center" }}>
+          <div style={{ padding: "20px", background: "var(--surface-2)", borderRadius: "8px", textAlign: "center", marginBottom: "12px" }}>
             <p style={{ fontSize: "0.6875rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "8px" }}>
               Perda estimada por mês
             </p>
@@ -121,6 +121,25 @@ export default function MidCTA() {
             </div>
             <p style={{ fontSize: "0.75rem", color: "var(--text-3)", marginTop: "8px" }}>
               em leads que não foram atendidos a tempo
+            </p>
+          </div>
+          {/* ROI bridge */}
+          <div style={{
+            padding: "12px 16px",
+            background: "var(--accent-dim)",
+            border: "1px solid var(--accent-border)",
+            borderRadius: "8px",
+            textAlign: "center",
+          }}>
+            <p style={{ fontSize: "0.8125rem", color: "rgba(245,245,245,0.85)", lineHeight: 1.55 }}>
+              O plano Pro{" "}
+              <span style={{ fontFamily: "var(--font-geist-mono)", color: "var(--accent)", fontWeight: 600 }}>
+                (a partir de R$ 1.200)
+              </span>{" "}
+              se paga com{" "}
+              <strong style={{ color: "#f5f5f5" }}>
+                {Math.ceil(1200 / ticket)} lead{Math.ceil(1200 / ticket) > 1 ? "s" : ""} recuperado{Math.ceil(1200 / ticket) > 1 ? "s" : ""}.
+              </strong>
             </p>
           </div>
         </motion.div>

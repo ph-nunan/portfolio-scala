@@ -13,7 +13,7 @@ const benefits = [
 const roles = ["Gestor de Tráfego", "Dono de Agência", "Empresário", "Marketing", "Vendas", "Outro"]
 
 const VAGAS_TOTAL = 5
-const VAGAS_OCUPADAS = 3
+const VAGAS_OCUPADAS = 2
 
 type FormData = {
   nome: string
