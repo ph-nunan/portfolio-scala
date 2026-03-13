@@ -72,8 +72,10 @@ export default function Founder() {
               <p style={{
                 fontFamily: "var(--font-geist-mono)",
                 fontSize: "1.125rem", fontWeight: 700,
-                color: "var(--accent)", letterSpacing: "-0.02em",
+                letterSpacing: "-0.02em",
                 lineHeight: 1, marginBottom: "4px",
+                background: "linear-gradient(135deg, #ffffff 0%, #b0b0b0 50%, #e8e8e8 100%)",
+                WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent",
               }}>
                 +8 anos
               </p>
@@ -100,7 +102,7 @@ export default function Founder() {
             }}>
               <span style={{ color: "#f5f5f5" }}>Tecnologia com visão</span>
               <br />
-              <span style={{ color: "var(--text-2)" }}>de negócio.</span>
+              <span className="mark">de negócio.</span>
             </h2>
 
             {/* Paragraphs */}

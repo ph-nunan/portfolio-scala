@@ -74,7 +74,7 @@ function LiveTicker({ inView }: { inView: boolean }) {
           Enquanto você lê isso, você perdeu aproximadamente
         </span>
       </div>
-      <div style={{ fontFamily: "var(--font-geist-mono)", fontSize: "1.25rem", fontWeight: 700, color: "#f5f5f5", letterSpacing: "-0.02em", minWidth: "160px", textAlign: "right" }}>
+      <div style={{ fontFamily: "var(--font-geist-mono)", fontSize: "1.25rem", fontWeight: 700, letterSpacing: "-0.02em", minWidth: "160px", textAlign: "right", background: "linear-gradient(135deg, #ffffff 0%, #b0b0b0 50%, #e0e0e0 100%)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>
         {started ? formatted : "R$ 0,00"}
       </div>
     </motion.div>
@@ -119,8 +119,8 @@ export default function Problem() {
           transition={{ duration: 0.5 }}
         >
           <p className="s-label">O Problema</p>
-          <h2 className="s-title">Você está perdendo vendas agora mesmo</h2>
-          <p className="s-sub">Cada minuto sem automação é dinheiro deixado na mesa.</p>
+          <h2 className="s-title">Você está <span className="mark">perdendo vendas</span> agora mesmo</h2>
+          <p className="s-sub">Cada minuto sem automação é <strong style={{ color: "#f5f5f0" }}>dinheiro deixado na mesa.</strong></p>
         </motion.div>
 
         {/* Stats — horizontal rows */}
@@ -143,9 +143,12 @@ export default function Problem() {
                   fontFamily: "var(--font-geist-mono)",
                   fontSize: "clamp(3.5rem, 6vw, 5rem)",
                   fontWeight: 700,
-                  color: "#f5f5f5",
                   lineHeight: 1,
                   letterSpacing: "-0.03em",
+                  background: "linear-gradient(135deg, #ffffff 0%, #b0b0b0 50%, #e0e0e0 100%)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
                 }}>
                   <Counter to={item.stat} suffix={item.suffix} />
                 </div>

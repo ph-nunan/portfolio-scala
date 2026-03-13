@@ -102,7 +102,7 @@ export default function Ecosystem() {
           transition={{ duration: 0.5 }}
         >
           <p className="s-label">Ecossistema</p>
-          <h2 className="s-title">Do Anúncio ao Relatório, em 7 Etapas</h2>
+          <h2 className="s-title">Do Anúncio ao Relatório, <span className="mark">em 7 Etapas</span></h2>
           <p className="s-sub">Cada etapa é automatizada e conectada à próxima. Clique para explorar.</p>
         </motion.div>
 

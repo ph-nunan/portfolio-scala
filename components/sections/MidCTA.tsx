@@ -116,7 +116,7 @@ export default function MidCTA() {
             <p style={{ fontSize: "0.6875rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "8px" }}>
               Perda estimada por mês
             </p>
-            <div style={{ fontSize: "2.5rem", fontWeight: 700, fontFamily: "var(--font-geist-mono)", color: "#f5f5f5", letterSpacing: "-0.03em", lineHeight: 1 }}>
+            <div style={{ fontSize: "2.5rem", fontWeight: 700, fontFamily: "var(--font-geist-mono)", letterSpacing: "-0.03em", lineHeight: 1, background: "linear-gradient(135deg, #ffffff 0%, #a8a8a8 50%, #e0e0e0 100%)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               {formatBRL(perda)}
             </div>
             <p style={{ fontSize: "0.75rem", color: "var(--text-3)", marginTop: "8px" }}>

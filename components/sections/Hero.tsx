@@ -237,7 +237,10 @@ export default function Hero() {
             fontWeight: 700,
             lineHeight: 1,
             letterSpacing: "-0.035em",
-            color: "var(--accent)",
+            background: "linear-gradient(135deg, #ffffff 0%, #c0c0c0 42%, #f0f0f0 100%)",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            WebkitTextFillColor: "transparent",
             marginBottom: "28px",
           }}
         >
@@ -259,7 +262,7 @@ export default function Hero() {
         >
           Construímos a automação que otimiza suas campanhas, responde leads em segundos,
           atualiza o CRM e envia relatórios ao cliente —{" "}
-          <span style={{ color: "rgba(245,245,245,0.9)", fontWeight: 500 }}>
+          <span className="mark" style={{ fontWeight: 600 }}>
             você no controle, a IA executando.
           </span>
         </motion.p>
@@ -288,7 +291,11 @@ export default function Hero() {
               textAlign: "center",
               borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.06)" : "none",
             }}>
-              <div style={{ fontFamily: "var(--font-geist-mono)", fontSize: "1.375rem", fontWeight: 700, color: "#f5f5f5", lineHeight: 1 }}>
+              <div style={{
+                fontFamily: "var(--font-geist-mono)", fontSize: "1.375rem", fontWeight: 700, lineHeight: 1,
+                background: "linear-gradient(135deg, #ffffff 0%, #b0b0b0 50%, #e8e8e8 100%)",
+                WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent",
+              }}>
                 {s.value}
               </div>
               <div style={{ fontSize: "0.5625rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", textTransform: "uppercase", letterSpacing: "0.08em", marginTop: "5px" }}>
@@ -307,15 +314,16 @@ export default function Hero() {
         >
           <a
             href="#contact"
+            className="btn-shimmer"
             style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               padding: "13px 28px",
-              background: "var(--accent)", color: "#0a0a0a",
+              background: "var(--accent)", color: "#1a1a1a",
               borderRadius: "8px", fontWeight: 700, fontSize: "0.9375rem",
               textDecoration: "none", transition: "opacity 0.2s",
               letterSpacing: "-0.01em",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.88")}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.9")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
             Quero o Ecossistema Completo →

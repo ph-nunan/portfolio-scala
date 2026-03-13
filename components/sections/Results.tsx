@@ -51,7 +51,7 @@ export default function Results() {
           transition={{ duration: 0.5 }}
         >
           <p className="s-label">Resultados</p>
-          <h2 className="s-title">Números que Falam por Si</h2>
+          <h2 className="s-title">Números que <span className="mark">Falam por Si</span></h2>
           <p className="s-sub">Baseado em resultados reais de automações n8n em operações comerciais similares.</p>
         </motion.div>
 
@@ -71,7 +71,7 @@ export default function Results() {
                 textAlign: "center",
               }}
             >
-              <div style={{ fontFamily: "var(--font-geist-mono)", fontSize: "2.25rem", fontWeight: 700, color: "#f5f5f5", marginBottom: "4px", lineHeight: 1 }}>
+              <div style={{ fontFamily: "var(--font-geist-mono)", fontSize: "2.25rem", fontWeight: 700, marginBottom: "4px", lineHeight: 1, background: "linear-gradient(135deg, #ffffff 0%, #b0b0b0 50%, #e0e0e0 100%)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 {m.display ?? <Counter to={m.value!} suffix={m.suffix} />}
               </div>
               <div style={{ fontSize: "0.6875rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "8px" }}>
