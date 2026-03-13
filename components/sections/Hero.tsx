@@ -18,7 +18,7 @@ const stats = [
   { value: "7d",   label: "Para Implementar"      },
 ]
 
-const integrations = ["n8n", "WhatsApp", "OpenAI", "Meta Ads", "Google Ads", "Evolution API"]
+const integrations = ["n8n", "WhatsApp Business API", "OpenAI", "Claude", "Meta Ads", "Google Ads", "Firecrawl", "Apify"]
 
 function LiveFeed() {
   const [queue, setQueue] = useState(() =>
