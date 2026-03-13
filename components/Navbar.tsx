@@ -47,10 +47,10 @@ export default function Navbar() {
         <a href="#" style={{ display: "flex", alignItems: "center", textDecoration: "none", flexShrink: 0 }}>
           {/* Lockup completo no desktop, só monograma no mobile */}
           <span className="nav-logo-full">
-            <Image src="/logo-lockup.png" alt="Scala" width={140} height={36} style={{ objectFit: "contain" }} priority />
+            <Image src="/logo-lockup-v2.png" alt="Scala" width={140} height={36} style={{ objectFit: "contain" }} priority />
           </span>
           <span className="nav-logo-icon">
-            <Image src="/logo-icon.png" alt="Scala" width={32} height={32} style={{ objectFit: "contain" }} priority />
+            <Image src="/logo-icon-v2.png" alt="Scala" width={32} height={32} style={{ objectFit: "contain" }} priority />
           </span>
         </a>
 
