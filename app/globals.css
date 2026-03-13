@@ -137,6 +137,14 @@ body {
   90% { transform: translate(-10%, 10%); }
 }
 
+/* ─── KPIs grid (3-col) ─── */
+@media (max-width: 900px) {
+  .kpi-grid-inner { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 600px) {
+  .kpi-grid-inner { grid-template-columns: 1fr !important; }
+}
+
 /* ─── HowItWorks split layout ─── */
 .hiw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
 @media (max-width: 768px) {
