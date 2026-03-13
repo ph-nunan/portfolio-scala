@@ -131,17 +131,14 @@ export default function Problem() {
               initial={{ opacity: 0, x: -20 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.1 + i * 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="problem-row"
               style={{
-                display: "grid",
-                gridTemplateColumns: "160px 1fr",
-                gap: "40px",
-                alignItems: "start",
                 padding: "32px 0",
                 borderBottom: i < items.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
               }}
             >
               {/* Big number */}
-              <div>
+              <div className="problem-stat">
                 <div style={{
                   fontFamily: "var(--font-geist-mono)",
                   fontSize: "clamp(3.5rem, 6vw, 5rem)",

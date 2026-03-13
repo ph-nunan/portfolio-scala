@@ -194,6 +194,65 @@ body {
   .floating-cta-wrap { display: block; }
 }
 
+/* ─── Pulse animation (usado em vários componentes) ─── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.35; transform: scale(0.85); }
+}
+
+/* ─── Problem section row ─── */
+.problem-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+@media (max-width: 640px) {
+  .problem-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .problem-row .problem-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+}
+
+/* ─── FunnelComparison grid ─── */
+.funnel-grid { display: grid; grid-template-columns: 1fr 148px 1fr; }
+@media (max-width: 600px) {
+  .funnel-grid { grid-template-columns: 1fr 80px 1fr; }
+  .funnel-num  { font-size: 1rem !important; min-width: 28px !important; }
+  .funnel-bar  { height: 6px !important; }
+}
+@media (max-width: 400px) {
+  .funnel-grid   { grid-template-columns: 1fr 64px 1fr; }
+  .funnel-label  { font-size: 0.5rem !important; }
+}
+
+/* ─── SocialProof / Footer inner padding ─── */
+.sp-inner, .footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+@media (max-width: 640px) {
+  .sp-inner, .footer-inner { padding: 0 20px; }
+}
+
+/* ─── Hero stats card ─── */
+@media (max-width: 380px) {
+  .hero-stats-card { flex-direction: column !important; }
+  .hero-stats-card > div { border-left: none !important; border-top: 1px solid rgba(255,255,255,0.06); }
+  .hero-stats-card > div:first-child { border-top: none; }
+}
+
+/* ─── Hero live feed — hide detail col on very small screens ─── */
+@media (max-width: 480px) {
+  .feed-detail { display: none !important; }
+}
+
 /* ─── Scrollbar ─── */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }

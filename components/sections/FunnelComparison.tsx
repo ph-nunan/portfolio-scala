@@ -77,11 +77,7 @@ export default function FunnelComparison() {
           </div>
 
           {/* Column labels */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 148px 1fr",
-            borderBottom: "1px solid rgba(255,255,255,0.05)",
-          }}>
+          <div className="funnel-grid" style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
             <div style={{ padding: "12px 24px", textAlign: "right" }}>
               <span style={{
                 fontFamily: "var(--font-geist-mono)",
@@ -116,15 +112,14 @@ export default function FunnelComparison() {
           {stages.map((stage, i) => (
             <div
               key={i}
+              className="funnel-grid"
               style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 148px 1fr",
                 borderBottom: i < stages.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none",
               }}
             >
               {/* Left — Sem automação */}
               <div style={{ padding: "20px 16px 20px 24px", display: "flex", alignItems: "center", gap: "16px" }}>
-                <span style={{
+                <span className="funnel-num" style={{
                   fontFamily: "var(--font-geist-mono)",
                   fontSize: "1.25rem",
                   fontWeight: 700,
@@ -136,7 +131,7 @@ export default function FunnelComparison() {
                   <CountUp to={stage.without} inView={inView} delay={0.3 + i * 0.1} />
                 </span>
                 {/* Bar track — right-aligned so bar grows from center outward left */}
-                <div style={{ flex: 1, height: "8px", background: "rgba(255,255,255,0.05)", borderRadius: "100px", overflow: "hidden", display: "flex", justifyContent: "flex-end" }}>
+                <div className="funnel-bar" style={{ flex: 1, height: "8px", background: "rgba(255,255,255,0.05)", borderRadius: "100px", overflow: "hidden", display: "flex", justifyContent: "flex-end" }}>
                   <motion.div
                     initial={{ width: 0 }}
                     animate={inView ? { width: `${stage.without}%` } : { width: 0 }}
@@ -161,7 +156,7 @@ export default function FunnelComparison() {
                 borderLeft: "1px solid rgba(255,255,255,0.04)",
                 borderRight: "1px solid rgba(255,255,255,0.04)",
               }}>
-                <span style={{
+                <span className="funnel-label" style={{
                   fontFamily: "var(--font-geist-mono)",
                   fontSize: "0.625rem",
                   color: "var(--text-3)",
@@ -177,7 +172,7 @@ export default function FunnelComparison() {
               {/* Right — Com automação */}
               <div style={{ padding: "20px 24px 20px 16px", display: "flex", alignItems: "center", gap: "16px" }}>
                 {/* Bar track — left-aligned, grows from center outward right */}
-                <div style={{ flex: 1, height: "8px", background: "rgba(255,255,255,0.05)", borderRadius: "100px", overflow: "hidden" }}>
+                <div className="funnel-bar" style={{ flex: 1, height: "8px", background: "rgba(255,255,255,0.05)", borderRadius: "100px", overflow: "hidden" }}>
                   <motion.div
                     initial={{ width: 0 }}
                     animate={inView ? { width: `${stage.with}%` } : { width: 0 }}
@@ -191,7 +186,7 @@ export default function FunnelComparison() {
                     }}
                   />
                 </div>
-                <span style={{
+                <span className="funnel-num" style={{
                   fontFamily: "var(--font-geist-mono)",
                   fontSize: "1.25rem",
                   fontWeight: 700,
@@ -210,9 +205,8 @@ export default function FunnelComparison() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 1.0 }}
+            className="funnel-grid"
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 148px 1fr",
               background: "rgba(255,255,255,0.015)",
               borderTop: "1px solid rgba(255,255,255,0.05)",
             }}

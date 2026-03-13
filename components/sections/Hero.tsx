@@ -128,7 +128,7 @@ function LiveFeed() {
               }}>
                 {item.label}
               </span>
-              <span style={{
+              <span className="feed-detail" style={{
                 fontFamily: "var(--font-geist-mono)",
                 fontSize: "0.625rem",
                 color: i === 0 ? "var(--text-2)" : "rgba(255,255,255,0.2)",
@@ -269,6 +269,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.46 }}
+          className="hero-stats-card"
           style={{
             display: "flex",
             justifyContent: "center",

@@ -24,10 +24,7 @@ export default function SocialProof() {
         overflow: "hidden",
       }}
     >
-      <div style={{
-        maxWidth: "1200px",
-        margin: "0 auto",
-        padding: "0 40px",
+      <div className="sp-inner" style={{
         display: "flex",
         alignItems: "stretch",
         overflowX: "auto",

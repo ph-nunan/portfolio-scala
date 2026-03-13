@@ -10,7 +10,7 @@ const links = [
 export default function Footer() {
   return (
     <footer style={{ borderTop: "1px solid rgba(255,255,255,0.05)", padding: "48px 0" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "24px", flexWrap: "wrap" }}>
+      <div className="footer-inner" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "24px", flexWrap: "wrap" }}>
         <div>
           <a
             href="#"
