@@ -207,7 +207,7 @@ export default function Hero() {
           }}
         >
           <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--accent)", display: "inline-block", animation: "pulse 2s ease-in-out infinite", flexShrink: 0 }} />
-          Ecossistema Comercial · Automação Completa
+          Automação · Implementação · Treinamento
         </motion.div>
 
         {/* Headline — line 1 */}
@@ -257,10 +257,10 @@ export default function Hero() {
             margin: "0 auto 32px",
           }}
         >
-          Gerenciamos suas campanhas com IA, respondemos leads em segundos, automatizamos o CRM
-          e enviamos relatórios direto no WhatsApp do seu cliente —{" "}
+          Construímos a automação que otimiza suas campanhas, responde leads em segundos,
+          atualiza o CRM e envia relatórios ao cliente —{" "}
           <span style={{ color: "rgba(245,245,245,0.9)", fontWeight: 500 }}>
-            do primeiro clique ao pós-fechamento.
+            você no controle, a IA executando.
           </span>
         </motion.p>
 
