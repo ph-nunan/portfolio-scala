@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar"
 import FloatingCTA from "@/components/FloatingCTA"
 import Hero from "@/components/sections/Hero"
 import Problem from "@/components/sections/Problem"
+import FunnelComparison from "@/components/sections/FunnelComparison"
 import Ecosystem from "@/components/sections/Ecosystem"
 import Services from "@/components/sections/Services"
 import MidCTA from "@/components/sections/MidCTA"
@@ -19,6 +20,7 @@ export default function Home() {
       <FloatingCTA />
       <Hero />
       <Problem />
+      <FunnelComparison />
       <Ecosystem />
       <Services />
       <MidCTA />
