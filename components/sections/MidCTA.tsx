@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
+import { motion, useInView, AnimatePresence } from "framer-motion"
 import { useRef, useState } from "react"
 
 const tickets = [
@@ -19,11 +19,18 @@ export default function MidCTA() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: "-80px" })
 
+  const [tab, setTab] = useState<"leads" | "ads">("leads")
+
+  // Tab 1 — Leads perdidos
   const [leads, setLeads] = useState(100)
   const [ticket, setTicket] = useState(2000)
-
-  // 78% não atendidos → 35% perdidos sem follow-up → ~25% converteriam com automação
   const perda = Math.round(leads * 0.78 * 0.35 * ticket * 0.25)
+
+  // Tab 2 — Tempo perdido em ads (PDF 4.3)
+  const [horasAds, setHorasAds] = useState(10)
+  // 4 weeks/mês; cada hora "liberada" pode atender ~2 novos clientes em prospecção
+  const horasMes = horasAds * 4
+  const clientesPotenciais = Math.round(horasMes / 3)
 
   return (
     <section ref={ref} className="s-wrap">
@@ -47,12 +54,52 @@ export default function MidCTA() {
             fontWeight: 700,
             letterSpacing: "-0.03em",
             lineHeight: 1.1,
-            marginBottom: "40px",
+            marginBottom: "32px",
             color: "#f5f5f5",
           }}
         >
           Quanto você está perdendo por mês?
         </motion.h2>
+
+        {/* Tab selector */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          style={{
+            display: "inline-flex",
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            borderRadius: "10px",
+            padding: "4px",
+            marginBottom: "28px",
+            gap: "4px",
+          }}
+        >
+          {[
+            { key: "leads", label: "Leads perdidos" },
+            { key: "ads",   label: "Tempo em Ads" },
+          ].map((t) => (
+            <button
+              key={t.key}
+              onClick={() => setTab(t.key as "leads" | "ads")}
+              style={{
+                padding: "8px 20px",
+                borderRadius: "7px",
+                fontSize: "0.8125rem",
+                fontWeight: 500,
+                border: "none",
+                cursor: "pointer",
+                transition: "all 0.2s",
+                background: tab === t.key ? "var(--accent)" : "transparent",
+                color: tab === t.key ? "#0a0a0a" : "var(--text-2)",
+                fontFamily: "var(--font-geist-sans)",
+              }}
+            >
+              {t.label}
+            </button>
+          ))}
+        </motion.div>
 
         {/* Calculator card */}
         <motion.div
@@ -62,86 +109,149 @@ export default function MidCTA() {
           className="card"
           style={{ maxWidth: "480px", margin: "0 auto 32px", textAlign: "left" }}
         >
-          {/* Leads slider */}
-          <div style={{ marginBottom: "24px" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
-              <label style={{ fontSize: "0.75rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)" }}>
-                Leads por mês
-              </label>
-              <span style={{ fontSize: "0.875rem", fontWeight: 600, color: "#f5f5f5", fontFamily: "var(--font-geist-mono)" }}>
-                {leads}
-              </span>
-            </div>
-            <input
-              type="range"
-              min={20}
-              max={500}
-              step={10}
-              value={leads}
-              onChange={(e) => setLeads(Number(e.target.value))}
-              style={{ width: "100%", accentColor: "var(--accent)" }}
-            />
-          </div>
+          <AnimatePresence mode="wait">
+            {tab === "leads" ? (
+              <motion.div
+                key="leads"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25 }}
+              >
+                {/* Leads slider */}
+                <div style={{ marginBottom: "24px" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
+                    <label style={{ fontSize: "0.75rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)" }}>
+                      Leads por mês
+                    </label>
+                    <span style={{ fontSize: "0.875rem", fontWeight: 600, color: "#f5f5f5", fontFamily: "var(--font-geist-mono)" }}>
+                      {leads}
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min={20}
+                    max={500}
+                    step={10}
+                    value={leads}
+                    onChange={(e) => setLeads(Number(e.target.value))}
+                    style={{ width: "100%", accentColor: "var(--accent)" }}
+                  />
+                </div>
 
-          {/* Ticket selector */}
-          <div style={{ marginBottom: "24px" }}>
-            <label style={{ display: "block", fontSize: "0.75rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", marginBottom: "10px" }}>
-              Ticket médio
-            </label>
-            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-              {tickets.map((t) => (
-                <button
-                  key={t.value}
-                  onClick={() => setTicket(t.value)}
-                  style={{
-                    padding: "6px 14px",
-                    borderRadius: "6px",
-                    fontSize: "0.75rem",
-                    fontFamily: "var(--font-geist-mono)",
-                    border: ticket === t.value ? "1px solid var(--accent-border)" : "1px solid rgba(255,255,255,0.08)",
-                    background: ticket === t.value ? "var(--accent-dim)" : "transparent",
-                    color: ticket === t.value ? "var(--accent)" : "var(--text-2)",
-                    cursor: "pointer",
-                    transition: "all 0.15s",
-                  }}
-                >
-                  {t.label}
-                </button>
-              ))}
-            </div>
-          </div>
+                {/* Ticket selector */}
+                <div style={{ marginBottom: "24px" }}>
+                  <label style={{ display: "block", fontSize: "0.75rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", marginBottom: "10px" }}>
+                    Ticket médio
+                  </label>
+                  <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                    {tickets.map((t) => (
+                      <button
+                        key={t.value}
+                        onClick={() => setTicket(t.value)}
+                        style={{
+                          padding: "6px 14px",
+                          borderRadius: "6px",
+                          fontSize: "0.75rem",
+                          fontFamily: "var(--font-geist-mono)",
+                          border: ticket === t.value ? "1px solid var(--accent-border)" : "1px solid rgba(255,255,255,0.08)",
+                          background: ticket === t.value ? "var(--accent-dim)" : "transparent",
+                          color: ticket === t.value ? "var(--accent)" : "var(--text-2)",
+                          cursor: "pointer",
+                          transition: "all 0.15s",
+                        }}
+                      >
+                        {t.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
-          {/* Result */}
-          <div style={{ padding: "20px", background: "var(--surface-2)", borderRadius: "8px", textAlign: "center", marginBottom: "12px" }}>
-            <p style={{ fontSize: "0.6875rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "8px" }}>
-              Perda estimada por mês
-            </p>
-            <div style={{ fontSize: "2.5rem", fontWeight: 700, fontFamily: "var(--font-geist-mono)", letterSpacing: "-0.03em", lineHeight: 1, background: "linear-gradient(135deg, #ffffff 0%, #a8a8a8 50%, #e0e0e0 100%)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              {formatBRL(perda)}
-            </div>
-            <p style={{ fontSize: "0.75rem", color: "var(--text-3)", marginTop: "8px" }}>
-              em leads que não foram atendidos a tempo
-            </p>
-          </div>
-          {/* ROI bridge */}
-          <div style={{
-            padding: "12px 16px",
-            background: "var(--accent-dim)",
-            border: "1px solid var(--accent-border)",
-            borderRadius: "8px",
-            textAlign: "center",
-          }}>
-            <p style={{ fontSize: "0.8125rem", color: "rgba(245,245,245,0.85)", lineHeight: 1.55 }}>
-              O plano Pro{" "}
-              <span style={{ fontFamily: "var(--font-geist-mono)", color: "var(--accent)", fontWeight: 600 }}>
-                (a partir de R$ 1.200)
-              </span>{" "}
-              se paga com{" "}
-              <strong style={{ color: "#f5f5f5" }}>
-                {Math.ceil(1200 / ticket)} lead{Math.ceil(1200 / ticket) > 1 ? "s" : ""} recuperado{Math.ceil(1200 / ticket) > 1 ? "s" : ""}.
-              </strong>
-            </p>
-          </div>
+                {/* Result */}
+                <div style={{ padding: "20px", background: "var(--surface-2)", borderRadius: "8px", textAlign: "center", marginBottom: "12px" }}>
+                  <p style={{ fontSize: "0.6875rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "8px" }}>
+                    Perda estimada por mês
+                  </p>
+                  <div style={{ fontSize: "2.5rem", fontWeight: 700, fontFamily: "var(--font-geist-mono)", letterSpacing: "-0.03em", lineHeight: 1, background: "linear-gradient(135deg, #ffffff 0%, #a8a8a8 50%, #e0e0e0 100%)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                    {formatBRL(perda)}
+                  </div>
+                  <p style={{ fontSize: "0.75rem", color: "var(--text-3)", marginTop: "8px" }}>
+                    em leads que não foram atendidos a tempo
+                  </p>
+                </div>
+                <div style={{ padding: "12px 16px", background: "var(--accent-dim)", border: "1px solid var(--accent-border)", borderRadius: "8px", textAlign: "center" }}>
+                  <p style={{ fontSize: "0.8125rem", color: "rgba(245,245,245,0.85)", lineHeight: 1.55 }}>
+                    O plano Pro{" "}
+                    <span style={{ fontFamily: "var(--font-geist-mono)", color: "var(--accent)", fontWeight: 600 }}>
+                      (a partir de R$ 1.200)
+                    </span>{" "}
+                    se paga com{" "}
+                    <strong style={{ color: "#f5f5f5" }}>
+                      {Math.ceil(1200 / ticket)} lead{Math.ceil(1200 / ticket) > 1 ? "s" : ""} recuperado{Math.ceil(1200 / ticket) > 1 ? "s" : ""}.
+                    </strong>
+                  </p>
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="ads"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25 }}
+              >
+                {/* Horas por semana slider */}
+                <div style={{ marginBottom: "24px" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
+                    <label style={{ fontSize: "0.75rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)" }}>
+                      Horas/semana ajustando campanhas
+                    </label>
+                    <span style={{ fontSize: "0.875rem", fontWeight: 600, color: "#f5f5f5", fontFamily: "var(--font-geist-mono)" }}>
+                      {horasAds}h
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min={5}
+                    max={20}
+                    step={5}
+                    value={horasAds}
+                    onChange={(e) => setHorasAds(Number(e.target.value))}
+                    style={{ width: "100%", accentColor: "var(--accent)" }}
+                  />
+                  <div style={{ display: "flex", justifyContent: "space-between", marginTop: "4px" }}>
+                    <span style={{ fontSize: "0.625rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)" }}>5h</span>
+                    <span style={{ fontSize: "0.625rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)" }}>20h</span>
+                  </div>
+                </div>
+
+                {/* Resultado */}
+                <div style={{ padding: "20px", background: "var(--surface-2)", borderRadius: "8px", textAlign: "center", marginBottom: "12px" }}>
+                  <p style={{ fontSize: "0.6875rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "8px" }}>
+                    Horas recuperadas por mês
+                  </p>
+                  <div style={{ fontSize: "2.5rem", fontWeight: 700, fontFamily: "var(--font-geist-mono)", letterSpacing: "-0.03em", lineHeight: 1, background: "linear-gradient(135deg, #ffffff 0%, #a8a8a8 50%, #e0e0e0 100%)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                    {horasMes}h
+                  </div>
+                  <p style={{ fontSize: "0.75rem", color: "var(--text-3)", marginTop: "8px" }}>
+                    em operação manual que pode ser automatizada
+                  </p>
+                </div>
+                <div style={{ padding: "12px 16px", background: "var(--accent-dim)", border: "1px solid var(--accent-border)", borderRadius: "8px", textAlign: "center" }}>
+                  <p style={{ fontSize: "0.8125rem", color: "rgba(245,245,245,0.85)", lineHeight: 1.55 }}>
+                    Com a Scala, você recupera{" "}
+                    <span style={{ fontFamily: "var(--font-geist-mono)", color: "var(--accent)", fontWeight: 600 }}>
+                      {horasMes}h/mês
+                    </span>
+                    {" "}— o equivalente a{" "}
+                    <strong style={{ color: "#f5f5f5" }}>
+                      {clientesPotenciais} novos clientes que você poderia estar atendendo.
+                    </strong>
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
 
         <motion.div
