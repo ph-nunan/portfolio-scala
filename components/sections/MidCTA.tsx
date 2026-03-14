@@ -167,7 +167,7 @@ export default function MidCTA() {
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.88")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
-            Recuperar Esses Leads →
+            Quero esses números no meu negócio →
           </a>
         </motion.div>
       </div>

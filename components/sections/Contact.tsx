@@ -15,6 +15,14 @@ const roles = ["Gestor de Tráfego", "Dono de Agência", "Empresário", "Marketi
 const VAGAS_TOTAL = 5
 const VAGAS_OCUPADAS = 2
 
+// Micro-copy per field (PDF seção 4.3)
+const fields = [
+  { name: "nome",     label: "Nome",      hint: "Como prefere ser chamado",           type: "text",  placeholder: "João Silva",          required: true },
+  { name: "email",    label: "E-mail",    hint: "Enviaremos o diagnóstico por aqui",  type: "email", placeholder: "joao@empresa.com",     required: true },
+  { name: "whatsapp", label: "WhatsApp",  hint: "Para agendar a call — sem spam, prometido", type: "tel", placeholder: "(61) 99999-9999", required: true },
+  { name: "empresa",  label: "Empresa",   hint: "Para personalizar o diagnóstico",    type: "text",  placeholder: "Nome da sua empresa",  required: false },
+]
+
 type FormData = {
   nome: string
   email: string
@@ -47,6 +55,10 @@ export default function Contact() {
       setStatus("error")
     }
   }
+
+  // Zeigarnik progress: count filled fields
+  const filled = [form.nome, form.email, form.whatsapp, form.empresa, form.cargo].filter(Boolean).length
+  const progress = Math.round((filled / 5) * 100)
 
   const inputStyle = {
     width: "100%",
@@ -126,33 +138,49 @@ export default function Contact() {
               <div className="card" style={{ textAlign: "center", padding: "48px 32px" }}>
                 <div style={{ fontSize: "2rem", marginBottom: "1rem", color: "var(--accent)" }}>✓</div>
                 <h3 style={{ fontSize: "1.0625rem", fontWeight: 600, marginBottom: "0.5rem", color: "#f5f5f5" }}>
-                  Recebemos seus dados!
+                  Vaga garantida!
                 </h3>
                 <p style={{ color: "var(--text-2)", fontSize: "0.875rem", lineHeight: 1.7 }}>
-                  Nossa equipe entrará em contato pelo WhatsApp em até 24 horas para agendar seu diagnóstico gratuito.
+                  Entraremos em contato pelo WhatsApp em até 2 horas úteis para confirmar seu diagnóstico gratuito.
                 </p>
               </div>
             ) : (
               <form
                 onSubmit={submit}
                 className="card"
-                style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+                style={{ display: "flex", flexDirection: "column", gap: "14px" }}
               >
-                {[
-                  { name: "nome", label: "Nome completo", type: "text", placeholder: "João Silva" },
-                  { name: "email", label: "E-mail", type: "email", placeholder: "joao@empresa.com" },
-                  { name: "whatsapp", label: "WhatsApp", type: "tel", placeholder: "(61) 99999-9999" },
-                  { name: "empresa", label: "Empresa", type: "text", placeholder: "Nome da sua empresa" },
-                ].map((f) => (
+                {/* Zeigarnik progress bar (PDF seção 2.5) */}
+                {filled > 0 && (
+                  <div style={{ marginBottom: "4px" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                      <span style={{ fontSize: "0.625rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)" }}>
+                        Progresso do diagnóstico
+                      </span>
+                      <span style={{ fontSize: "0.625rem", color: "var(--accent)", fontFamily: "var(--font-geist-mono)", fontWeight: 600 }}>
+                        {progress}%
+                      </span>
+                    </div>
+                    <div style={{ height: "3px", background: "rgba(255,255,255,0.06)", borderRadius: "3px" }}>
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${progress}%` }}
+                        transition={{ duration: 0.4 }}
+                        style={{ height: "100%", background: "var(--accent)", borderRadius: "3px" }}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Fields with micro-copy */}
+                {fields.map((f) => (
                   <div key={f.name}>
                     <label
                       htmlFor={f.name}
-                      style={{ display: "block", fontSize: "0.75rem", color: "var(--text-3)", marginBottom: "6px", fontFamily: "var(--font-geist-mono)" }}
+                      style={{ display: "block", fontSize: "0.75rem", color: "var(--text-3)", marginBottom: "4px", fontFamily: "var(--font-geist-mono)" }}
                     >
                       {f.label}
-                      {["nome", "email", "whatsapp"].includes(f.name) && (
-                        <span style={{ color: "rgba(255,255,255,0.25)", marginLeft: "4px" }}>*</span>
-                      )}
+                      {f.required && <span style={{ color: "rgba(255,255,255,0.25)", marginLeft: "4px" }}>*</span>}
                     </label>
                     <input
                       id={f.name}
@@ -161,18 +189,22 @@ export default function Contact() {
                       placeholder={f.placeholder}
                       value={form[f.name as keyof FormData]}
                       onChange={handle}
-                      required={["nome", "email", "whatsapp"].includes(f.name)}
+                      required={f.required}
                       style={inputStyle}
                       onFocus={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.2)")}
                       onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.07)")}
                     />
+                    {/* Micro-copy hint */}
+                    <p style={{ fontSize: "0.625rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", marginTop: "4px" }}>
+                      {f.hint}
+                    </p>
                   </div>
                 ))}
 
                 <div>
                   <label
                     htmlFor="cargo"
-                    style={{ display: "block", fontSize: "0.75rem", color: "var(--text-3)", marginBottom: "6px", fontFamily: "var(--font-geist-mono)" }}
+                    style={{ display: "block", fontSize: "0.75rem", color: "var(--text-3)", marginBottom: "4px", fontFamily: "var(--font-geist-mono)" }}
                   >
                     Cargo / Função
                   </label>
@@ -190,6 +222,9 @@ export default function Contact() {
                       <option key={r} value={r} style={{ background: "#111" }}>{r}</option>
                     ))}
                   </select>
+                  <p style={{ fontSize: "0.625rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", marginTop: "4px" }}>
+                    Para entender seu contexto
+                  </p>
                 </div>
 
                 <button
@@ -211,7 +246,7 @@ export default function Contact() {
                   onMouseEnter={(e) => { if (status !== "loading") e.currentTarget.style.opacity = "0.88" }}
                   onMouseLeave={(e) => { e.currentTarget.style.opacity = "1" }}
                 >
-                  {status === "loading" ? "Enviando..." : "Quero Meu Diagnóstico Gratuito"}
+                  {status === "loading" ? "Enviando..." : "Garantir minha vaga →"}
                 </button>
 
                 {/* WhatsApp alternative */}

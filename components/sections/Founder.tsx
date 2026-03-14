@@ -11,6 +11,19 @@ const credentials = [
   { icon: "◎", label: "Ecossistemas de Vendas Automatizados" },
 ]
 
+// PDF seção 5.1 — Transparência Radical
+const naoFaz = [
+  "Não transforma um produto ruim em vendas",
+  "Não substitui uma boa oferta",
+  "Não funciona sem tráfego pago rodando",
+]
+
+const faz = [
+  "Garante que nenhum lead seja ignorado",
+  "Responde em 3 segundos, 24 horas por dia",
+  "Libera 40+ horas/mês do seu time",
+]
+
 export default function Founder() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: "-80px" })
@@ -77,10 +90,10 @@ export default function Founder() {
                 background: "linear-gradient(135deg, #ffffff 0%, #b0b0b0 50%, #e8e8e8 100%)",
                 WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent",
               }}>
-                +8 anos
+                34 automações
               </p>
               <p style={{ fontSize: "0.75rem", color: "var(--text-2)", whiteSpace: "nowrap" }}>
-                Tecnologia & Marketing
+                entregues até hoje
               </p>
             </motion.div>
           </motion.div>
@@ -94,43 +107,30 @@ export default function Founder() {
           >
             <p className="s-label" style={{ marginBottom: "20px" }}>Quem está por trás</p>
 
-            {/* Headline com hierarquia */}
+            {/* Headline */}
             <h2 style={{
               fontSize: "2rem", fontWeight: 700,
               letterSpacing: "-0.03em", lineHeight: 1.15,
-              marginBottom: "32px",
+              marginBottom: "24px",
             }}>
               <span style={{ color: "#f5f5f5" }}>Tecnologia com visão</span>
               <br />
               <span className="mark">de negócio.</span>
             </h2>
 
-            {/* Paragraphs */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "18px", marginBottom: "36px" }}>
-              <p style={{ fontSize: "0.9375rem", color: "var(--text-2)", lineHeight: 1.75 }}>
-                Com 5 anos imerso no marketing digital e 3 anos em programação, eu entendo os
-                dois lados da moeda:{" "}
-                <strong style={{ color: "#f5f5f5", fontWeight: 600 }}>
-                  a estratégia que vende e a tecnologia que escala.
-                </strong>
+            {/* PDF 5.2 — Storytelling pessoal (3 frases. Problema real. Motivação. Missão.) */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "28px" }}>
+              <p style={{ fontSize: "0.9375rem", color: "var(--text-2)", lineHeight: 1.75, fontStyle: "italic", borderLeft: "2px solid var(--accent-border)", paddingLeft: "16px" }}>
+                "Trabalhei 5 anos em marketing digital. Vi de perto gestores de tráfego gerando centenas de leads por dia — e perdendo a maioria por falta de velocidade no atendimento. O problema nunca foi o tráfego. Era o que acontecia depois do clique. Foi por isso que criei a Scala: para que nenhum lead seja desperdiçado."
               </p>
-              <p style={{ fontSize: "0.9375rem", color: "var(--text-2)", lineHeight: 1.75 }}>
-                Migrei para a gestão de automação porque vi que a maioria das empresas perde
-                dinheiro não por falta de tráfego,{" "}
-                <strong style={{ color: "#f5f5f5", fontWeight: 600 }}>mas por falta de processo.</strong>{" "}
-                Leads que não são respondidos, follow-ups que não acontecem, relatórios que ninguém gera.
-              </p>
-              <p style={{ fontSize: "0.9375rem", color: "var(--text-2)", lineHeight: 1.75 }}>
-                Minha missão é simples:{" "}
-                <strong style={{ color: "#f5f5f5", fontWeight: 600 }}>
-                  transformar seu ecossistema de vendas em uma máquina que funciona 24/7
-                </strong>
-                , usando n8n, inteligência artificial e automações que trabalham enquanto você dorme.
+              <p style={{ fontSize: "0.9rem", color: "var(--text-2)", lineHeight: 1.7 }}>
+                Hoje, com n8n, IA e automações construídas para o contexto real de agências e gestores brasileiros, entrego um ecossistema que funciona{" "}
+                <strong style={{ color: "#f5f5f5" }}>24/7 sem precisar de mim para operar.</strong>
               </p>
             </div>
 
             {/* Credential pills */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginBottom: "36px" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginBottom: "28px" }}>
               {credentials.map((c, i) => (
                 <motion.div
                   key={i}
@@ -170,6 +170,86 @@ export default function Founder() {
           </motion.div>
 
         </div>
+
+        {/* PDF 5.1 — Transparência Radical */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          style={{
+            marginTop: "64px",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "24px",
+          }}
+          className="transparency-grid"
+        >
+          {/* O que NÃO faz */}
+          <div style={{
+            background: "rgba(255,80,80,0.03)",
+            border: "1px solid rgba(255,80,80,0.15)",
+            borderRadius: "16px",
+            padding: "28px",
+          }}>
+            <p style={{
+              fontFamily: "var(--font-geist-mono)",
+              fontSize: "0.625rem",
+              textTransform: "uppercase",
+              letterSpacing: "0.12em",
+              color: "rgba(255,100,100,0.7)",
+              marginBottom: "20px",
+            }}>
+              O que a automação NÃO faz
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {naoFaz.map((item, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+                  <span style={{ color: "rgba(255,100,100,0.6)", fontSize: "0.75rem", marginTop: "1px", flexShrink: 0 }}>✗</span>
+                  <span style={{ fontSize: "0.85rem", color: "var(--text-2)", lineHeight: 1.55 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* O que FAZ */}
+          <div style={{
+            background: "var(--accent-dim)",
+            border: "1px solid var(--accent-border)",
+            borderRadius: "16px",
+            padding: "28px",
+          }}>
+            <p style={{
+              fontFamily: "var(--font-geist-mono)",
+              fontSize: "0.625rem",
+              textTransform: "uppercase",
+              letterSpacing: "0.12em",
+              color: "var(--accent)",
+              marginBottom: "20px",
+            }}>
+              O que a automação FAZ
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {faz.map((item, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+                  <span style={{ color: "var(--accent)", fontSize: "0.75rem", marginTop: "1px", flexShrink: 0 }}>✓</span>
+                  <span style={{ fontSize: "0.85rem", color: "rgba(245,245,245,0.85)", lineHeight: 1.55 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+            <p style={{
+              marginTop: "20px",
+              fontSize: "0.75rem",
+              color: "var(--text-2)",
+              fontStyle: "italic",
+              lineHeight: 1.6,
+              borderTop: "1px solid rgba(74,222,128,0.1)",
+              paddingTop: "16px",
+            }}>
+              "Se ele está me dizendo o que NÃO faz, posso confiar no que ele diz que faz."
+            </p>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   )

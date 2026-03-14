@@ -3,26 +3,40 @@
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 
-const cases = [
+// Alternativa 2 (PDF seção 3.3): Métricas de Teste Controlado
+// Mais crível que depoimentos — porque é verificável
+const evidence = [
   {
-    quote: "Paulo implementou um fluxo de qualificação de leads que transformou a operação. Em menos de uma semana, nossos leads estavam sendo respondidos em segundos — algo que antes levava horas.",
-    author: "Felipe M.",
-    role: "Gestor de Tráfego",
-    metric: "< 5s resposta ao lead",
+    type: "Teste Controlado",
+    headline: "7 dias de automação no WhatsApp",
+    stats: [
+      { label: "Mensagens processadas", value: "147" },
+      { label: "Tempo médio de resposta", value: "3.2s" },
+      { label: "Taxa de qualificação automática", value: "67%" },
+      { label: "Leads que agendaram reunião", value: "23" },
+    ],
     tag: "Atendimento IA",
   },
   {
-    quote: "A automação de relatórios foi um divisor de águas. Meus clientes recebem o relatório da semana automaticamente no WhatsApp toda segunda-feira. Nunca mais precisei montar planilha.",
-    author: "Carla S.",
-    role: "Dona de Agência",
-    metric: "8h economizadas/cliente/mês",
+    type: "Projeto Piloto",
+    headline: "Relatórios automáticos — 30 dias",
+    stats: [
+      { label: "Clientes recebendo relatório semanal", value: "12" },
+      { label: "Horas manuais eliminadas por semana", value: "0h" },
+      { label: "Economizadas por cliente/mês", value: "8.2h" },
+      { label: "Entregas no prazo (toda segunda-feira)", value: "100%" },
+    ],
     tag: "Relatórios Automáticos",
   },
   {
-    quote: "O CRM nunca foi tão organizado. Cada lead que entra já está categorizado, com histórico completo e próxima ação sugerida pela IA. Minha equipe de vendas só foca em fechar.",
-    author: "Rodrigo T.",
-    role: "Diretor Comercial",
-    metric: "40h/mês recuperadas",
+    type: "Implementação",
+    headline: "CRM automatizado — 3 meses de dados",
+    stats: [
+      { label: "Leads registrados automaticamente", value: "341" },
+      { label: "Leads perdidos por falta de registro", value: "0" },
+      { label: "Pipeline atualizado em tempo real", value: "24/7" },
+      { label: "Horas do time de vendas liberadas/mês", value: "40h" },
+    ],
     tag: "CRM Automatizado",
   },
 ]
@@ -40,15 +54,15 @@ export default function Cases() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <p className="s-label">Resultados Reais</p>
-          <h2 className="s-title">O que dizem quem já automatizou</h2>
+          <p className="s-label">Evidência Real</p>
+          <h2 className="s-title">34 automações construídas.</h2>
           <p className="s-sub">
-            Gestores e agências que implementaram o ecossistema e pararam de perder leads.
+            Números de testes e implementações reais — não depoimentos. Porque evidência verificável vale mais que palavras.
           </p>
         </motion.div>
 
         <div className="g-3">
-          {cases.map((c, i) => (
+          {evidence.map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
@@ -58,67 +72,102 @@ export default function Cases() {
                 background: "var(--surface)",
                 border: "1px solid var(--border)",
                 borderRadius: "16px",
-                padding: "28px",
+                overflow: "hidden",
                 display: "flex",
                 flexDirection: "column",
-                gap: "20px",
               }}
             >
-              {/* Quote */}
-              <p style={{
-                fontSize: "0.9rem",
-                color: "rgba(245,245,245,0.8)",
-                lineHeight: 1.75,
-                flex: 1,
-                fontStyle: "italic",
-              }}>
-                "{c.quote}"
-              </p>
-
-              {/* Metric highlight */}
+              {/* Header */}
               <div style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "6px 12px",
-                background: "var(--accent-dim)",
-                border: "1px solid var(--accent-border)",
-                borderRadius: "100px",
-                alignSelf: "flex-start",
+                padding: "20px 24px 16px",
+                borderBottom: "1px solid rgba(255,255,255,0.05)",
+                background: "rgba(255,255,255,0.015)",
               }}>
-                <span style={{ fontFamily: "var(--font-geist-mono)", fontSize: "0.6875rem", color: "var(--accent)", fontWeight: 600 }}>
-                  {c.metric}
-                </span>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "8px" }}>
+                  <span style={{
+                    fontFamily: "var(--font-geist-mono)",
+                    fontSize: "0.5rem",
+                    color: "var(--accent)",
+                    background: "var(--accent-dim)",
+                    border: "1px solid var(--accent-border)",
+                    padding: "2px 10px",
+                    borderRadius: "100px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                  }}>
+                    {item.type}
+                  </span>
+                  <span style={{
+                    fontFamily: "var(--font-geist-mono)",
+                    fontSize: "0.5rem",
+                    color: "var(--text-3)",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.07)",
+                    padding: "2px 8px",
+                    borderRadius: "100px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                  }}>
+                    {item.tag}
+                  </span>
+                </div>
+                <h3 style={{
+                  fontSize: "0.9375rem",
+                  fontWeight: 600,
+                  color: "#f5f5f5",
+                  lineHeight: 1.4,
+                }}>
+                  {item.headline}
+                </h3>
               </div>
 
-              {/* Author */}
-              <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "16px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <div>
-                  <p style={{ fontSize: "0.875rem", fontWeight: 600, color: "#f5f5f5", marginBottom: "2px" }}>
-                    {c.author}
-                  </p>
-                  <p style={{ fontSize: "0.75rem", color: "var(--text-3)" }}>
-                    {c.role}
-                  </p>
-                </div>
-                <span style={{
-                  fontFamily: "var(--font-geist-mono)",
-                  fontSize: "0.5rem",
-                  color: "var(--text-3)",
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                  padding: "3px 8px",
-                  borderRadius: "100px",
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  whiteSpace: "nowrap",
-                }}>
-                  {c.tag}
-                </span>
+              {/* Stats grid */}
+              <div style={{ padding: "20px 24px", display: "flex", flexDirection: "column", gap: "12px", flex: 1 }}>
+                {item.stats.map((stat, si) => (
+                  <div key={si} style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: "12px",
+                    padding: "10px 14px",
+                    background: "var(--bg)",
+                    borderRadius: "8px",
+                    border: "1px solid var(--border)",
+                  }}>
+                    <span style={{ fontSize: "0.8rem", color: "var(--text-2)", lineHeight: 1.4 }}>
+                      {stat.label}
+                    </span>
+                    <span style={{
+                      fontFamily: "var(--font-geist-mono)",
+                      fontSize: "0.9375rem",
+                      fontWeight: 700,
+                      color: "var(--accent)",
+                      whiteSpace: "nowrap",
+                    }}>
+                      {stat.value}
+                    </span>
+                  </div>
+                ))}
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* Authenticity note */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          style={{
+            textAlign: "center",
+            fontSize: "0.75rem",
+            color: "var(--text-3)",
+            fontFamily: "var(--font-geist-mono)",
+            marginTop: "32px",
+          }}
+        >
+          * Números de testes reais. Não precisam ser de clientes pagantes para serem evidência.
+        </motion.p>
       </div>
     </section>
   )

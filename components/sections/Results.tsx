@@ -215,7 +215,7 @@ export default function Results() {
                   e.currentTarget.style.color = "#f5f5f5"
                 }}
               >
-                Quero esses resultados →
+                Começar sem risco →
               </a>
             </motion.div>
           </motion.div>

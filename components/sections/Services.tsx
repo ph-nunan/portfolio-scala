@@ -90,17 +90,21 @@ const services = [
   },
 ]
 
+// Ordem: Enterprise → Pro → Starter (ancoragem: o mais caro primeiro faz o Pro parecer acessível)
 const packages = [
   {
-    name: "Starter",
-    sub: "Visibilidade & Controle",
+    name: "Enterprise",
+    sub: "Ecossistema Completo",
     includes: [
-      "Relatórios Inteligentes",
-      "CRM Automatizado",
+      "Tudo do pacote Pro",
+      "Automação de Ads",
+      "Consultoria estratégica",
+      "SLA garantido",
     ],
-    price: "A partir de R$ 450",
-    cta: "Solicitar Diagnóstico",
+    price: "Sob consulta",
+    cta: "Falar com Especialista",
     featured: false,
+    anchor: null,
   },
   {
     name: "Pro",
@@ -115,19 +119,19 @@ const packages = [
     price: "A partir de R$ 1.200",
     cta: "Solicitar Diagnóstico",
     featured: true,
+    anchor: "R$ 2.800",
   },
   {
-    name: "Enterprise",
-    sub: "Ecossistema Completo",
+    name: "Starter",
+    sub: "Visibilidade & Controle",
     includes: [
-      "Tudo do pacote Pro",
-      "Automação de Ads",
-      "Consultoria estratégica",
-      "SLA garantido",
+      "Relatórios Inteligentes",
+      "CRM Automatizado",
     ],
-    price: "Sob consulta",
-    cta: "Falar com Especialista",
+    price: "A partir de R$ 450",
+    cta: "Solicitar Diagnóstico",
     featured: false,
+    anchor: null,
   },
 ]
 
@@ -342,6 +346,17 @@ export default function Services() {
 
                 {/* Price */}
                 <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "20px", marginBottom: "16px" }}>
+                  {p.anchor && (
+                    <p style={{
+                      fontFamily: "var(--font-geist-mono)",
+                      fontSize: "0.8125rem",
+                      color: "var(--text-3)",
+                      textDecoration: "line-through",
+                      marginBottom: "4px",
+                    }}>
+                      {p.anchor}/mês
+                    </p>
+                  )}
                   <p style={{
                     fontFamily: "var(--font-geist-mono)",
                     fontSize: p.price === "Sob consulta" ? "0.9375rem" : "1.125rem",

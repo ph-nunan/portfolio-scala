@@ -189,6 +189,14 @@ input, select, textarea {
   }
 }
 
+/* ─── Transparency grid (Founder section) ─── */
+.transparency-grid {
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 640px) {
+  .transparency-grid { grid-template-columns: 1fr; }
+}
+
 /* ─── Founder section ─── */
 .founder-layout {
   display: flex;

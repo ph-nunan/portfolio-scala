@@ -4,11 +4,12 @@ import { motion } from "framer-motion"
 
 // Substitua pelos seus números reais
 const signals = [
-  { value: "30+",    label: "automações entregues"           },
+  { value: "34",     label: "automações entregues"           },
   { value: "7 dias", label: "do zero ao ecossistema rodando" },
-  { value: "100%",   label: "garantia de resultado"          },
+  { value: "4.6×",   label: "mais fechamentos*"              },
   { value: "24/7",   label: "operação sem interrupção"       },
-  { value: "30 dias", label: "garantia ou reembolso total"     },
+  { value: "8.2h",   label: "economizadas/cliente/mês"       },
+  { value: "30 dias", label: "garantia ou reembolso total"   },
 ]
 
 export default function SocialProof() {
