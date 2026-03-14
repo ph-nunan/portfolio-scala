@@ -9,22 +9,26 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Campos obrigatórios faltando" }, { status: 400 })
     }
 
-    const webhookUrl = process.env.N8N_WEBHOOK_URL
+    const payload = {
+      ...data,
+      timestamp: new Date().toISOString(),
+      source: "portfolio-scala",
+    }
 
-    if (webhookUrl) {
-      // Forward to n8n webhook → Google Sheets
-      await fetch(webhookUrl, {
+    const sheetsUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL
+
+    if (sheetsUrl) {
+      const res = await fetch(sheetsUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...data,
-          timestamp: new Date().toISOString(),
-          source: "portfolio-scala",
-        }),
+        body: JSON.stringify(payload),
       })
+      if (!res.ok) {
+        console.error("[Contact API] Sheets webhook error:", res.status)
+      }
     } else {
       // Local dev: just log
-      console.log("[Contact form]", data)
+      console.log("[Contact form]", payload)
     }
 
     return NextResponse.json({ success: true })
