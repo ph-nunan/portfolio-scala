@@ -8,7 +8,7 @@ const signals = [
   { value: "7 dias", label: "do zero ao ecossistema rodando" },
   { value: "100%",   label: "garantia de resultado"          },
   { value: "24/7",   label: "operação sem interrupção"       },
-  { value: "R$ 0",   label: "de risco para você"             },
+  { value: "30 dias", label: "garantia ou reembolso total"     },
 ]
 
 export default function SocialProof() {

@@ -235,7 +235,7 @@ export default function Contact() {
                 )}
 
                 <p style={{ textAlign: "center", fontSize: "0.6875rem", color: "var(--text-3)" }}>
-                  Seus dados estão seguros. Não enviamos spam.
+                  Seus dados estão seguros. Resposta em até 2 horas úteis.
                 </p>
               </form>
             )}

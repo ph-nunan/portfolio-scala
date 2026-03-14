@@ -9,6 +9,7 @@ import Ecosystem from "@/components/sections/Ecosystem"
 import Services from "@/components/sections/Services"
 import HowItWorks from "@/components/sections/HowItWorks"
 import Results from "@/components/sections/Results"
+import Cases from "@/components/sections/Cases"
 import KPIs from "@/components/sections/KPIs"
 import TechStack from "@/components/sections/TechStack"
 import Founder from "@/components/sections/Founder"
@@ -43,7 +44,10 @@ export default function Home() {
       {/* 6. Risco zero — garantia + resultados */}
       <Results />
 
-      {/* 7. Prova técnica — para quem ainda tem dúvida */}
+      {/* 7. Prova social — depoimentos e casos */}
+      <Cases />
+
+      {/* 8. Prova técnica — para quem ainda tem dúvida */}
       <KPIs />
       <TechStack />
 

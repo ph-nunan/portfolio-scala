@@ -143,8 +143,8 @@ export default function Services() {
           <p className="s-label">Serviços</p>
           <h2 className="s-title">Soluções Individuais</h2>
           <p className="s-sub">
-            Contrate apenas o que você precisa. Cada serviço funciona de forma independente
-            — ou combine em um pacote com desconto.
+            Cada solução funciona sozinha. Mas juntas, elas criam um ecossistema
+            que vende enquanto você dorme.
           </p>
         </motion.div>
 
@@ -202,7 +202,7 @@ export default function Services() {
                   </span>
                 </div>
                 <p style={{ fontSize: "0.6875rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", marginBottom: "14px", lineHeight: 1.5 }}>
-                  Recorrência ajustada ao seu momento. Implementação inclusa.
+                  Implementação personalizada inclusa. Sem taxa de setup.
                 </p>
                 <a
                   href="#contact"
@@ -257,13 +257,17 @@ export default function Services() {
                 transition={{ duration: 0.5, delay: 0.7 + i * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
                 style={{
                   background: p.featured ? "var(--surface)" : "transparent",
-                  border: `1px solid ${p.featured ? "var(--accent-border)" : "var(--border)"}`,
+                  border: p.featured ? "2px solid var(--accent)" : "1px solid var(--border)",
                   borderRadius: "16px",
-                  padding: "32px",
+                  padding: p.featured ? "36px" : "32px",
                   display: "flex",
                   flexDirection: "column",
                   position: "relative",
-                  ...(p.featured && { boxShadow: "0 0 48px rgba(74,222,128,0.06)" }),
+                  ...(p.featured && {
+                    boxShadow: "0 0 64px rgba(74,222,128,0.14), 0 8px 32px rgba(0,0,0,0.3)",
+                    transform: "scale(1.03)",
+                    zIndex: 1,
+                  }),
                 }}
               >
                 {/* Badge Recomendado */}

@@ -207,7 +207,7 @@ export default function Hero() {
           }}
         >
           <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--accent)", display: "inline-block", animation: "pulse 2s ease-in-out infinite", flexShrink: 0 }} />
-          Automação · Implementação · Treinamento
+          Do Anúncio ao Relatório · Tudo Automatizado
         </motion.div>
 
         {/* Headline — line 1 */}
@@ -326,7 +326,7 @@ export default function Hero() {
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.9")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
-            Quero o Ecossistema Completo →
+            Agendar Diagnóstico Gratuito →
           </a>
           <a
             href="#how-it-works"

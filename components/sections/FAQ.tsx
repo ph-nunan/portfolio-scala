@@ -5,20 +5,8 @@ import { useRef, useState } from "react"
 
 const faqs = [
   {
-    q: "Vocês criam as campanhas de Meta Ads e Google Ads do zero, ou só otimizam o que já existe?",
-    a: "Fazemos tudo: criamos do zero, configuramos, monitoramos, otimizamos e geramos relatórios — tudo via automação com IA. Você define o objetivo e o orçamento; a automação executa e ajusta em tempo real. Se você já tem campanhas rodando, integramos e melhoramos o que existe.",
-  },
-  {
-    q: "Como funciona a automação de Meta Ads e Google Ads na prática?",
-    a: "A IA conecta diretamente nas APIs oficiais do Meta e Google. Ela monitora performance em tempo real, ajusta lances automaticamente, pausa criativos com baixo CTR e escala o que está convertendo — tudo por regras que você aprova uma vez. Quando a campanha fecha o ciclo, o relatório já está no WhatsApp do seu cliente.",
-  },
-  {
-    q: "Os relatórios de campanha chegam automaticamente para o meu cliente?",
-    a: "Sim. Geramos relatórios em PDF com as métricas da campanha — CPL, ROAS, conversões — e enviamos automaticamente por WhatsApp ou e-mail para o seu cliente, no dia e horário que você definir. Sem montar planilha, sem copiar print, sem lembrar de mandar.",
-  },
-  {
-    q: "Quanto tempo economizo nas campanhas por mês?",
-    a: "Em média, 8 a 12 horas por cliente por mês. Ajuste de lances, análise de performance, geração de relatório — tudo automatizado. Você foca em estratégia e em fechar novos clientes.",
+    q: "Como funciona a automação de campanhas (Meta Ads e Google Ads) na prática?",
+    a: "Conectamos diretamente nas APIs oficiais do Meta e Google. A IA monitora performance em tempo real, ajusta lances, pausa criativos com baixo CTR e escala o que está convertendo — tudo por regras que você aprova uma vez. Relatórios são gerados e enviados automaticamente para seu cliente via WhatsApp ou e-mail, no dia e horário definidos. Em média, você economiza 8 a 12 horas por cliente por mês.",
   },
   {
     q: "Preciso entender de tecnologia para usar as automações?",
@@ -39,10 +27,6 @@ const faqs = [
   {
     q: "Qual a diferença de um chatbot comum?",
     a: "Um chatbot comum segue um fluxo fixo de perguntas e respostas. Nossa IA tem memória, contexto, integração com CRM e aprende com as conversas. É como ter um vendedor treinado disponível 24/7.",
-  },
-  {
-    q: "Quais ferramentas vocês usam?",
-    a: "Usamos o n8n como plataforma central de automação — open-source, sem lock-in, sem limite de execuções. Integramos com OpenAI, Evolution API, Meta Ads API, Google Ads API, e qualquer ferramenta com API.",
   },
 ]
 
