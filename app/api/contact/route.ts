@@ -18,10 +18,12 @@ export async function POST(req: NextRequest) {
     const sheetsUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL
 
     if (sheetsUrl) {
+      // Apps Script redirects POST — send as form-encoded to avoid body loss on redirect
       const res = await fetch(sheetsUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ payload: JSON.stringify(payload) }).toString(),
+        redirect: "follow",
       })
       if (!res.ok) {
         console.error("[Contact API] Sheets webhook error:", res.status)
