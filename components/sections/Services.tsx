@@ -6,6 +6,21 @@ import { useRef } from "react"
 const services = [
   {
     num: "01",
+    icon: "↗",
+    title: "Automação de Ads",
+    popular: false,
+    impact: "Do criativo ao lance. A IA cria, testa e otimiza suas campanhas — você só aprova.",
+    delivers: [
+      "Criação automática de variações de criativos (A/B)",
+      "Otimização de lances via API do Google Ads e Meta Ads",
+      "Alertas inteligentes de anomalia em CPL, CPA e ROAS",
+      "Pausa automática de campanhas sem desempenho",
+      "Relatório de performance gerado e enviado automaticamente",
+    ],
+    price: "R$ 500",
+  },
+  {
+    num: "02",
     icon: "◎",
     title: "Atendimento IA 24/7",
     popular: true,
@@ -19,7 +34,7 @@ const services = [
     price: "R$ 500",
   },
   {
-    num: "02",
+    num: "03",
     icon: "⬡",
     popular: false,
     title: "Qualificação de Leads",
@@ -33,7 +48,7 @@ const services = [
     price: "R$ 350",
   },
   {
-    num: "03",
+    num: "04",
     icon: "↺",
     popular: false,
     title: "Follow-up com IA",
@@ -47,7 +62,7 @@ const services = [
     price: "R$ 300",
   },
   {
-    num: "04",
+    num: "05",
     icon: "⊞",
     popular: false,
     title: "CRM Automatizado",
@@ -61,7 +76,7 @@ const services = [
     price: "R$ 300",
   },
   {
-    num: "05",
+    num: "06",
     icon: "⊟",
     popular: false,
     title: "Relatórios Inteligentes",
@@ -73,20 +88,6 @@ const services = [
       "Métricas de campanha, funil e atendimento",
     ],
     price: "R$ 250",
-  },
-  {
-    num: "06",
-    icon: "↗",
-    popular: false,
-    title: "Automação de Ads",
-    impact: "Pare de ajustar campanha manualmente. A IA faz isso mais rápido e melhor.",
-    delivers: [
-      "Regras automáticas de otimização de lances",
-      "Alertas inteligentes de anomalia em CPL e ROAS",
-      "Relatório de performance gerado automaticamente",
-      "Integração com Google Ads e Meta Ads API",
-    ],
-    price: "R$ 500",
   },
 ]
 
@@ -110,11 +111,12 @@ const packages = [
     name: "Pro",
     sub: "Conversão Inteligente",
     includes: [
-      "Relatórios Inteligentes",
-      "CRM Automatizado",
       "Atendimento IA 24/7",
       "Qualificação de Leads",
       "Follow-up com IA",
+      "CRM Automatizado",
+      "Relatórios Inteligentes",
+      "Monitoramento + alertas + relatórios de ads",
     ],
     price: "A partir de R$ 1.200",
     cta: "Solicitar Diagnóstico",

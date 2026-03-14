@@ -145,6 +145,7 @@ export default function Ecosystem() {
               {steps.map((s, i) => {
                 const isActive = active === i
                 const isPast = i < active
+                const isFirst = i === 0
                 return (
                   <button
                     key={i}
@@ -158,9 +159,9 @@ export default function Ecosystem() {
                     {/* Circle */}
                     <motion.div
                       animate={{
-                        background: isActive ? "var(--accent-dim)" : isPast ? "rgba(74,222,128,0.06)" : "var(--surface)",
-                        borderColor: isActive ? "var(--accent)" : isPast ? "rgba(74,222,128,0.3)" : "rgba(255,255,255,0.1)",
-                        scale: isActive ? 1.18 : 1,
+                        background: isActive ? "var(--accent-dim)" : isPast ? "rgba(74,222,128,0.06)" : isFirst ? "rgba(74,222,128,0.04)" : "var(--surface)",
+                        borderColor: isActive ? "var(--accent)" : isPast ? "rgba(74,222,128,0.3)" : isFirst ? "rgba(74,222,128,0.25)" : "rgba(255,255,255,0.1)",
+                        scale: isActive ? 1.18 : isFirst && !isActive ? 1.08 : 1,
                       }}
                       transition={{ duration: 0.2 }}
                       style={{
@@ -169,9 +170,9 @@ export default function Ecosystem() {
                         background: "var(--surface)",
                         display: "flex", alignItems: "center", justifyContent: "center",
                         fontSize: "0.875rem",
-                        color: isActive ? "var(--accent)" : isPast ? "rgba(74,222,128,0.6)" : "var(--text-3)",
+                        color: isActive ? "var(--accent)" : isPast ? "rgba(74,222,128,0.6)" : isFirst ? "rgba(74,222,128,0.55)" : "var(--text-3)",
                         transition: "color 0.2s",
-                        boxShadow: isActive ? "0 0 0 4px rgba(74,222,128,0.08)" : "none",
+                        boxShadow: isActive ? "0 0 0 4px rgba(74,222,128,0.08)" : isFirst && !isActive ? "0 0 0 3px rgba(74,222,128,0.06)" : "none",
                       }}
                     >
                       {s.icon}
@@ -187,8 +188,8 @@ export default function Ecosystem() {
                     {/* Label */}
                     <span className="eco-node-label" style={{
                       fontSize: "0.6875rem",
-                      color: isActive ? "#f5f5f5" : "var(--text-3)",
-                      fontWeight: isActive ? 500 : 400,
+                      color: isActive ? "#f5f5f5" : isFirst ? "rgba(74,222,128,0.7)" : "var(--text-3)",
+                      fontWeight: isActive ? 500 : isFirst ? 500 : 400,
                       transition: "color 0.2s",
                       whiteSpace: "nowrap",
                     }}>{s.label}</span>
