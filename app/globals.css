@@ -53,7 +53,7 @@ input, select, textarea {
 
 /* ─── Layout ─── */
 .s-wrap {
-  padding: 96px 0;
+  padding: 120px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 .s-inner {
@@ -106,7 +106,7 @@ input, select, textarea {
 }
 @media (max-width: 640px) {
   .s-inner { padding: 0 20px; }
-  .s-wrap  { padding: 64px 0; }
+  .s-wrap  { padding: 80px 0; }
   .g-3     { grid-template-columns: 1fr; }
   .g-4     { grid-template-columns: repeat(2, 1fr); }
   .g-2     { grid-template-columns: 1fr; }
@@ -178,6 +178,15 @@ input, select, textarea {
 .hiw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
 @media (max-width: 768px) {
   .hiw-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── HowItWorks zigzag rows ─── */
+@media (max-width: 768px) {
+  .hiw-zigzag-row {
+    grid-template-columns: 1fr !important;
+    direction: ltr !important;
+    gap: 32px !important;
+  }
 }
 
 /* ─── Founder section ─── */

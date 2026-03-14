@@ -8,6 +8,7 @@ const services = [
     num: "01",
     icon: "◎",
     title: "Atendimento IA 24/7",
+    popular: true,
     impact: "Seu WhatsApp responde, qualifica e agenda reuniões — mesmo às 3h de um domingo.",
     delivers: [
       "Agente IA treinado com a base de conhecimento do seu negócio",
@@ -20,6 +21,7 @@ const services = [
   {
     num: "02",
     icon: "⬡",
+    popular: false,
     title: "Qualificação de Leads",
     impact: "Pare de gastar tempo com quem nunca vai comprar.",
     delivers: [
@@ -33,6 +35,7 @@ const services = [
   {
     num: "03",
     icon: "↺",
+    popular: false,
     title: "Follow-up com IA",
     impact: "Lead que esfriou não é lead perdido. É lead que ninguém fez follow-up.",
     delivers: [
@@ -46,6 +49,7 @@ const services = [
   {
     num: "04",
     icon: "⊞",
+    popular: false,
     title: "CRM Automatizado",
     impact: "Leads não somem mais. O CRM se alimenta sozinho, sem ninguém digitar nada.",
     delivers: [
@@ -59,6 +63,7 @@ const services = [
   {
     num: "05",
     icon: "⊟",
+    popular: false,
     title: "Relatórios Inteligentes",
     impact: "Seus clientes recebem relatórios no WhatsApp. Automaticamente.",
     delivers: [
@@ -72,6 +77,7 @@ const services = [
   {
     num: "06",
     icon: "↗",
+    popular: false,
     title: "Automação de Ads",
     impact: "Pare de ajustar campanha manualmente. A IA faz isso mais rápido e melhor.",
     delivers: [
@@ -154,13 +160,31 @@ export default function Services() {
             <motion.div
               key={i}
               className="card"
-              style={{ display: "flex", flexDirection: "column" }}
+              style={{
+                display: "flex", flexDirection: "column", position: "relative",
+                ...(s.popular && {
+                  border: "1px solid rgba(255,255,255,0.18)",
+                  boxShadow: "0 0 32px rgba(255,255,255,0.04)",
+                }),
+              }}
               initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
               animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
               transition={{ duration: 0.55, delay: 0.05 + i * 0.08, ease: [0.21, 0.47, 0.32, 0.98] }}
             >
+              {/* Mais Popular badge */}
+              {s.popular && (
+                <div style={{
+                  position: "absolute", top: "-12px", left: "50%", transform: "translateX(-50%)",
+                  background: "var(--accent)", color: "#0a0a0a",
+                  fontFamily: "var(--font-geist-mono)", fontSize: "0.5rem",
+                  fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase",
+                  padding: "3px 14px", borderRadius: "100px", whiteSpace: "nowrap",
+                }}>
+                  Mais Popular
+                </div>
+              )}
               {/* Top row: icon + num */}
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "20px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "20px", marginTop: s.popular ? "8px" : "0" }}>
                 <span style={{ fontSize: "1.25rem", opacity: 0.45 }}>{s.icon}</span>
                 <span style={{
                   fontFamily: "var(--font-geist-mono)", fontSize: "0.5rem",
