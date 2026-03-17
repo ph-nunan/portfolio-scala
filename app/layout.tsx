@@ -53,6 +53,10 @@ export const metadata: Metadata = {
   creator: "Scala",
   publisher: "Scala",
 
+  verification: {
+    google: "1NHmkAXqqvk-iW4MtX3-5XwXUAGA5If-ZhUitCIvy8A",
+  },
+
   robots: {
     index: true,
     follow: true,
