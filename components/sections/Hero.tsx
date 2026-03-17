@@ -4,12 +4,14 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useEffect, useRef, useState } from "react"
 
 const feedEvents = [
-  { icon: "↗", label: "Campanha otimizada pela IA",     detail: "Google Ads · +14% CTR",   time: "agora"    },
-  { icon: "◎", label: "Lead captado",                   detail: "@Meta Ads · Formulário",   time: "há 3s"    },
-  { icon: "◈", label: "Respondido e qualificado",       detail: "WhatsApp · Score 91/100",  time: "há 48s"   },
-  { icon: "≡", label: "CRM atualizado",                 detail: "Sem intervenção humana",   time: "há 1min"  },
-  { icon: "↺", label: "Follow-up personalizado",        detail: "2º contato · contexto real", time: "há 14min" },
-  { icon: "✦", label: "Relatório enviado ao cliente",   detail: "WhatsApp · automático",    time: "há 1h"    },
+  { icon: "⏸", label: "Campanha pausada automaticamente", detail: "CPL acima do limite · Meta", time: "agora"    },
+  { icon: "◎", label: "Lead captado e registrado",        detail: "@Meta Ads · Formulário",    time: "há 3s"    },
+  { icon: "◈", label: "Respondido e qualificado",         detail: "WhatsApp · Score 91/100",   time: "há 48s"   },
+  { icon: "↗", label: "ROAS subiu 23% após otimização",   detail: "Google Ads · automático",   time: "há 1min"  },
+  { icon: "≡", label: "CRM atualizado",                   detail: "Sem intervenção humana",    time: "há 2min"  },
+  { icon: "◐", label: "Novo criativo ativado pela IA",    detail: "CTR caiu — A/B ativado",    time: "há 8min"  },
+  { icon: "↺", label: "Follow-up personalizado",          detail: "2º contato · contexto real", time: "há 14min" },
+  { icon: "✦", label: "Relatório enviado ao cliente",     detail: "WhatsApp · automático",     time: "há 1h"    },
 ]
 
 const stats = [
@@ -313,7 +315,9 @@ export default function Hero() {
           style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", marginBottom: "48px" }}
         >
           <a
-            href="#contact"
+            href="https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20agendar%20meu%20diagn%C3%B3stico%20gratuito."
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-shimmer"
             style={{
               display: "inline-flex", alignItems: "center", gap: "8px",

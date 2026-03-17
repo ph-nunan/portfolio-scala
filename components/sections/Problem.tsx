@@ -90,9 +90,16 @@ const items = [
     body: "Enquanto sua equipe dorme ou está ocupada, seus leads quentes esfriaram e foram para o concorrente.",
   },
   {
+    stat: 12,
+    suffix: "h",
+    barPct: 45,
+    title: "Por semana perdidas em operação manual de ads",
+    body: "Ajuste de lances, pausas manuais, análise de criativos. Horas que deveriam ir para estratégia e prospecção.",
+  },
+  {
     stat: 40,
     suffix: "h",
-    barPct: 60, // 40h de 168h semanais ≈ visual representativo
+    barPct: 60,
     title: "Por mês gastas em tarefas repetitivas",
     body: "Relatórios manuais, preenchimento de CRM, envio de follow-ups. Tempo que poderia ser estratégia.",
   },
@@ -167,6 +174,28 @@ export default function Problem() {
             </motion.div>
           ))}
         </div>
+
+        {/* Ads pain callout (PDF 4.2) */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          style={{
+            marginTop: "40px",
+            padding: "24px 28px",
+            background: "rgba(255,255,255,0.02)",
+            border: "1px solid rgba(255,255,255,0.07)",
+            borderRadius: "12px",
+            borderLeft: "3px solid rgba(255,255,255,0.15)",
+          }}
+        >
+          <p style={{ fontSize: "1rem", fontWeight: 600, color: "#f5f5f5", marginBottom: "8px", lineHeight: 1.4 }}>
+            Enquanto você ajusta lances manualmente, a IA do seu concorrente já pausou 3 campanhas ruins e escalou 2 que estão convertendo.
+          </p>
+          <p style={{ fontSize: "0.875rem", color: "var(--text-2)", lineHeight: 1.7 }}>
+            Você perde leads por atendimento lento <strong style={{ color: "rgba(245,245,245,0.7)" }}>E</strong> perde budget por operação de ads manual. A Scala resolve as duas.
+          </p>
+        </motion.div>
 
         {/* Live cost ticker */}
         <LiveTicker inView={inView} />
