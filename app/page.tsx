@@ -28,52 +28,90 @@ export default function Home() {
       <FloatingCTA />
 
       {/* 1. Fisgar — proposta de valor + prova imediata */}
-      <Hero />
-      <SocialProof />
+      <div id="hero" data-section="hero">
+        <Hero />
+      </div>
+      <div id="social-proof" data-section="social-proof">
+        <SocialProof />
+      </div>
 
       {/* 2. Dor — quantificar o problema */}
-      <Problem />
+      <div id="problema" data-section="problema">
+        <Problem />
+      </div>
 
-      {/* Pattern interrupt: quebrar o ritmo e criar urgência (PDF 2.4) */}
-      <PatternInterrupt />
+      {/* Pattern interrupt: quebrar o ritmo e criar urgência */}
+      <div id="pattern-interrupt" data-section="pattern-interrupt">
+        <PatternInterrupt />
+      </div>
 
-      <MidCTA />
+      <div id="calculadora" data-section="calculadora">
+        <MidCTA />
+      </div>
 
       {/* 3. Transformação — mostrar o antes/depois */}
-      <FunnelComparison />
+      <div id="comparativo-funil" data-section="comparativo-funil">
+        <FunnelComparison />
+      </div>
 
       {/* 4. Solução — como o ecossistema funciona */}
-      <Ecosystem />
-      <Services />
+      <div id="ecosystem" data-section="ecosystem">
+        <Ecosystem />
+      </div>
+      <div id="services" data-section="services">
+        <Services />
+      </div>
 
-      {/* 5. Qualificação — para quem é e para quem não é (PDF 3.1) */}
-      <ForWhom />
+      {/* 5. Qualificação — para quem é e para quem não é */}
+      <div id="para-quem" data-section="para-quem">
+        <ForWhom />
+      </div>
 
-      {/* 6. Comparativo — por que Scala vs alternativas (PDF 3.2) */}
-      <Comparison />
+      {/* 6. Comparativo — por que Scala vs alternativas */}
+      <div id="comparativo" data-section="comparativo">
+        <Comparison />
+      </div>
 
       {/* 7. Processo — como é contratar */}
-      <HowItWorks />
+      <div id="how-it-works" data-section="how-it-works">
+        <HowItWorks />
+      </div>
 
       {/* 8. Risco zero — garantia + resultados */}
-      <Results />
+      <div id="results" data-section="results">
+        <Results />
+      </div>
 
-      {/* 9. Prova social — evidência real de automações (PDF 3.3) */}
-      <Cases />
+      {/* 9. Prova social — evidência real de automações */}
+      <div id="cases" data-section="cases">
+        <Cases />
+      </div>
 
-      {/* 10. Future Pacing — último empurrão emocional antes da ação (PDF 2.2) */}
-      <FuturePacing />
+      {/* 10. Future Pacing — último empurrão emocional antes da ação */}
+      <div id="future-pacing" data-section="future-pacing">
+        <FuturePacing />
+      </div>
 
       {/* 11. Prova técnica — para quem ainda tem dúvida */}
-      <KPIs />
-      <TechStack />
+      <div id="kpis" data-section="kpis">
+        <KPIs />
+      </div>
+      <div id="tech-stack" data-section="tech-stack">
+        <TechStack />
+      </div>
 
-      {/* 12. Humanização + Transparência radical (PDF 5.2 + 5.1) */}
-      <Founder />
+      {/* 12. Humanização + Transparência radical */}
+      <div id="founder" data-section="founder">
+        <Founder />
+      </div>
 
       {/* 13. Conversão final */}
-      <FAQ />
-      <Contact />
+      <div id="faq" data-section="faq">
+        <FAQ />
+      </div>
+      <div id="contact" data-section="contact">
+        <Contact />
+      </div>
       <Footer />
     </main>
   )
