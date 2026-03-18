@@ -179,10 +179,10 @@ Sem framework externo — CSS Grid puro via classes utilitárias definidas em `g
 
 ### Alta Prioridade
 
-#### 7.1 Analytics e Rastreamento
-**Situação atual:** Nenhum analytics configurado. Sem dados de comportamento, scroll depth, cliques em CTA ou origem de tráfego.
+#### 7.1 Analytics e Rastreamento ✅ CONCLUÍDO (17/03/2026)
+**Situação atual:** GTM (GTM-TH5VGFDP) publicado com 10 tags, 5 triggers e 12 variáveis. GA4 (G-ZQ2Q9PT017) com Google Signals ativo e retenção de 14 meses. Meta Pixel (854431830954678) com evento Lead no clique WhatsApp. Microsoft Clarity (vxe392gf60) conectado ao GA4. Google Search Console verificado e sitemap enviado.
 
-**Ação:** Instalar Google Tag Manager + GA4 + Meta Pixel. Configurar eventos: clique no botão WhatsApp, scroll 50%, scroll 90%, tempo na página.
+**Eventos configurados:** `wa_button_click`, `scroll_depth` (25/50/75%), `section_view`, `engaged_time`.
 
 ---
 
@@ -193,31 +193,27 @@ Sem framework externo — CSS Grid puro via classes utilitárias definidas em `g
 
 ---
 
-#### 7.3 OG Tags e SEO Básico
-**Situação atual:** `app/layout.tsx` provavelmente tem apenas metadata básica. Sem Open Graph customizado, sem descrição otimizada.
-
-**Ação:** Configurar `og:title`, `og:description`, `og:image` (criar imagem social 1200×630px com logo + headline), `twitter:card`.
+#### 7.3 OG Tags e SEO Básico ✅ CONCLUÍDO (17/03/2026)
+**Situação atual:** `app/layout.tsx` com metadata completa via Next.js Metadata API. Open Graph (og:title, og:description, og:image 1200×630), Twitter Card, JSON-LD (Organization, WebSite, Service, FAQPage), sitemap.xml automático via `app/sitemap.ts`, Google Search Console verificado com meta tag HTML.
 
 ---
 
-#### 7.4 Acessibilidade (a11y)
-**Problemas encontrados:**
-- Sliders em MidCTA sem `aria-label` descritivo
-- Accordion em FAQ sem `aria-expanded` / `aria-controls`
-- Nodes do Ecosystem sem foco via teclado
-- Cores de texto-3 (`#6b6b6b` sobre `#1a1a1a`) podem falhar WCAG AA
-
-**Ação:** Auditoria com axe-core. Corrigir roles ARIA e contraste.
+#### 7.4 Acessibilidade (a11y) ✅ CONCLUÍDO (17/03/2026)
+**Correções aplicadas:**
+- `--text-3` corrigido de `#6b6b6b` → `#858585` (contraste WCAG AA ~4.7:1)
+- `:focus-visible` global com outline para navegação por teclado
+- FAQ accordion: `aria-expanded`, `aria-controls`, `role="region"`, `aria-labelledby`
+- MidCTA tabs: `role="tablist"`, `role="tab"`, `aria-selected`
+- MidCTA sliders: `aria-label`, `aria-valuemin`, `aria-valuemax`, `aria-valuenow`
+- Ecosystem: `role="tablist/tab"`, `aria-label`, `aria-selected`, navegação setas ←→, `outline:none` removido
 
 ---
 
-#### 7.5 Performance Mobile
-**Situação atual:** Framer Motion é pesado. Grain overlay com `position: fixed` é calculado em todo scroll. Imagens sem `sizes` prop adequado.
-
-**Ação:**
-- Lazy load de Framer Motion com `dynamic import`
-- Usar `transform` ao invés de `position` no grain (ou remover em mobile)
-- Adicionar `sizes` em todos os componentes `<Image />`
+#### 7.5 Performance Mobile ✅ CONCLUÍDO (17/03/2026)
+**Correções aplicadas:**
+- Animação grain desativada em mobile (≤768px) via media query — reduz CPU/bateria
+- `prefers-reduced-motion` respeita preferência do sistema operacional
+- `text-size-adjust: 100%` e `font-size: max(16px, 1em)` em inputs para evitar zoom automático no iOS Safari
 
 ---
 

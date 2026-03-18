@@ -133,3 +133,5 @@ Acesse http://localhost:3000.
 | 17/03/2026 | GA4 — Google Signals ativado, retenção 14 meses |
 | 17/03/2026 | Search Console verificado + sitemap enviado |
 | 17/03/2026 | Clarity conectado ao GA4 |
+| 17/03/2026 | Acessibilidade: ARIA roles, focus-visible, contraste WCAG AA |
+| 17/03/2026 | Performance mobile: grain animation desativado, prefers-reduced-motion |
