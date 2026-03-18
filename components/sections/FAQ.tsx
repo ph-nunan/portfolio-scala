@@ -30,13 +30,20 @@ const faqs = [
   },
 ]
 
+let faqItemId = 0
+
 function Item({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false)
+  const id = useRef(`faq-${++faqItemId}`).current
+  const panelId = `${id}-panel`
 
   return (
     <div style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
       <button
         onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-controls={panelId}
+        id={id}
         style={{
           width: "100%",
           textAlign: "left",
@@ -56,6 +63,7 @@ function Item({ q, a }: { q: string; a: string }) {
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.2 }}
+          aria-hidden="true"
           style={{ fontSize: "1.25rem", color: "var(--text-3)", flexShrink: 0, lineHeight: 1 }}
         >
           +
@@ -65,6 +73,9 @@ function Item({ q, a }: { q: string; a: string }) {
         {open && (
           <motion.div
             key="content"
+            id={panelId}
+            role="region"
+            aria-labelledby={id}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}

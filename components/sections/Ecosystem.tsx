@@ -111,6 +111,8 @@ export default function Ecosystem() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
+          role="tablist"
+          aria-label="Etapas do ecossistema"
         >
           {/* Node track */}
           <div style={{ position: "relative", marginBottom: "24px" }}>
@@ -149,11 +151,18 @@ export default function Ecosystem() {
                 return (
                   <button
                     key={i}
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-label={`Etapa ${s.num}: ${s.label}`}
                     onClick={() => setActive(i)}
+                    onKeyDown={(e) => {
+                      if (e.key === "ArrowRight") setActive((prev) => Math.min(prev + 1, steps.length - 1))
+                      if (e.key === "ArrowLeft") setActive((prev) => Math.max(prev - 1, 0))
+                    }}
                     style={{
                       background: "none", border: "none", cursor: "pointer",
                       padding: "0", display: "flex", flexDirection: "column",
-                      alignItems: "center", gap: "8px", outline: "none",
+                      alignItems: "center", gap: "8px",
                     }}
                   >
                     {/* Circle */}

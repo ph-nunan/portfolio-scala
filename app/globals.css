@@ -9,7 +9,7 @@
   --border-hover: rgba(255, 255, 255, 0.14);
   --text: #f5f5f0;         /* Off-White */
   --text-2: #9a9a9a;       /* Cinza Médio — secundário */
-  --text-3: #6b6b6b;       /* Cinza Escuro — legendas, placeholders */
+  --text-3: #858585;       /* Cinza Escuro — legendas, placeholders (WCAG AA ~4.7:1) */
 
   /* Accent = branco luminoso para CTAs e destaques de alto contraste */
   --accent: #ffffff;
@@ -164,6 +164,24 @@ input, select, textarea {
   70% { transform: translate(0, 15%); }
   80% { transform: translate(3%, 35%); }
   90% { transform: translate(-10%, 10%); }
+}
+/* Desabilita grain em mobile (performance) e quando usuário prefere menos movimento */
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  .grain::after { animation: none; }
+}
+
+/* ─── Focus Visible (acessibilidade por teclado) ─── */
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+[role="tab"]:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 3px;
 }
 
 /* ─── KPIs grid (3-col) ─── */

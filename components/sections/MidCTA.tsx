@@ -66,6 +66,8 @@ export default function MidCTA() {
           initial={{ opacity: 0, y: 10 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.15 }}
+          role="tablist"
+          aria-label="Calculadora de perda"
           style={{
             display: "inline-flex",
             background: "var(--surface)",
@@ -82,6 +84,8 @@ export default function MidCTA() {
           ].map((t) => (
             <button
               key={t.key}
+              role="tab"
+              aria-selected={tab === t.key}
               onClick={() => setTab(t.key as "leads" | "ads")}
               style={{
                 padding: "8px 20px",
@@ -135,6 +139,10 @@ export default function MidCTA() {
                     step={10}
                     value={leads}
                     onChange={(e) => setLeads(Number(e.target.value))}
+                    aria-label={`Leads por mês: ${leads}`}
+                    aria-valuemin={20}
+                    aria-valuemax={500}
+                    aria-valuenow={leads}
                     style={{ width: "100%", accentColor: "var(--accent)" }}
                   />
                 </div>
@@ -217,6 +225,10 @@ export default function MidCTA() {
                     step={5}
                     value={horasAds}
                     onChange={(e) => setHorasAds(Number(e.target.value))}
+                    aria-label={`Horas por semana ajustando campanhas: ${horasAds}h`}
+                    aria-valuemin={5}
+                    aria-valuemax={20}
+                    aria-valuenow={horasAds}
                     style={{ width: "100%", accentColor: "var(--accent)" }}
                   />
                   <div style={{ display: "flex", justifyContent: "space-between", marginTop: "4px" }}>
