@@ -74,8 +74,11 @@ app/
 ---
 
 ### Meta Pixel
-- **Pixel ID:** `854431830954678`
-- Eventos: PageView (todas as páginas) + Lead (clique no WhatsApp)
+- **Pixel ID:** `1466153678449297` (criado via API em 19/03/2026)
+- **Nota:** `854431830954678` = App ID do "Scala Agent" (WhatsApp), NÃO é pixel
+- Eventos: `PageView` (todas as páginas) + `wa_button_click` (clique em qualquer link wa.me)
+- Implementado direto no Next.js via `components/MetaPixel.tsx` (sem GTM)
+- Ad set `120244210570110671` configurado com `promoted_object: pixel + wa_button_click`
 
 ---
 

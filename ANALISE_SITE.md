@@ -180,7 +180,7 @@ Sem framework externo — CSS Grid puro via classes utilitárias definidas em `g
 ### Alta Prioridade
 
 #### 7.1 Analytics e Rastreamento ✅ CONCLUÍDO (17/03/2026)
-**Situação atual:** GTM (GTM-TH5VGFDP) publicado com 10 tags, 5 triggers e 12 variáveis. GA4 (G-ZQ2Q9PT017) com Google Signals ativo e retenção de 14 meses. Meta Pixel (854431830954678) com evento Lead no clique WhatsApp. Microsoft Clarity (vxe392gf60) conectado ao GA4. Google Search Console verificado e sitemap enviado.
+**Situação atual:** GTM (GTM-TH5VGFDP) publicado com 10 tags, 5 triggers e 12 variáveis. GA4 (G-ZQ2Q9PT017) com Google Signals ativo e retenção de 14 meses. Meta Pixel (1466153678449297) com evento wa_button_click no clique WhatsApp. Microsoft Clarity (vxe392gf60) conectado ao GA4. Google Search Console verificado e sitemap enviado.
 
 **Eventos configurados:** `wa_button_click`, `scroll_depth` (25/50/75%), `section_view`, `engaged_time`.
 
