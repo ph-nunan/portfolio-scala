@@ -119,6 +119,33 @@ Configuradas no painel da Vercel em **Settings → Environment Variables**.
 
 ---
 
+## Arquitetura de CTAs (Funil de Conversão)
+
+Todos os botões do site seguem uma hierarquia para maximizar conversão:
+
+### Regra de navegação
+- **Todos os botões** (Hero, MidCTA, FunnelComparison, ForWhom, FuturePacing, Results, Comparison, Services, FAQ) → `href="#contact"` (scroll suave até a seção Contact)
+- **Único botão com WhatsApp direto** → botão principal da seção **Contact** (último elemento da página)
+
+### Lógica
+O lead percorre o site inteiro qualificando-se pelo conteúdo antes de entrar em contato. A seção Contact explica como funciona o diagnóstico gratuito — só então o lead clica para o WhatsApp sabendo o que vai encontrar. Isso aumenta a qualidade do lead e alinha expectativas com a Ana.
+
+### Arquivos afetados
+| Arquivo | Link anterior | Link atual |
+|---------|---------------|------------|
+| `Hero.tsx` | `wa.me` | `#contact` |
+| `MidCTA.tsx` | `wa.me` | `#contact` |
+| `FunnelComparison.tsx` | `wa.me` | `#contact` |
+| `ForWhom.tsx` | `wa.me` | `#contact` |
+| `FuturePacing.tsx` | `wa.me` | `#contact` |
+| `Results.tsx` | `wa.me` | `#contact` |
+| `Comparison.tsx` | `wa.me` | `#contact` |
+| `Services.tsx` | `wa.me` | `#contact` |
+| `FAQ.tsx` | `wa.me` | `#contact` |
+| `Contact.tsx` | `wa.me` | `wa.me` ✅ (mantido) |
+
+---
+
 ## Deploy Local
 
 ```bash
