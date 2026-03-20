@@ -193,9 +193,7 @@ export default function Results() {
               style={{ marginTop: "28px" }}
             >
               <a
-                href="https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20agendar%20meu%20diagn%C3%B3stico%20gratuito."
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contact"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
