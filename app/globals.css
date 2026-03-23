@@ -357,14 +357,26 @@ input:focus-visible,
   .funnel-label  { font-size: 0.5rem !important; }
 }
 
-/* ─── SocialProof / Footer inner padding ─── */
-.sp-inner, .footer-inner {
+/* ─── SocialProof marquee ─── */
+.sp-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+.sp-marquee:hover { animation-play-state: paused; }
+.sp-track {
+  display: flex;
+  align-items: stretch;
+}
+
+/* ─── Footer inner padding ─── */
+.footer-inner {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 40px;
 }
 @media (max-width: 640px) {
-  .sp-inner, .footer-inner { padding: 0 20px; }
+  .footer-inner { padding: 0 20px; }
 }
 
 /* ─── Hero stats card ─── */
@@ -390,6 +402,25 @@ input:focus-visible,
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 2px; }
 ::selection { background: rgba(255,255,255,0.1); }
+
+/* ─── Hero CSS animations (sem JS, LCP rápido) ─── */
+@keyframes heroSlideUp {
+  from { transform: translateY(24px); filter: blur(12px); }
+  to   { transform: translateY(0);    filter: blur(0); }
+}
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-h1    { animation: heroSlideUp 0.55s cubic-bezier(0.21,0.47,0.32,0.98) 0.12s both; }
+.hero-h2    { animation: heroSlideUp 0.55s cubic-bezier(0.21,0.47,0.32,0.98) 0.22s both; }
+.hero-sub   { animation: heroFadeUp  0.50s ease 0.36s both; }
+.hero-stats { animation: heroFadeUp  0.50s ease 0.46s both; }
+.hero-cta   { animation: heroFadeUp  0.50s ease 0.54s both; }
+.hero-badge { animation: heroFadeUp  0.40s ease 0.05s both; }
+.btn-primary-hero:hover  { opacity: 0.9; }
+.btn-secondary-hero:hover { background: rgba(255,255,255,0.04); }
+.btn-primary-hero, .btn-secondary-hero { transition: opacity 0.2s, background 0.2s; }
 
 /* ─── Marquee ─── */
 @keyframes marquee {
