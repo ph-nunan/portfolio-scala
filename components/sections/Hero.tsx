@@ -1,7 +1,4 @@
-import dynamic from "next/dynamic"
-
-// LiveFeed é client-only (useState/setInterval) — carrega após o conteúdo crítico
-const HeroLiveFeed = dynamic(() => import("./HeroLiveFeed"), { ssr: false })
+import HeroLiveFeed from "./HeroLiveFeed"
 
 const stats = [
   { value: "4.6×", label: "Mais Fechamentos"  },
