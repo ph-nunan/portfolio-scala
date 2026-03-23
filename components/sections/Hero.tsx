@@ -214,7 +214,7 @@ export default function Hero() {
 
         {/* Headline — line 1 */}
         <motion.h1
-          initial={{ opacity: 0, y: 24, filter: "blur(12px)" }}
+          initial={{ opacity: 1, y: 24, filter: "blur(12px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.55, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
           style={{
@@ -231,7 +231,7 @@ export default function Hero() {
 
         {/* Headline — line 2 */}
         <motion.p
-          initial={{ opacity: 0, y: 24, filter: "blur(12px)" }}
+          initial={{ opacity: 1, y: 24, filter: "blur(12px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.55, delay: 0.22, ease: [0.21, 0.47, 0.32, 0.98] }}
           style={{

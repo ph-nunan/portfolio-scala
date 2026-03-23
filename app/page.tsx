@@ -1,25 +1,28 @@
+import dynamic from "next/dynamic"
 import Navbar from "@/components/Navbar"
 import FloatingCTA from "@/components/FloatingCTA"
+// Above-fold: carregam eager para LCP rápido
 import Hero from "@/components/sections/Hero"
 import SocialProof from "@/components/sections/SocialProof"
 import Problem from "@/components/sections/Problem"
 import PatternInterrupt from "@/components/sections/PatternInterrupt"
-import MidCTA from "@/components/sections/MidCTA"
-import FunnelComparison from "@/components/sections/FunnelComparison"
-import Ecosystem from "@/components/sections/Ecosystem"
-import Services from "@/components/sections/Services"
-import ForWhom from "@/components/sections/ForWhom"
-import Comparison from "@/components/sections/Comparison"
-import HowItWorks from "@/components/sections/HowItWorks"
-import Results from "@/components/sections/Results"
-import Cases from "@/components/sections/Cases"
-import FuturePacing from "@/components/sections/FuturePacing"
-import KPIs from "@/components/sections/KPIs"
-import TechStack from "@/components/sections/TechStack"
-import Founder from "@/components/sections/Founder"
-import FAQ from "@/components/sections/FAQ"
-import Contact from "@/components/sections/Contact"
-import Footer from "@/components/sections/Footer"
+// Below-fold: lazy — reduz bundle inicial em ~60%
+const MidCTA           = dynamic(() => import("@/components/sections/MidCTA"))
+const FunnelComparison = dynamic(() => import("@/components/sections/FunnelComparison"))
+const Ecosystem        = dynamic(() => import("@/components/sections/Ecosystem"))
+const Services         = dynamic(() => import("@/components/sections/Services"))
+const ForWhom          = dynamic(() => import("@/components/sections/ForWhom"))
+const Comparison       = dynamic(() => import("@/components/sections/Comparison"))
+const HowItWorks       = dynamic(() => import("@/components/sections/HowItWorks"))
+const Results          = dynamic(() => import("@/components/sections/Results"))
+const Cases            = dynamic(() => import("@/components/sections/Cases"))
+const FuturePacing     = dynamic(() => import("@/components/sections/FuturePacing"))
+const KPIs             = dynamic(() => import("@/components/sections/KPIs"))
+const TechStack        = dynamic(() => import("@/components/sections/TechStack"))
+const Founder          = dynamic(() => import("@/components/sections/Founder"))
+const FAQ              = dynamic(() => import("@/components/sections/FAQ"))
+const Contact          = dynamic(() => import("@/components/sections/Contact"))
+const Footer           = dynamic(() => import("@/components/sections/Footer"))
 
 export default function Home() {
   return (
