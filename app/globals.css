@@ -357,6 +357,12 @@ input:focus-visible,
   .funnel-label  { font-size: 0.5rem !important; }
 }
 
+/* ─── SocialProof fade-in ─── */
+@keyframes sp-fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 /* ─── SocialProof marquee ─── */
 .sp-marquee {
   display: flex;

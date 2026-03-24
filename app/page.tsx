@@ -4,9 +4,9 @@ import FloatingCTA from "@/components/FloatingCTA"
 // Above-fold: carregam eager para LCP rápido
 import Hero from "@/components/sections/Hero"
 import SocialProof from "@/components/sections/SocialProof"
-import Problem from "@/components/sections/Problem"
-import PatternInterrupt from "@/components/sections/PatternInterrupt"
-// Below-fold: lazy — reduz bundle inicial em ~60%
+// Below-fold: lazy — reduz bundle inicial e elimina Framer Motion do chunk inicial
+const Problem          = dynamic(() => import("@/components/sections/Problem"))
+const PatternInterrupt = dynamic(() => import("@/components/sections/PatternInterrupt"))
 const MidCTA           = dynamic(() => import("@/components/sections/MidCTA"))
 const FunnelComparison = dynamic(() => import("@/components/sections/FunnelComparison"))
 const Ecosystem        = dynamic(() => import("@/components/sections/Ecosystem"))

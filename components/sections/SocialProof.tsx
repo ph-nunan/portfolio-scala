@@ -1,7 +1,5 @@
 "use client"
 
-import { motion } from "framer-motion"
-
 // Substitua pelos seus números reais
 const signals = [
   { value: "34",     label: "automações entregues"           },
@@ -49,16 +47,14 @@ function SignalItem({ s, i, dimmed }: { s: { value: string; label: string }; i: 
 
 export default function SocialProof() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
+    <div
       style={{
         borderTop: "1px solid rgba(255,255,255,0.05)",
         borderBottom: "1px solid rgba(255,255,255,0.05)",
         background: "rgba(255,255,255,0.015)",
         overflow: "hidden",
         position: "relative",
+        animation: "sp-fadein 0.6s ease 0.2s both",
       }}
     >
       {/* Fade masks on left/right */}
@@ -75,6 +71,6 @@ export default function SocialProof() {
           {signals.map((s, i) => <SignalItem key={i} s={s} i={i} dimmed />)}
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
