@@ -70,9 +70,9 @@ export default function Hero() {
           fontSize: "1.0625rem", lineHeight: 1.75,
           color: "var(--text-2)", maxWidth: "520px", margin: "0 auto 32px",
         }}>
-          Montamos em 7 dias: resposta ao lead em &lt;5s, campanhas que se otimizam sozinhas
-          e relatórios automáticos —{" "}
-          <span className="mark" style={{ fontWeight: 600 }}>sem contratar ninguém.</span>
+          Para agências, imobiliárias e gestores de tráfego — montamos em 7 dias o ecossistema
+          que responde leads em &lt;5s, otimiza campanhas e entrega relatórios{" "}
+          <span className="mark" style={{ fontWeight: 600 }}>sem você mover um dedo.</span>
         </p>
 
         <div style={{ maxWidth: "400px", margin: "0 auto 28px" }}>
@@ -98,7 +98,7 @@ export default function Hero() {
             ))}
           </div>
           <p style={{ fontSize: "0.5625rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", textAlign: "center", marginTop: "8px", letterSpacing: "0.04em" }}>
-            resultado médio dos clientes Scala após 30 dias
+            implementado em GoAlpha · H3imob · DonaSol · Hugo Borges
           </p>
         </div>
 

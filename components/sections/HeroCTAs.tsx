@@ -35,6 +35,14 @@ export default function HeroCTAs() {
       >
         Ver Como Funciona
       </a>
+      <p style={{
+        width: "100%", textAlign: "center",
+        fontSize: "0.6875rem", color: "var(--text-3)",
+        fontFamily: "var(--font-geist-mono)", letterSpacing: "0.04em",
+        marginTop: "4px",
+      }}>
+        Diagnóstico gratuito · Sem contrato · Implementado em 7 dias
+      </p>
     </div>
   )
 }
