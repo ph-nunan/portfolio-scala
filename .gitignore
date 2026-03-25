@@ -41,3 +41,8 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# OAuth tokens — nunca commitar
+scripts/setup_token.json
+scripts/ga4_token.json
+*.token.json
