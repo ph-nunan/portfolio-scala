@@ -19,7 +19,7 @@ export default function HeroCTAs() {
           borderRadius: "8px", fontWeight: 700, fontSize: "0.9375rem",
           textDecoration: "none", letterSpacing: "-0.01em",
         }}
-        onClick={() => track("cta_click", { location: "hero_primary", scroll_pct: getScrollPct() })}
+        onClick={() => track("wa_button_click", { location: "hero_primary", scroll_pct: getScrollPct() })}
       >
         Agendar Diagnóstico Gratuito →
       </a>
