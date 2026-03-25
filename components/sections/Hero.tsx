@@ -106,6 +106,36 @@ export default function Hero() {
 
         <HeroLiveFeed />
       </div>
+
+      {/* Scroll hint */}
+      <div style={{
+        position: "absolute",
+        bottom: "28px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "5px",
+        pointerEvents: "none",
+        animation: "hero-scroll-hint 3s ease-in-out infinite",
+      }}>
+        <span style={{
+          fontFamily: "var(--font-geist-mono)",
+          fontSize: "0.5rem",
+          color: "rgba(255,255,255,0.18)",
+          letterSpacing: "0.14em",
+          textTransform: "uppercase",
+        }}>scroll</span>
+        <span style={{
+          display: "block",
+          width: "7px",
+          height: "7px",
+          borderRight: "1.5px solid rgba(255,255,255,0.22)",
+          borderBottom: "1.5px solid rgba(255,255,255,0.22)",
+          transform: "rotate(45deg)",
+        }} />
+      </div>
     </section>
   )
 }

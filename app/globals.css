@@ -53,8 +53,31 @@ input, select, textarea {
 
 /* ─── Layout ─── */
 .s-wrap {
+  position: relative;
   padding: 120px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.s-wrap::after {
+  content: "";
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.16);
+  transform: translateX(-50%) rotate(45deg);
+  animation: scroll-hint 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes scroll-hint {
+  0%, 100% { opacity: 0.16; transform: translateX(-50%) rotate(45deg) translateY(0); }
+  50%       { opacity: 0.38; transform: translateX(-50%) rotate(45deg) translateY(5px); }
+}
+@keyframes hero-scroll-hint {
+  0%, 100% { opacity: 0; transform: translateX(-50%) translateY(0); }
+  30%, 70% { opacity: 1; }
+  50%       { transform: translateX(-50%) translateY(6px); }
 }
 .s-inner {
   max-width: 1200px;
