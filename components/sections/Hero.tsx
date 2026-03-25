@@ -105,6 +105,14 @@ export default function Hero() {
         <HeroCTAs />
 
         <HeroLiveFeed />
+
+        <div style={{ display: "flex", justifyContent: "center", paddingTop: "12px" }}>
+          <div style={{
+            width: "1px", height: "28px",
+            background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.32), transparent)",
+            animation: "scroll-hint 2.6s ease-in-out infinite",
+          }} />
+        </div>
       </div>
 
     </section>
