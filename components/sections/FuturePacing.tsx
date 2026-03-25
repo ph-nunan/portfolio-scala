@@ -6,6 +6,9 @@
 // Posição ideal: entre a seção de Garantia/Results e o formulário final.
 
 import { motion, useInView } from "framer-motion"
+import { track, getScrollPct } from "@/lib/analytics"
+
+const WA_LINK = "https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20agendar%20meu%20diagn%C3%B3stico%20gratuito."
 import { useRef } from "react"
 
 const scenarios = [
@@ -164,7 +167,10 @@ export default function FuturePacing() {
           transition={{ duration: 0.5, delay: 0.9 }}
         >
           <a
-            href="#contact"
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => track("wa_button_click", { location: "future_pacing", scroll_pct: getScrollPct() })}
             style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               padding: "14px 32px",

@@ -5,6 +5,9 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
+import { track, getScrollPct } from "@/lib/analytics"
+
+const WA_LINK = "https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20agendar%20meu%20diagn%C3%B3stico%20gratuito."
 
 const criteria = [
   {
@@ -200,7 +203,10 @@ export default function Comparison() {
             com o menor custo por lead atendido. A decisão fica óbvia.
           </p>
           <a
-            href="#contact"
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => track("wa_button_click", { location: "comparison", scroll_pct: getScrollPct() })}
             style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               padding: "11px 24px",

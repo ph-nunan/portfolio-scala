@@ -2,6 +2,9 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
+import { track, getScrollPct } from "@/lib/analytics"
+
+const WA_LINK = "https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20agendar%20meu%20diagn%C3%B3stico%20gratuito."
 
 const services = [
   {
@@ -235,7 +238,10 @@ export default function Services() {
                   Implementação personalizada inclusa. Sem taxa de setup.
                 </p>
                 <a
-                  href="#contact"
+                  href={WA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => track("wa_button_click", { location: "services_plan", scroll_pct: getScrollPct() })}
                   style={{
                     display: "flex", alignItems: "center", justifyContent: "center",
                     padding: "9px 16px", borderRadius: "8px", fontSize: "0.8125rem",
@@ -372,7 +378,10 @@ export default function Services() {
 
                 {/* CTA */}
                 <a
-                  href="#contact"
+                  href={WA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => track("wa_button_click", { location: "services_pricing", scroll_pct: getScrollPct() })}
                   style={{
                     display: "flex", alignItems: "center", justifyContent: "center",
                     padding: "11px 20px", borderRadius: "8px", fontSize: "0.875rem",
@@ -483,7 +492,10 @@ export default function Services() {
             você está perdendo clientes. Sem compromisso. Sem pegadinha. Só dados.
           </p>
           <a
-            href="#contact"
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => track("wa_button_click", { location: "services_bottom", scroll_pct: getScrollPct() })}
             style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               padding: "13px 32px", background: "var(--accent)", color: "#0a0a0a",

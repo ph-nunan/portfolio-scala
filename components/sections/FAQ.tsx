@@ -124,7 +124,13 @@ export default function FAQ() {
             <h2 className="s-title">Perguntas Frequentes</h2>
             <p style={{ color: "var(--text-2)", marginTop: "12px", lineHeight: 1.7, fontSize: "0.9rem" }}>
               Tem outra dúvida?{" "}
-              <a href="#contact" style={{ color: "#f5f5f5", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              <a
+                href="https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20agendar%20meu%20diagn%C3%B3stico%20gratuito."
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => track("wa_button_click", { location: "faq", scroll_pct: getScrollPct() })}
+                style={{ color: "#f5f5f5", textDecoration: "underline", textUnderlineOffset: "3px" }}
+              >
                 Fale com a gente.
               </a>
             </p>

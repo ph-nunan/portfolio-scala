@@ -2,6 +2,9 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
+import { track, getScrollPct } from "@/lib/analytics"
+
+const WA_LINK = "https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20agendar%20meu%20diagn%C3%B3stico%20gratuito."
 
 /* ── Visual Mockups ─────────────────────────────────── */
 
@@ -194,7 +197,7 @@ const steps = [
     title: "Diagnóstico Gratuito",
     desc: "Analisamos seu ecossistema de vendas atual: tráfego, atendimento, CRM e follow-up. Identificamos os gargalos que estão fazendo você perder dinheiro.",
     note: "Consultoria sem compromisso — você decide se faz sentido",
-    cta: { label: "Agendar Meu Diagnóstico →", href: "#contact" },
+    cta: { label: "Agendar Meu Diagnóstico →", href: WA_LINK },
     visual: "diagnostic" as const,
     flip: false,
   },
@@ -317,6 +320,9 @@ export default function HowItWorks() {
                   {step.cta && (
                     <a
                       href={step.cta.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => track("wa_button_click", { location: "how_it_works", scroll_pct: getScrollPct() })}
                       style={{
                         display: "inline-flex",
                         alignItems: "center",
