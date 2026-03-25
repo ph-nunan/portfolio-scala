@@ -96,7 +96,7 @@ export default function Analytics() {
       const entries = list.getEntries()
       if (entries.length > 0) {
         const lcp = entries[entries.length - 1]
-        track("web_vitals", { metric: "LCP", value: Math.round(lcp.startTime) })
+        track("web_vitals", { metric: "LCP", metric_value: Math.round(lcp.startTime) })
       }
     })
 
@@ -104,7 +104,7 @@ export default function Analytics() {
     tryObserve("paint", (list) => {
       for (const entry of list.getEntries()) {
         if (entry.name === "first-contentful-paint") {
-          track("web_vitals", { metric: "FCP", value: Math.round(entry.startTime) })
+          track("web_vitals", { metric: "FCP", metric_value: Math.round(entry.startTime) })
         }
       }
     })
@@ -123,14 +123,14 @@ export default function Analytics() {
       for (const entry of list.getEntries()) {
         const fi = entry as PerformanceEntry & { processingStart: number }
         const fid = Math.round(fi.processingStart - fi.startTime)
-        track("web_vitals", { metric: "FID", value: fid })
+        track("web_vitals", { metric: "FID", metric_value: fid })
       }
     })
 
     // Send CLS on page hide (best practice)
     const onVisibilityChange = () => {
       if (document.visibilityState === "hidden") {
-        track("web_vitals", { metric: "CLS", value: Math.round(clsValue * 1000) / 1000 })
+        track("web_vitals", { metric: "CLS", metric_value: Math.round(clsValue * 1000) / 1000 })
       }
     }
     document.addEventListener("visibilitychange", onVisibilityChange)
