@@ -9,7 +9,7 @@ const stats = [
 
 export default function Hero() {
   return (
-    <section style={{
+    <section data-section="hero" style={{
       position: "relative",
       minHeight: "100vh",
       display: "flex",

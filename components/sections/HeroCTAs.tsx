@@ -9,7 +9,9 @@ export default function HeroCTAs() {
       style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", marginBottom: "48px" }}
     >
       <a
-        href="#contact"
+        href="https://wa.me/556181894189?text=Ol%C3%A1%2C%20quero%20agendar%20um%20diagn%C3%B3stico%20gratuito%20da%20Scala!"
+        target="_blank"
+        rel="noopener noreferrer"
         className="btn-shimmer btn-primary-hero"
         style={{
           display: "inline-flex", alignItems: "center", gap: "8px",

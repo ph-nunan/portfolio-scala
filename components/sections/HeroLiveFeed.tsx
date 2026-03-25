@@ -28,7 +28,7 @@ export default function HeroLiveFeed() {
       const newItem = { ...feedEvents[idx], id: counterRef.current }
       counterRef.current++
       setQueue((prev) => [newItem, ...prev.slice(0, 5)])
-    }, 2600)
+    }, 4000)
     return () => clearInterval(id)
   }, [])
 
