@@ -16,6 +16,7 @@ const Comparison       = dynamic(() => import("@/components/sections/Comparison"
 const HowItWorks       = dynamic(() => import("@/components/sections/HowItWorks"))
 const Results          = dynamic(() => import("@/components/sections/Results"))
 const Cases            = dynamic(() => import("@/components/sections/Cases"))
+const Testimonials     = dynamic(() => import("@/components/sections/Testimonials"))
 const FuturePacing     = dynamic(() => import("@/components/sections/FuturePacing"))
 const KPIs             = dynamic(() => import("@/components/sections/KPIs"))
 const TechStack        = dynamic(() => import("@/components/sections/TechStack"))
@@ -88,6 +89,11 @@ export default function Home() {
       {/* 9. Prova social — evidência real de automações */}
       <div id="cases" data-section="cases">
         <Cases />
+      </div>
+
+      {/* 9b. Depoimentos — voz humana depois da prova técnica */}
+      <div id="testimonials" data-section="testimonials">
+        <Testimonials />
       </div>
 
       {/* 10. Future Pacing — último empurrão emocional antes da ação */}
