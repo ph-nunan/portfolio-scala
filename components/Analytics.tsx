@@ -86,11 +86,11 @@ export default function Analytics() {
     const tryObserve = (
       type: string,
       cb: (entries: PerformanceObserverEntryList) => void,
-      options?: PerformanceObserverInit
+      extra?: Record<string, unknown>
     ) => {
       try {
         const po = new PerformanceObserver(cb)
-        po.observe({ type, buffered: true, ...options })
+        po.observe({ type, buffered: true, ...extra } as PerformanceObserverInit)
         vitalsObservers.push(po)
       } catch {}
     }
