@@ -83,10 +83,14 @@ export default function Analytics() {
     // ── 5. Core Web Vitals via PerformanceObserver ─────────────────────────
     const vitalsObservers: PerformanceObserver[] = []
 
-    const tryObserve = (type: string, cb: (entries: PerformanceObserverEntryList) => void) => {
+    const tryObserve = (
+      type: string,
+      cb: (entries: PerformanceObserverEntryList) => void,
+      options?: PerformanceObserverInit
+    ) => {
       try {
         const po = new PerformanceObserver(cb)
-        po.observe({ type, buffered: true })
+        po.observe({ type, buffered: true, ...options })
         vitalsObservers.push(po)
       } catch {}
     }
@@ -118,18 +122,25 @@ export default function Analytics() {
       }
     })
 
-    // FID / INP (first-input)
-    tryObserve("first-input", (list) => {
-      for (const entry of list.getEntries()) {
-        const fi = entry as PerformanceEntry & { processingStart: number }
-        const fid = Math.round(fi.processingStart - fi.startTime)
-        track("web_vitals", { metric: "FID", metric_value: fid })
-      }
-    })
+    // INP — substitui FID (depreciado em março 2024). Entry type: "event", durationThreshold: 0
+    // Rastreia a maior interação da sessão (simplified INP)
+    let maxInp = 0
+    tryObserve(
+      "event",
+      (list) => {
+        for (const entry of list.getEntries()) {
+          if (entry.duration > maxInp) maxInp = entry.duration
+        }
+      },
+      { durationThreshold: 0 }
+    )
 
-    // Send CLS on page hide (best practice)
+    // Send CLS + INP on page hide (best practice para ambas as métricas)
     const onVisibilityChange = () => {
       if (document.visibilityState === "hidden") {
+        if (maxInp > 0) {
+          track("web_vitals", { metric: "INP", metric_value: Math.round(maxInp) })
+        }
         track("web_vitals", { metric: "CLS", metric_value: Math.round(clsValue * 1000) / 1000 })
       }
     }
