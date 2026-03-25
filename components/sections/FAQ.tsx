@@ -2,6 +2,7 @@
 
 import { motion, useInView, AnimatePresence } from "framer-motion"
 import { useRef, useState } from "react"
+import { track } from "@/lib/analytics"
 
 const faqs = [
   {
@@ -36,11 +37,24 @@ function Item({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false)
   const id = useRef(`faq-${++faqItemId}`).current
   const panelId = `${id}-panel`
+  const openedAt = useRef<number | null>(null)
+
+  function handleToggle() {
+    if (!open) {
+      openedAt.current = Date.now()
+      track("faq_open", { question: q })
+    } else {
+      const seconds = openedAt.current ? Math.round((Date.now() - openedAt.current) / 1000) : 0
+      track("faq_close", { question: q, seconds_open: seconds })
+      openedAt.current = null
+    }
+    setOpen((v) => !v)
+  }
 
   return (
     <div style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
       <button
-        onClick={() => setOpen((v) => !v)}
+        onClick={handleToggle}
         aria-expanded={open}
         aria-controls={panelId}
         id={id}

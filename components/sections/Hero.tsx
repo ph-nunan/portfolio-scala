@@ -1,4 +1,5 @@
 import HeroLiveFeed from "./HeroLiveFeed"
+import HeroCTAs from "./HeroCTAs"
 
 const stats = [
   { value: "4.6×", label: "Mais Fechamentos"  },
@@ -97,19 +98,7 @@ export default function Hero() {
           ))}
         </div>
 
-        <div className="hero-cta" style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", marginBottom: "48px" }}>
-          <a href="#contact" className="btn-shimmer btn-primary-hero" style={{
-            display: "inline-flex", alignItems: "center", gap: "8px",
-            padding: "13px 28px", background: "var(--accent)", color: "#1a1a1a",
-            borderRadius: "8px", fontWeight: 700, fontSize: "0.9375rem",
-            textDecoration: "none", letterSpacing: "-0.01em",
-          }}>Agendar Diagnóstico Gratuito →</a>
-          <a href="#how-it-works" className="btn-secondary-hero" style={{
-            display: "inline-flex", alignItems: "center", gap: "8px",
-            padding: "13px 24px", border: "1px solid rgba(255,255,255,0.1)", color: "#f5f5f5",
-            borderRadius: "8px", fontSize: "0.875rem", textDecoration: "none",
-          }}>Ver Como Funciona</a>
-        </div>
+        <HeroCTAs />
 
         <HeroLiveFeed />
       </div>

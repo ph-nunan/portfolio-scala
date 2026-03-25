@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
+import { track, getScrollPct } from "@/lib/analytics"
 
 const links = [
   { label: "Serviços", href: "#services" },
@@ -63,6 +64,7 @@ export default function Navbar() {
               style={{ color: "var(--text-2)", fontSize: "0.8125rem", textDecoration: "none", transition: "color 0.2s" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "#f5f5f5")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-2)")}
+              onClick={() => track("nav_link_click", { label: l.label, href: l.href })}
             >
               {l.label}
             </a>
@@ -75,6 +77,7 @@ export default function Navbar() {
             href="https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20agendar%20meu%20diagn%C3%B3stico%20gratuito."
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => track("wa_button_click", { location: "navbar_desktop", scroll_pct: getScrollPct() })}
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -129,7 +132,7 @@ export default function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                onClick={() => setOpen(false)}
+                onClick={() => { setOpen(false); track("nav_link_click", { label: l.label, href: l.href }) }}
                 style={{
                   display: "block",
                   padding: "14px 0",
@@ -147,7 +150,7 @@ export default function Navbar() {
               href="https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20agendar%20meu%20diagn%C3%B3stico%20gratuito."
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
+              onClick={() => { setOpen(false); track("wa_button_click", { location: "navbar_mobile", scroll_pct: getScrollPct() }) }}
               style={{
                 display: "block",
                 marginTop: "16px",

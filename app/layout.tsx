@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next"
 import { Space_Grotesk, DM_Sans } from "next/font/google"
 import Script from "next/script"
 import MetaPixel from "@/components/MetaPixel"
+import Analytics from "@/components/Analytics"
 import "./globals.css"
 
 const spaceGrotesk = Space_Grotesk({
@@ -270,6 +271,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         )}
 
         <MetaPixel />
+        <Analytics />
         {children}
       </body>
     </html>
