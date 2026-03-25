@@ -2,7 +2,7 @@
 
 import { motion, useInView, AnimatePresence } from "framer-motion"
 import { useRef, useState } from "react"
-import { track } from "@/lib/analytics"
+import { track, getScrollPct } from "@/lib/analytics"
 
 const faqs = [
   {
