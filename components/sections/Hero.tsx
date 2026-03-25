@@ -45,7 +45,7 @@ export default function Hero() {
           fontFamily: "var(--font-space-grotesk)", letterSpacing: "0.1em", textTransform: "uppercase",
         }}>
           <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--accent)", display: "inline-block", animation: "pulse 2s ease-in-out infinite", flexShrink: 0 }} />
-          Do Anúncio ao Relatório · Tudo Automatizado
+          Seus concorrentes já automatizaram
         </div>
 
         <h1 className="hero-h1" style={{
@@ -68,34 +68,38 @@ export default function Hero() {
 
         <p className="hero-sub" style={{
           fontSize: "1.0625rem", lineHeight: 1.75,
-          color: "var(--text-2)", maxWidth: "560px", margin: "0 auto 32px",
+          color: "var(--text-2)", maxWidth: "520px", margin: "0 auto 32px",
         }}>
-          Construímos a automação que otimiza suas campanhas, responde leads em segundos,
-          atualiza o CRM e envia relatórios ao cliente —{" "}
-          <span className="mark" style={{ fontWeight: 600 }}>você no controle, a IA executando.</span>
+          Montamos em 7 dias: resposta ao lead em &lt;5s, campanhas que se otimizam sozinhas
+          e relatórios automáticos —{" "}
+          <span className="mark" style={{ fontWeight: 600 }}>sem contratar ninguém.</span>
         </p>
 
-        <div className="hero-stats hero-stats-card" style={{
-          display: "flex", justifyContent: "center",
-          maxWidth: "400px", margin: "0 auto 28px",
-          background: "var(--surface)", border: "1px solid var(--border)",
-          borderRadius: "12px", overflow: "hidden",
-        }}>
-          {stats.map((s, i) => (
-            <div key={i} style={{
-              flex: 1, padding: "16px 12px", textAlign: "center",
-              borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.06)" : "none",
-            }}>
-              <div style={{
-                fontFamily: "var(--font-space-grotesk)", fontSize: "1.375rem", fontWeight: 700, lineHeight: 1,
-                background: "linear-gradient(135deg, #ffffff 0%, #b0b0b0 50%, #e8e8e8 100%)",
-                WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent",
-              }}>{s.value}</div>
-              <div style={{ fontSize: "0.5625rem", color: "var(--text-3)", fontFamily: "var(--font-space-grotesk)", textTransform: "uppercase", letterSpacing: "0.08em", marginTop: "5px" }}>
-                {s.label}
+        <div style={{ maxWidth: "400px", margin: "0 auto 28px" }}>
+          <div className="hero-stats hero-stats-card" style={{
+            display: "flex", justifyContent: "center",
+            background: "var(--surface)", border: "1px solid var(--border)",
+            borderRadius: "12px", overflow: "hidden",
+          }}>
+            {stats.map((s, i) => (
+              <div key={i} style={{
+                flex: 1, padding: "16px 12px", textAlign: "center",
+                borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.06)" : "none",
+              }}>
+                <div style={{
+                  fontFamily: "var(--font-space-grotesk)", fontSize: "1.375rem", fontWeight: 700, lineHeight: 1,
+                  background: "linear-gradient(135deg, #ffffff 0%, #b0b0b0 50%, #e8e8e8 100%)",
+                  WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent",
+                }}>{s.value}</div>
+                <div style={{ fontSize: "0.5625rem", color: "var(--text-3)", fontFamily: "var(--font-space-grotesk)", textTransform: "uppercase", letterSpacing: "0.08em", marginTop: "5px" }}>
+                  {s.label}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <p style={{ fontSize: "0.5625rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", textAlign: "center", marginTop: "8px", letterSpacing: "0.04em" }}>
+            resultado médio dos clientes Scala após 30 dias
+          </p>
         </div>
 
         <HeroCTAs />

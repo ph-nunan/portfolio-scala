@@ -102,7 +102,7 @@ export default function HeroLiveFeed() {
                   fontSize: "0.75rem", color: i === 0 ? "var(--accent)" : "var(--text-3)",
                   flexShrink: 0, transition: "all 0.3s",
                 }}>{item.icon}</span>
-                <span style={{
+                <span className="feed-label" style={{
                   flex: 1, fontSize: "0.8125rem",
                   color: i === 0 ? "rgba(245,245,245,0.95)" : "rgba(245,245,245,0.45)",
                   fontWeight: i === 0 ? 500 : 400, transition: "color 0.3s",
