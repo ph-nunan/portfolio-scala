@@ -41,7 +41,7 @@ export default function HeroCTAs() {
         fontFamily: "var(--font-geist-mono)", letterSpacing: "0.04em",
         marginTop: "4px",
       }}>
-        Diagnóstico gratuito · Sem contrato · Implementado em 7 dias
+        Gratuito · Sem contrato · 7 dias
       </p>
     </div>
   )
