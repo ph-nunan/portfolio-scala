@@ -29,7 +29,7 @@ export default function Founder() {
   const inView = useInView(ref, { once: true, margin: "-80px" })
 
   return (
-    <section id="founder" ref={ref} className="s-wrap">
+    <section ref={ref} className="s-wrap">
       <div className="s-inner">
         <div className="founder-layout">
 

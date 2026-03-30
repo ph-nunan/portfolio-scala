@@ -39,7 +39,12 @@ export default function FloatingCTA() {
         href={WA_LINK}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() => track("wa_button_click", { location: "floating", scroll_pct: getScrollPct(), trigger: "floating_cta" })}
+        onClick={() => {
+          track("wa_button_click", { location: "floating", scroll_pct: getScrollPct(), trigger: "floating_cta" })
+          if (typeof window !== "undefined" && (window as any).fbq) {
+            try { (window as any).fbq("track", "Lead", { content_name: "floating_cta" }) } catch {}
+          }
+        }}
         style={{
           display: "inline-flex",
           alignItems: "center",

@@ -230,7 +230,7 @@ export default function HowItWorks() {
   const inView = useInView(ref, { once: true, margin: "-80px" })
 
   return (
-    <section id="how-it-works" ref={ref} className="s-wrap">
+    <section ref={ref} className="s-wrap">
       <div className="s-inner">
         <motion.div
           className="s-head"
@@ -322,7 +322,12 @@ export default function HowItWorks() {
                       href={step.cta.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => track("wa_button_click", { location: "how_it_works", scroll_pct: getScrollPct() })}
+                      onClick={() => {
+                        track("wa_button_click", { location: "how_it_works", scroll_pct: getScrollPct() })
+                        if (typeof window !== "undefined" && (window as any).fbq) {
+                          try { (window as any).fbq("track", "Lead", { content_name: "how_it_works" }) } catch {}
+                        }
+                      }}
                       style={{
                         display: "inline-flex",
                         alignItems: "center",

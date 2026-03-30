@@ -29,7 +29,7 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: "-80px" })
 
   return (
-    <section id="contact" ref={ref} className="s-wrap">
+    <section ref={ref} className="s-wrap">
       <div className="s-inner">
         <div className="g-2col">
           {/* Left */}
@@ -93,7 +93,12 @@ export default function Contact() {
                 href={WA_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => track("wa_button_click", { location: "contact", scroll_pct: getScrollPct() })}
+                onClick={() => {
+                  track("wa_button_click", { location: "contact", scroll_pct: getScrollPct() })
+                  if (typeof window !== "undefined" && (window as any).fbq) {
+                    try { (window as any).fbq("track", "Lead", { content_name: "contact" }) } catch {}
+                  }
+                }}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
