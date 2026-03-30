@@ -26,10 +26,6 @@ export default function HeroCTAs() {
       trigger: "hero_cta",
       browser: inApp ? "in_app" : "native",
     })
-    // Pixel Meta — Lead
-    if (typeof window !== "undefined" && (window as any).fbq) {
-      try { (window as any).fbq("track", "Lead", { content_name: "hero_primary" }) } catch {}
-    }
   }
 
   return (

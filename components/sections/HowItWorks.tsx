@@ -322,12 +322,7 @@ export default function HowItWorks() {
                       href={step.cta.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => {
-                        track("wa_button_click", { location: "how_it_works", scroll_pct: getScrollPct() })
-                        if (typeof window !== "undefined" && (window as any).fbq) {
-                          try { (window as any).fbq("track", "Lead", { content_name: "how_it_works" }) } catch {}
-                        }
-                      }}
+                      onClick={() => track("wa_button_click", { location: "how_it_works", scroll_pct: getScrollPct() })}
                       style={{
                         display: "inline-flex",
                         alignItems: "center",

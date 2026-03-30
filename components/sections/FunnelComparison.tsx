@@ -265,12 +265,7 @@ export default function FunnelComparison() {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => {
-              track("wa_button_click", { location: "funnel_comparison", scroll_pct: getScrollPct() })
-              if (typeof window !== "undefined" && (window as any).fbq) {
-                try { (window as any).fbq("track", "Lead", { content_name: "funnel_comparison" }) } catch {}
-              }
-            }}
+            onClick={() => track("wa_button_click", { location: "funnel_comparison", scroll_pct: getScrollPct() })}
             style={{
               display: "inline-flex",
               alignItems: "center",
