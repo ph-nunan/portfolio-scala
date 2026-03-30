@@ -223,6 +223,7 @@ input:focus-visible,
     direction: ltr !important;
     gap: 32px !important;
   }
+  .hiw-visual { display: none !important; }
 }
 
 /* ─── Transparency grid (Founder section) ─── */
@@ -301,6 +302,26 @@ input:focus-visible,
 }
 @media (max-width: 768px) {
   .floating-cta-wrap { display: block; }
+}
+
+/* ─── Hero: ocultar stats card e botão secundário em mobile ─── */
+.hero-stats-desktop { display: block; }
+.hero-secondary-desktop { display: inline-flex; }
+@media (max-width: 640px) {
+  .hero-stats-desktop     { display: none; }
+  .hero-secondary-desktop { display: none !important; }
+  .hero-h1, .hero-h2 {
+    font-size: clamp(2rem, 10vw, 3.5rem) !important;
+  }
+  .hero-sub {
+    font-size: 0.9375rem !important;
+  }
+  .btn-primary-hero {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.9375rem !important;
+    padding: 16px 24px !important;
+  }
 }
 
 /* ─── Pulse animation (usado em vários componentes) ─── */

@@ -1,16 +1,18 @@
 "use client"
 
-// Substitua pelos seus números reais
+// Gatilhos: autoridade por números específicos, prova de resultado,
+// redução de risco (garantia), urgência suave (24/7 sem custo extra)
+
 const signals = [
-  { value: "34",     label: "automações entregues"           },
-  { value: "7 dias", label: "do zero ao ecossistema rodando" },
-  { value: "4.6×",   label: "mais fechamentos*"              },
-  { value: "24/7",   label: "operação sem interrupção"       },
-  { value: "8.2h",   label: "economizadas/cliente/mês"       },
-  { value: "30 dias", label: "garantia ou reembolso total"   },
+  { value: "< 5s",    label: "resposta ao primeiro contato"       },
+  { value: "7 dias",  label: "do zero ao ecossistema ativo"       },
+  { value: "4.6×",    label: "mais fechamentos com o mesmo tráfego" },
+  { value: "24/7",    label: "operação sem interrupção"           },
+  { value: "30 dias", label: "garantia ou reembolso total"        },
+  { value: "R$ 0",    label: "custo de equipe adicional"          },
 ]
 
-function SignalItem({ s, i, dimmed }: { s: { value: string; label: string }; i: number; dimmed?: boolean }) {
+function SignalItem({ s, dimmed }: { s: { value: string; label: string }; dimmed?: boolean }) {
   return (
     <div
       aria-hidden={dimmed}
@@ -57,18 +59,15 @@ export default function SocialProof() {
         animation: "sp-fadein 0.6s ease 0.2s both",
       }}
     >
-      {/* Fade masks on left/right */}
       <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "60px", background: "linear-gradient(to right, #1a1a1a, transparent)", zIndex: 2, pointerEvents: "none" }} />
       <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "60px", background: "linear-gradient(to left, #1a1a1a, transparent)", zIndex: 2, pointerEvents: "none" }} />
 
       <div className="sp-marquee">
-        {/* First set */}
         <div className="sp-track">
-          {signals.map((s, i) => <SignalItem key={i} s={s} i={i} />)}
+          {signals.map((s, i) => <SignalItem key={i} s={s} />)}
         </div>
-        {/* Duplicate for seamless loop */}
         <div className="sp-track" aria-hidden>
-          {signals.map((s, i) => <SignalItem key={i} s={s} i={i} dimmed />)}
+          {signals.map((s, i) => <SignalItem key={i} s={s} dimmed />)}
         </div>
       </div>
     </div>

@@ -345,8 +345,8 @@ export default function HowItWorks() {
                 </div>
               </div>
 
-              {/* Visual side */}
-              <div style={{ direction: "ltr" }}>
+              {/* Visual side — hidden on mobile */}
+              <div className="hiw-visual" style={{ direction: "ltr" }}>
                 <StepVisual type={step.visual} />
               </div>
             </motion.div>

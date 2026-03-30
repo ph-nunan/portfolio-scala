@@ -155,18 +155,19 @@ const structuredData = {
         itemListElement: [
           {
             "@type": "Offer",
-            name: "Pacote Starter",
-            price: "450",
+            name: "Setup — Implementação Completa",
+            price: "1500",
             priceCurrency: "BRL",
-            description: "Automação de atendimento básica. A partir de R$ 450/mês.",
+            description:
+              "Implementação completa em 7 dias: agente IA no WhatsApp, qualificação automática, CRM integrado e relatórios. Taxa única de setup.",
           },
           {
             "@type": "Offer",
-            name: "Pacote Pro",
-            price: "1200",
+            name: "Manutenção e Suporte Mensal",
+            price: "400",
             priceCurrency: "BRL",
             description:
-              "Ecossistema completo de vendas automatizado. A partir de R$ 1.200/mês.",
+              "Suporte contínuo, otimizações mensais e monitoramento do ecossistema. R$ 400/mês.",
           },
         ],
       },

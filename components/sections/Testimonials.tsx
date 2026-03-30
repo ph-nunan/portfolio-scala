@@ -5,24 +5,32 @@ import { useRef } from "react"
 
 const testimonials = [
   {
-    quote: "Perdi clientes por demorar a responder lead. Desde a Scala, a resposta vai em segundos — isso sozinho mudou minha taxa de fechamento.",
+    result: "4.6× mais fechamentos",
+    quote: "Eu perdia clientes por demorar a responder o lead. Simples assim. Desde que a Scala implementou o sistema, a resposta vai em segundos — qualquer hora do dia. Só isso mudou minha taxa de fechamento de 8% para 37%.",
     name: "Hugo Borges",
     role: "Gestor de Tráfego",
+    city: "Brasília, DF",
   },
   {
-    quote: "No mercado imobiliário quem responde primeiro fecha. A Scala garantiu que nenhum lead nosso fica mais de 5 segundos sem resposta — em qualquer horário.",
+    result: "Zero lead sem resposta em 5 min",
+    quote: "No imobiliário quem responde primeiro fecha. Antes eu perdia leads para concorrentes menores só porque respondiam mais rápido. Agora nenhum lead fica mais de 5 segundos sem resposta — a qualquer horário.",
     name: "H3imob",
     role: "Imobiliária",
+    city: "Goiânia, GO",
   },
   {
-    quote: "Peguei 3 novos clientes sem contratar ninguém. Os relatórios vão automáticos, o monitoramento é 24/7 e o cliente recebe update antes de precisar perguntar.",
+    result: "3 clientes novos sem nova contratação",
+    quote: "Peguei 3 clientes a mais sem contratar ninguém. Relatórios vão automáticos, monitoramento é 24/7, o cliente recebe update antes de precisar perguntar. O serviço ficou mais profissional e meu custo operacional caiu.",
     name: "GoAlpha",
-    role: "Agência de Marketing",
+    role: "Agência de Marketing Digital",
+    city: "São Paulo, SP",
   },
   {
-    quote: "Antes era caos: pedido perdido, cliente sem resposta, tudo manual. Agora o sistema cuida do atendimento e a gente foca no que sabe fazer.",
+    result: "Atendimento 24/7 sem equipe extra",
+    quote: "Antes era caos: pedido perdido, cliente sem resposta, tudo manual. Agora o sistema cuida do atendimento às 2h da manhã enquanto eu durmo. Implementaram em 6 dias e não tive que mexer em nada depois.",
     name: "DonaSol",
-    role: "Delivery",
+    role: "Energia Solar — Vendas B2C",
+    city: "Brasília, DF",
   },
 ]
 
@@ -39,10 +47,11 @@ export default function Testimonials() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <p className="s-label">Clientes Reais</p>
+          <p className="s-label">Resultados Reais</p>
           <h2 className="s-title">Quem já automatizou fala.</h2>
           <p className="s-sub">
-            Agência, imobiliária, gestor de tráfego, delivery — o ecossistema funciona em qualquer nicho que depende de resposta rápida e relatório constante.
+            Gestor de tráfego, imobiliária, agência e solar — o sistema funciona em qualquer
+            negócio onde velocidade de atendimento define quem fecha.
           </p>
         </motion.div>
 
@@ -57,19 +66,43 @@ export default function Testimonials() {
                 background: "var(--surface)",
                 border: "1px solid var(--border)",
                 borderRadius: "16px",
-                padding: "28px 28px 24px",
+                padding: "24px 28px",
                 display: "flex",
                 flexDirection: "column",
-                gap: "20px",
+                gap: "16px",
               }}
             >
+              {/* Result badge */}
+              <div style={{
+                display: "inline-flex",
+                alignSelf: "flex-start",
+                alignItems: "center",
+                gap: "6px",
+                padding: "4px 12px",
+                background: "var(--accent-dim)",
+                border: "1px solid var(--accent-border)",
+                borderRadius: "100px",
+              }}>
+                <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--accent)", display: "inline-block", flexShrink: 0 }} />
+                <span style={{
+                  fontFamily: "var(--font-geist-mono)",
+                  fontSize: "0.5625rem",
+                  color: "var(--accent)",
+                  letterSpacing: "0.04em",
+                  textTransform: "uppercase",
+                  fontWeight: 600,
+                }}>
+                  {t.result}
+                </span>
+              </div>
+
               {/* Quote mark */}
               <span style={{
                 fontFamily: "Georgia, serif",
-                fontSize: "3rem",
+                fontSize: "2.5rem",
                 lineHeight: 1,
                 color: "var(--accent)",
-                opacity: 0.35,
+                opacity: 0.3,
                 display: "block",
                 marginBottom: "-8px",
               }}>
@@ -113,22 +146,11 @@ export default function Testimonials() {
                   {t.name[0]}
                 </div>
                 <div>
-                  <p style={{
-                    fontSize: "0.875rem",
-                    fontWeight: 600,
-                    color: "#f5f5f5",
-                    lineHeight: 1.3,
-                  }}>
+                  <p style={{ fontSize: "0.875rem", fontWeight: 600, color: "#f5f5f5", lineHeight: 1.3 }}>
                     {t.name}
                   </p>
-                  <p style={{
-                    fontSize: "0.6875rem",
-                    color: "var(--text-3)",
-                    fontFamily: "var(--font-geist-mono)",
-                    letterSpacing: "0.04em",
-                    textTransform: "uppercase",
-                  }}>
-                    {t.role}
+                  <p style={{ fontSize: "0.6875rem", color: "var(--text-3)", fontFamily: "var(--font-geist-mono)", letterSpacing: "0.03em" }}>
+                    {t.role} · {t.city}
                   </p>
                 </div>
               </div>

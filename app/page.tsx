@@ -1,27 +1,15 @@
 import dynamic from "next/dynamic"
 import Navbar from "@/components/Navbar"
 import FloatingCTA from "@/components/FloatingCTA"
-// Above-fold: carregam eager para LCP rápido
+// Above-fold: eager para LCP rápido
 import Hero from "@/components/sections/Hero"
 import SocialProof from "@/components/sections/SocialProof"
-// Below-fold: lazy — reduz bundle inicial e elimina Framer Motion do chunk inicial
+// Below-fold: lazy
 const Problem          = dynamic(() => import("@/components/sections/Problem"))
-const PatternInterrupt = dynamic(() => import("@/components/sections/PatternInterrupt"))
-const MidCTA           = dynamic(() => import("@/components/sections/MidCTA"))
 const FunnelComparison = dynamic(() => import("@/components/sections/FunnelComparison"))
-const Ecosystem        = dynamic(() => import("@/components/sections/Ecosystem"))
-const Services         = dynamic(() => import("@/components/sections/Services"))
-const ForWhom          = dynamic(() => import("@/components/sections/ForWhom"))
-const Comparison       = dynamic(() => import("@/components/sections/Comparison"))
 const HowItWorks       = dynamic(() => import("@/components/sections/HowItWorks"))
-const Results          = dynamic(() => import("@/components/sections/Results"))
-const Cases            = dynamic(() => import("@/components/sections/Cases"))
 const Testimonials     = dynamic(() => import("@/components/sections/Testimonials"))
-const FuturePacing     = dynamic(() => import("@/components/sections/FuturePacing"))
-const KPIs             = dynamic(() => import("@/components/sections/KPIs"))
-const TechStack        = dynamic(() => import("@/components/sections/TechStack"))
 const Founder          = dynamic(() => import("@/components/sections/Founder"))
-const FAQ              = dynamic(() => import("@/components/sections/FAQ"))
 const Contact          = dynamic(() => import("@/components/sections/Contact"))
 const Footer           = dynamic(() => import("@/components/sections/Footer"))
 
@@ -31,96 +19,46 @@ export default function Home() {
       <Navbar />
       <FloatingCTA />
 
-      {/* 1. Fisgar — proposta de valor + prova imediata */}
+      {/* 1. Fisgar — identificação imediata com a dor */}
       <div id="hero" data-section="hero">
         <Hero />
       </div>
+
+      {/* 2. Autoridade — números que geram credibilidade imediata */}
       <div id="social-proof" data-section="social-proof">
         <SocialProof />
       </div>
 
-      {/* 2. Dor — quantificar o problema */}
+      {/* 3. Consciência — quantificar o problema que ele já sente */}
       <div id="problema" data-section="problema">
         <Problem />
       </div>
 
-      {/* Pattern interrupt: quebrar o ritmo e criar urgência */}
-      <div id="pattern-interrupt" data-section="pattern-interrupt">
-        <PatternInterrupt />
-      </div>
-
-      <div id="calculadora" data-section="calculadora">
-        <MidCTA />
-      </div>
-
-      {/* 3. Transformação — mostrar o antes/depois */}
+      {/* 4. Desejo — antes/depois visual, transformação concreta */}
       <div id="comparativo-funil" data-section="comparativo-funil">
         <FunnelComparison />
       </div>
 
-      {/* 4. Solução — como o ecossistema funciona */}
-      <div id="ecosystem" data-section="ecosystem">
-        <Ecosystem />
-      </div>
-      <div id="services" data-section="services">
-        <Services />
-      </div>
-
-      {/* 5. Qualificação — para quem é e para quem não é */}
-      <div id="para-quem" data-section="para-quem">
-        <ForWhom />
-      </div>
-
-      {/* 6. Comparativo — por que Scala vs alternativas */}
-      <div id="comparativo" data-section="comparativo">
-        <Comparison />
-      </div>
-
-      {/* 7. Processo — como é contratar */}
+      {/* 5. Confiança no processo — desmistificar e mostrar caminho */}
       <div id="how-it-works" data-section="how-it-works">
         <HowItWorks />
       </div>
 
-      {/* 8. Risco zero — garantia + resultados */}
-      <div id="results" data-section="results">
-        <Results />
-      </div>
-
-      {/* 9. Prova social — evidência real de automações */}
-      <div id="cases" data-section="cases">
-        <Cases />
-      </div>
-
-      {/* 9b. Depoimentos — voz humana depois da prova técnica */}
+      {/* 6. Prova social — voz de quem já passou pela transformação */}
       <div id="testimonials" data-section="testimonials">
         <Testimonials />
       </div>
 
-      {/* 10. Future Pacing — último empurrão emocional antes da ação */}
-      <div id="future-pacing" data-section="future-pacing">
-        <FuturePacing />
-      </div>
-
-      {/* 11. Prova técnica — para quem ainda tem dúvida */}
-      <div id="kpis" data-section="kpis">
-        <KPIs />
-      </div>
-      <div id="tech-stack" data-section="tech-stack">
-        <TechStack />
-      </div>
-
-      {/* 12. Humanização + Transparência radical */}
+      {/* 7. Humanização — quem está por trás, por que confiar */}
       <div id="founder" data-section="founder">
         <Founder />
       </div>
 
-      {/* 13. Conversão final */}
-      <div id="faq" data-section="faq">
-        <FAQ />
-      </div>
+      {/* 8. Conversão — CTA final para lead quente */}
       <div id="contact" data-section="contact">
         <Contact />
       </div>
+
       <Footer />
     </main>
   )

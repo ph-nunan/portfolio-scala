@@ -14,7 +14,7 @@ export default function Analytics() {
     )
 
     // ── 2. Scroll depth ────────────────────────────────────────────────────
-    const DEPTHS = [25, 50, 75, 90, 100]
+    const DEPTHS = [5, 10, 15, 20, 50, 75, 100]
     const reached = new Set<number>()
     const onScroll = () => {
       const pct = getScrollPct()
@@ -75,7 +75,7 @@ export default function Analytics() {
           }
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.2 }
     )
 
     document.querySelectorAll("[data-section]").forEach((el) => observer.observe(el))

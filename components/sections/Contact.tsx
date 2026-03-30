@@ -4,17 +4,17 @@ import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import { track, getScrollPct } from "@/lib/analytics"
 
-const WA_LINK = "https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20agendar%20meu%20diagn%C3%B3stico%20gratuito."
+const WA_LINK = "https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20confirmar%20meu%20diagn%C3%B3stico%20gratuito."
 
 const benefits = [
   "Diagnóstico gratuito do seu ecossistema de vendas",
-  "Mapeamento dos gargalos que estão custando dinheiro",
-  "Plano de automação personalizado para o seu negócio",
-  "Sem compromisso — você decide se faz sentido",
+  "Identificação dos gargalos que estão fazendo você perder leads",
+  "Plano de automação personalizado — sem custo, sem compromisso",
+  "Implementação em 7 dias ou o dinheiro de volta",
 ]
 
 const VAGAS_TOTAL = 5
-const VAGAS_OCUPADAS = 2
+const VAGAS_OCUPADAS = 3
 
 function WhatsAppIcon() {
   return (
@@ -38,16 +38,16 @@ export default function Contact() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
           >
-            <p className="s-label">Contato</p>
+            <p className="s-label">Próximo Passo</p>
             <h2 className="s-title" style={{ marginBottom: "16px" }}>
-              Pare de Perder Vendas.
+              Confirme seu
               <br />
-              <span style={{ color: "var(--text-2)" }}>Automatize Hoje.</span>
+              <span className="mark">diagnóstico gratuito.</span>
             </h2>
             <p style={{ color: "var(--text-2)", lineHeight: 1.7, fontSize: "0.9rem", marginBottom: "32px" }}>
-              Agende seu diagnóstico gratuito e descubra quanto dinheiro você está
-              deixando na mesa. Em 30 minutos, mapeamos seus gargalos e apresentamos
-              um plano de ação.
+              Em 30 minutos, mapeamos seu ecossistema de vendas, identificamos os
+              gargalos e apresentamos um plano de automação personalizado.
+              Você sai sabendo exatamente o que está custando leads — e como resolver.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
               {benefits.map((b, i) => (
@@ -114,11 +114,11 @@ export default function Contact() {
                 onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
               >
                 <WhatsAppIcon />
-                Agendar Diagnóstico pelo WhatsApp →
+                Confirmar Diagnóstico Gratuito →
               </a>
 
               <p style={{ fontSize: "0.8125rem", color: "var(--text-3)", lineHeight: 1.6 }}>
-                Atendimento imediato, 24h. Sem formulário, sem espera.
+                Resposta em segundos, 24h. Sem formulário, sem espera.
               </p>
             </div>
           </motion.div>
