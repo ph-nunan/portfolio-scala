@@ -2,7 +2,7 @@ import dynamic from "next/dynamic"
 import HeroCTAs from "./HeroCTAs"
 
 // HeroLiveFeed usa AnimatePresence (Framer Motion) — lazy para não entrar no bundle inicial
-const HeroLiveFeed = dynamic(() => import("./HeroLiveFeed"), { ssr: false })
+const HeroLiveFeed = dynamic(() => import("./HeroLiveFeed"))
 
 // Gatilhos ativos nesta seção:
 // - Identificação imediata: H1 nomeia a dor exata do público
