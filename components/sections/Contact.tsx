@@ -14,7 +14,7 @@ const benefits = [
 ]
 
 const VAGAS_TOTAL = 5
-const VAGAS_OCUPADAS = 3
+const VAGAS_OCUPADAS = 4
 
 function WhatsAppIcon() {
   return (
@@ -29,7 +29,7 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: "-80px" })
 
   return (
-    <section ref={ref} className="s-wrap">
+    <section ref={ref} className="s-wrap" id="diagnostico">
       <div className="s-inner">
         <div className="g-2col">
           {/* Left */}
@@ -93,7 +93,10 @@ export default function Contact() {
                 href={WA_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => track("wa_button_click", { location: "contact", scroll_pct: getScrollPct() })}
+                onClick={() => {
+                  track("wa_button_click", { location: "contact", scroll_pct: getScrollPct() })
+                  track("portfolio_site_cta_click", { location: "contact", scroll_pct: getScrollPct() })
+                }}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",

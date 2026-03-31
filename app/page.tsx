@@ -3,8 +3,8 @@ import Navbar from "@/components/Navbar"
 import FloatingCTA from "@/components/FloatingCTA"
 // Above-fold: eager para LCP rápido
 import Hero from "@/components/sections/Hero"
-import SocialProof from "@/components/sections/SocialProof"
-// Below-fold: lazy
+// Below-fold: lazy (Ecossistema agora usa Framer Motion, não é marquee leve)
+const SocialProof      = dynamic(() => import("@/components/sections/SocialProof"))
 const Problem          = dynamic(() => import("@/components/sections/Problem"))
 const FunnelComparison = dynamic(() => import("@/components/sections/FunnelComparison"))
 const HowItWorks       = dynamic(() => import("@/components/sections/HowItWorks"))
@@ -19,43 +19,43 @@ export default function Home() {
       <Navbar />
       <FloatingCTA />
 
-      {/* 1. Fisgar — identificação imediata com a dor */}
+      {/* 1. Posicionamento — declaração de autoridade */}
       <div id="hero" data-section="hero">
         <Hero />
       </div>
 
-      {/* 2. Autoridade — números que geram credibilidade imediata */}
-      <div id="social-proof" data-section="social-proof">
+      {/* 2. Ecossistema — 4 módulos que trabalham juntos */}
+      <div id="ecossistema" data-section="ecossistema">
         <SocialProof />
       </div>
 
-      {/* 3. Consciência — quantificar o problema que ele já sente */}
-      <div id="problema" data-section="problema">
+      {/* 3. Como Funciona — 4 etapas, do diagnóstico à entrega */}
+      <div id="como-funciona" data-section="como-funciona">
         <Problem />
       </div>
 
-      {/* 4. Desejo — antes/depois visual, transformação concreta */}
-      <div id="comparativo-funil" data-section="comparativo-funil">
+      {/* 4. Para Quem É — 3 perfis de identificação */}
+      <div id="para-quem" data-section="para-quem">
         <FunnelComparison />
       </div>
 
-      {/* 5. Confiança no processo — desmistificar e mostrar caminho */}
-      <div id="how-it-works" data-section="how-it-works">
+      {/* 5. Portfólio — 4 projetos técnicos com métricas reais */}
+      <div id="portfolio" data-section="portfolio">
         <HowItWorks />
       </div>
 
-      {/* 6. Prova social — voz de quem já passou pela transformação */}
-      <div id="testimonials" data-section="testimonials">
+      {/* 6. Números de Mercado — urgência competitiva com dados */}
+      <div id="numeros" data-section="numeros">
         <Testimonials />
       </div>
 
-      {/* 7. Humanização — quem está por trás, por que confiar */}
-      <div id="founder" data-section="founder">
+      {/* 7. Por Que a Scala — diferenciação e quem está por trás */}
+      <div id="sobre" data-section="sobre">
         <Founder />
       </div>
 
-      {/* 8. Conversão — CTA final para lead quente */}
-      <div id="contact" data-section="contact">
+      {/* 8. CTA Final — confirmar diagnóstico gratuito */}
+      <div id="diagnostico" data-section="diagnostico">
         <Contact />
       </div>
 

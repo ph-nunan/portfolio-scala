@@ -210,20 +210,10 @@ input:focus-visible,
   .kpi-grid-inner { grid-template-columns: 1fr !important; }
 }
 
-/* ─── HowItWorks split layout ─── */
-.hiw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+/* ─── Portfolio project cards grid ─── */
+.projeto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 @media (max-width: 768px) {
-  .hiw-grid { grid-template-columns: 1fr; }
-}
-
-/* ─── HowItWorks zigzag rows ─── */
-@media (max-width: 768px) {
-  .hiw-zigzag-row {
-    grid-template-columns: 1fr !important;
-    direction: ltr !important;
-    gap: 32px !important;
-  }
-  .hiw-visual { display: none !important; }
+  .projeto-grid { grid-template-columns: 1fr; gap: 24px; }
 }
 
 /* ─── Transparency grid (Founder section) ─── */

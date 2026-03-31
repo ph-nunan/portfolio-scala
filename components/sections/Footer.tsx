@@ -1,10 +1,10 @@
 "use client"
 
 const links = [
-  { label: "Serviços", href: "#services" },
-  { label: "Como Funciona", href: "#how-it-works" },
-  { label: "Resultados", href: "#results" },
-  { label: "Contato", href: "#contact" },
+  { label: "Ecossistema", href: "#ecossistema" },
+  { label: "Como Funciona", href: "#como-funciona" },
+  { label: "Portfólio", href: "#portfolio" },
+  { label: "Diagnóstico", href: "#diagnostico" },
 ]
 
 export default function Footer() {

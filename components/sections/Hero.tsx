@@ -4,17 +4,10 @@ import HeroCTAs from "./HeroCTAs"
 // HeroLiveFeed usa AnimatePresence (Framer Motion) — lazy para não entrar no bundle inicial
 const HeroLiveFeed = dynamic(() => import("./HeroLiveFeed"))
 
-// Gatilhos ativos nesta seção:
-// - Identificação imediata: H1 nomeia a dor exata do público
-// - FOMO: badge "concorrentes já automatizaram"
-// - Prova de resultado: stats com números concretos
-// - Redução de risco: "diagnóstico gratuito · sem compromisso"
-// - Urgência suave: "resposta em segundos" vs "você demora horas"
-
 const stats = [
-  { value: "<5s",  label: "Resposta ao Lead"   },
-  { value: "7d",   label: "Para Implementar"   },
-  { value: "30d",  label: "Garantia Total"      },
+  { value: "< 5s",   label: "Speed-to-Lead"    },
+  { value: "7 dias", label: "Do zero ao ativo" },
+  { value: "30 dias",label: "Garantia total"   },
 ]
 
 export default function Hero() {
@@ -29,11 +22,12 @@ export default function Hero() {
       paddingTop: "80px",
       paddingBottom: "40px",
     }}>
-      {/* Background grid */}
+      {/* Background radial glow */}
       <div style={{
         position: "absolute", inset: 0, pointerEvents: "none",
         background: "radial-gradient(ellipse 80% 55% at 50% -5%, rgba(255,255,255,0.045) 0%, transparent 70%)",
       }} />
+      {/* Dot grid */}
       <div style={{
         position: "absolute", inset: 0, pointerEvents: "none",
         backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px)",
@@ -49,7 +43,7 @@ export default function Hero() {
         textAlign: "center",
       }}>
 
-        {/* Badge — identificação do público + FOMO */}
+        {/* Badge */}
         <div className="hero-badge" style={{
           display: "inline-flex", alignItems: "center", gap: "8px",
           padding: "5px 14px", marginBottom: "28px",
@@ -62,19 +56,19 @@ export default function Hero() {
             background: "var(--accent)", display: "inline-block",
             animation: "pulse 2s ease-in-out infinite", flexShrink: 0,
           }} />
-          Para gestores de tráfego e agências
+          Ecossistemas de Vendas com IA
         </div>
 
-        {/* H1 — nomeia a dor exata em 5 palavras */}
+        {/* H1 */}
         <h1 className="hero-h1" style={{
           fontSize: "clamp(2.4rem, 7.5vw, 5.5rem)",
           fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.035em",
           color: "#f5f5f5", marginBottom: "8px",
         }}>
-          Você gera leads.
+          Automação que vende.
         </h1>
 
-        {/* H2 — amplifica a dor com o problema real */}
+        {/* H2 */}
         <p className="hero-h2" style={{
           fontSize: "clamp(2.4rem, 7.5vw, 5.5rem)",
           fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.035em",
@@ -82,20 +76,20 @@ export default function Hero() {
           WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent",
           marginBottom: "28px",
         }}>
-          Ninguém responde a tempo.
+          Enquanto você cresce.
         </p>
 
-        {/* Subtítulo — solução concreta com prazo e garantia */}
+        {/* Subtítulo */}
         <p className="hero-sub" style={{
           fontSize: "1.0625rem", lineHeight: 1.75,
           color: "var(--text-2)", maxWidth: "520px", margin: "0 auto 32px",
         }}>
-          A Scala implementa em 7 dias o sistema que atende leads em segundos via WhatsApp,
-          qualifica automaticamente e agenda reuniões —{" "}
-          <span className="mark" style={{ fontWeight: 600 }}>sem você mover um dedo.</span>
+          Construímos o sistema completo — atendimento 24/7 via WhatsApp,
+          relatórios automáticos e follow-up comercial — entregue em{" "}
+          <span className="mark" style={{ fontWeight: 600 }}>7 dias, com garantia total.</span>
         </p>
 
-        {/* Stats — somente desktop (não empurra CTA no mobile) */}
+        {/* Stats card — somente desktop */}
         <div className="hero-stats-desktop" style={{ maxWidth: "400px", margin: "0 auto 28px" }}>
           <div className="hero-stats hero-stats-card" style={{
             display: "flex", justifyContent: "center",
@@ -135,7 +129,7 @@ export default function Hero() {
         {/* CTAs */}
         <HeroCTAs />
 
-        {/* Live feed — prova social em tempo real */}
+        {/* Live feed */}
         <HeroLiveFeed />
 
         {/* Scroll hint */}

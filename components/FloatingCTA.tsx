@@ -3,14 +3,14 @@
 import { useEffect, useState } from "react"
 import { track, getScrollPct } from "@/lib/analytics"
 
-const WA_LINK = "https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20saber%20mais."
+const WA_LINK = "https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20confirmar%20meu%20diagn%C3%B3stico%20gratuito."
 
 export default function FloatingCTA() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     const fn = () => {
-      const contact = document.getElementById("contact")
+      const contact = document.getElementById("diagnostico")
       if (contact) {
         const rect = contact.getBoundingClientRect()
         if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -55,7 +55,7 @@ export default function FloatingCTA() {
           boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.15)",
         }}
       >
-        Falar com Especialista →
+        Confirmar Diagnóstico →
       </a>
     </div>
   )

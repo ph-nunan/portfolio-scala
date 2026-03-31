@@ -6,10 +6,10 @@ import Image from "next/image"
 import { track, getScrollPct } from "@/lib/analytics"
 
 const links = [
-  { label: "Como Funciona", href: "#how-it-works" },
-  { label: "Resultados", href: "#testimonials" },
-  { label: "Quem Faz", href: "#founder" },
-  { label: "Diagnóstico", href: "#contact" },
+  { label: "Ecossistema", href: "#ecossistema" },
+  { label: "Como Funciona", href: "#como-funciona" },
+  { label: "Portfólio", href: "#portfolio" },
+  { label: "Diagnóstico", href: "#diagnostico" },
 ]
 
 export default function Navbar() {
@@ -74,7 +74,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <div className="nav-cta-desktop">
           <a
-            href="https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20agendar%20meu%20diagn%C3%B3stico%20gratuito."
+            href="https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20confirmar%20meu%20diagn%C3%B3stico%20gratuito."
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => track("wa_button_click", { location: "navbar_desktop", scroll_pct: getScrollPct() })}
@@ -147,7 +147,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20agendar%20meu%20diagn%C3%B3stico%20gratuito."
+              href="https://wa.me/556181894189?text=Oi!%20Vim%20pelo%20site%20da%20Scala%20e%20quero%20confirmar%20meu%20diagn%C3%B3stico%20gratuito."
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => { setOpen(false); track("wa_button_click", { location: "navbar_mobile", scroll_pct: getScrollPct() }) }}

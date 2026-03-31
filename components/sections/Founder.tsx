@@ -11,17 +11,17 @@ const credentials = [
   { icon: "◎", label: "Ecossistemas de Vendas Automatizados" },
 ]
 
-// PDF seção 5.1 — Transparência Radical
-const naoFaz = [
-  "Não transforma um produto ruim em vendas",
-  "Não substitui uma boa oferta",
-  "Não funciona sem tráfego pago rodando",
+// Por que a Scala — diferenciadores reais
+const naoSomos = [
+  "Não somos uma plataforma SaaS com templates prontos",
+  "Não entregamos relatórios em PDF e vamos embora",
+  "Não funcionamos para negócios sem produto validado",
 ]
 
-const faz = [
-  "Garante que nenhum lead seja ignorado",
-  "Responde em 3 segundos, 24 horas por dia",
-  "Libera 40+ horas/mês do seu time",
+const somos = [
+  "Parceiros de implementação — cada sistema é construído para o seu contexto",
+  "Atendimento direto com Paulo, sem intermediários ou equipe júnior",
+  "Garantia real: 30 dias ou reembolso total, sem perguntas",
 ]
 
 export default function Founder() {
@@ -29,7 +29,7 @@ export default function Founder() {
   const inView = useInView(ref, { once: true, margin: "-80px" })
 
   return (
-    <section ref={ref} className="s-wrap">
+    <section ref={ref} className="s-wrap" id="sobre">
       <div className="s-inner">
         <div className="founder-layout">
 
@@ -105,7 +105,7 @@ export default function Founder() {
             animate={inView ? { opacity: 1, x: 0, filter: "blur(0px)" } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
           >
-            <p className="s-label" style={{ marginBottom: "20px" }}>Quem está por trás</p>
+            <p className="s-label" style={{ marginBottom: "20px" }}>Por Que a Scala</p>
 
             {/* Headline */}
             <h2 style={{
@@ -113,9 +113,9 @@ export default function Founder() {
               letterSpacing: "-0.03em", lineHeight: 1.15,
               marginBottom: "24px",
             }}>
-              <span style={{ color: "#f5f5f5" }}>Tecnologia com visão</span>
+              <span style={{ color: "#f5f5f5" }}>Implementação real,</span>
               <br />
-              <span className="mark">de negócio.</span>
+              <span className="mark">não promessa de SaaS.</span>
             </h2>
 
             {/* PDF 5.2 — Storytelling pessoal (3 frases. Problema real. Motivação. Missão.) */}
@@ -199,10 +199,10 @@ export default function Founder() {
               color: "rgba(255,100,100,0.7)",
               marginBottom: "20px",
             }}>
-              O que a automação NÃO faz
+              O que a Scala NÃO é
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              {naoFaz.map((item, i) => (
+              {naoSomos.map((item, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
                   <span style={{ color: "rgba(255,100,100,0.6)", fontSize: "0.75rem", marginTop: "1px", flexShrink: 0 }}>✗</span>
                   <span style={{ fontSize: "0.85rem", color: "var(--text-2)", lineHeight: 1.55 }}>{item}</span>
@@ -226,10 +226,10 @@ export default function Founder() {
               color: "var(--accent)",
               marginBottom: "20px",
             }}>
-              O que a automação FAZ
+              O que a Scala entrega
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              {faz.map((item, i) => (
+              {somos.map((item, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
                   <span style={{ color: "var(--accent)", fontSize: "0.75rem", marginTop: "1px", flexShrink: 0 }}>✓</span>
                   <span style={{ fontSize: "0.85rem", color: "rgba(245,245,245,0.85)", lineHeight: 1.55 }}>{item}</span>
@@ -242,10 +242,10 @@ export default function Founder() {
               color: "var(--text-2)",
               fontStyle: "italic",
               lineHeight: 1.6,
-              borderTop: "1px solid rgba(74,222,128,0.1)",
+              borderTop: "1px solid rgba(255,255,255,0.08)",
               paddingTop: "16px",
             }}>
-              "Se ele está me dizendo o que NÃO faz, posso confiar no que ele diz que faz."
+              "Quando alguém te diz o que NÃO faz, você pode confiar no que ele diz que faz."
             </p>
           </div>
         </motion.div>

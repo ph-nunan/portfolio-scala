@@ -1,47 +1,36 @@
 "use client"
 
-import { motion, useInView, animate } from "framer-motion"
-import { useRef, useState, useEffect } from "react"
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
 
-function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
-  const [val, setVal] = useState(0)
-  const ref = useRef<HTMLSpanElement>(null)
-  const inView = useInView(ref, { once: true, margin: "-60px" })
-  useEffect(() => {
-    if (!inView) return
-    const c = animate(0, to, { duration: 1.8, ease: "easeOut", onUpdate: (v) => setVal(Math.round(v)) })
-    return c.stop
-  }, [inView, to])
-  return <span ref={ref}>{val}{suffix}</span>
-}
-
-function Bar({ pct, delay = 0, inView }: { pct: number; delay?: number; inView: boolean }) {
-  return (
-    <div style={{ height: "2px", background: "rgba(255,255,255,0.06)", borderRadius: "2px", overflow: "hidden", margin: "20px 0" }}>
-      <motion.div
-        initial={{ width: 0 }}
-        animate={inView ? { width: `${pct}%` } : { width: 0 }}
-        transition={{ duration: 1.4, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
-        style={{ height: "100%", background: "linear-gradient(to right, rgba(255,255,255,0.15), rgba(255,255,255,0.5))", borderRadius: "2px" }}
-      />
-    </div>
-  )
-}
-
-const items = [
+const etapas = [
   {
-    stat: 78,
-    suffix: "%",
-    barPct: 78,
-    title: "dos leads não recebem resposta nos primeiros 5 minutos",
-    body: "Esse é o intervalo crítico. Depois de 5 min, a chance de contato cai 21×. Enquanto você está em outra reunião, o lead já fechou com o concorrente.",
+    numero: "01",
+    prazo: "Dia 0",
+    titulo: "Diagnóstico Gratuito",
+    descricao: "Mapeamos seu ecossistema de vendas completo: tráfego, atendimento, qualificação e follow-up. Identificamos os gargalos que estão fazendo você perder leads hoje.",
+    entregavel: "Relatório de gargalos + plano de automação personalizado",
   },
   {
-    stat: 35,
-    suffix: "%",
-    barPct: 35,
-    title: "das vendas são perdidas por falta de follow-up",
-    body: "O lead demonstrou interesse, mas ninguém fez o acompanhamento. Sem um sistema automático, essa venda morre no silêncio — toda semana.",
+    numero: "02",
+    prazo: "Dias 1–2",
+    titulo: "Arquitetura do Sistema",
+    descricao: "Projetamos a solução específica para o seu contexto: quais módulos implementar, em que ordem, e como integrar com as ferramentas que você já usa.",
+    entregavel: "Diagrama do ecossistema + cronograma de implementação",
+  },
+  {
+    numero: "03",
+    prazo: "Dias 3–6",
+    titulo: "Implementação",
+    descricao: "Construímos, configuramos e testamos cada automação. Você acompanha o progresso em tempo real e valida cada entrega antes de avançar.",
+    entregavel: "Sistema funcionando em ambiente de teste + validação sua",
+  },
+  {
+    numero: "04",
+    prazo: "Dia 7",
+    titulo: "Entrega & Ativação",
+    descricao: "Ativamos o sistema em produção, fazemos o handoff completo e te entregamos a documentação. A partir daí, você opera — ou a gente cuida.",
+    entregavel: "Ecossistema ativo + documentação + suporte pós-entrega",
   },
 ]
 
@@ -50,83 +39,110 @@ export default function Problem() {
   const inView = useInView(ref, { once: true, margin: "-80px" })
 
   return (
-    <section ref={ref} className="s-wrap">
+    <section ref={ref} className="s-wrap" id="como-funciona">
       <div className="s-inner">
-        <motion.div
-          className="s-head"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-        >
-          <p className="s-label">O Problema</p>
-          <h2 className="s-title">O tráfego chega.<br /><span className="mark">O atendimento falha.</span></h2>
-          <p className="s-sub">Não é o criativo. Não é o budget. É o que acontece depois do clique.</p>
-        </motion.div>
+        <div className="s-head" style={{ textAlign: "center", maxWidth: "520px", margin: "0 auto 56px" }}>
+          <p className="s-label" style={{ display: "inline-block" }}>Como Funciona</p>
+          <h2 className="s-title" style={{ marginTop: "12px" }}>
+            Do diagnóstico ao sistema ativo{" "}
+            <span className="mark">em 7 dias.</span>
+          </h2>
+          <p className="s-sub" style={{ margin: "16px auto 0", textAlign: "center" }}>
+            Processo estruturado, sem surpresas. Cada etapa tem entregável
+            concreto e você valida antes de avançar.
+          </p>
+        </div>
 
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          {items.map((item, i) => (
+        {/* Timeline */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+          {etapas.map((e, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: -20 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.55, delay: 0.1 + i * 0.15, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="problem-row"
+              transition={{ duration: 0.5, delay: 0.1 + i * 0.12 }}
               style={{
-                padding: "32px 0",
-                borderBottom: i < items.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
+                display: "grid",
+                gridTemplateColumns: "80px 1px 1fr",
+                gap: "0 24px",
+                paddingBottom: i < etapas.length - 1 ? "40px" : "0",
               }}
             >
-              <div className="problem-stat">
-                <div style={{
-                  fontFamily: "var(--font-geist-mono)",
-                  fontSize: "clamp(3.5rem, 6vw, 5rem)",
-                  fontWeight: 700,
-                  lineHeight: 1,
-                  letterSpacing: "-0.03em",
-                  background: "linear-gradient(135deg, #ffffff 0%, #b0b0b0 50%, #e0e0e0 100%)",
-                  WebkitBackgroundClip: "text",
-                  backgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}>
-                  <Counter to={item.stat} suffix={item.suffix} />
-                </div>
+              {/* Prazo */}
+              <div style={{ textAlign: "right", paddingTop: "2px" }}>
+                <span style={{
+                  fontFamily: "var(--font-space-grotesk)",
+                  fontSize: "0.625rem", fontWeight: 600,
+                  textTransform: "uppercase", letterSpacing: "0.1em",
+                  color: "var(--text-3)",
+                }}>{e.prazo}</span>
               </div>
 
-              <div>
-                <h3 style={{ fontSize: "1rem", fontWeight: 600, color: "#f5f5f5", lineHeight: 1.4, marginBottom: "4px" }}>
-                  {item.title}
-                </h3>
-                <Bar pct={item.barPct} delay={0.4 + i * 0.15} inView={inView} />
-                <p style={{ fontSize: "0.875rem", color: "var(--text-2)", lineHeight: 1.7 }}>
-                  {item.body}
-                </p>
+              {/* Linha + dot */}
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <div style={{
+                  width: "10px", height: "10px", borderRadius: "50%",
+                  background: "var(--accent)", border: "2px solid var(--bg)",
+                  flexShrink: 0, marginTop: "4px",
+                  boxShadow: "0 0 0 3px rgba(255,255,255,0.08)",
+                }} />
+                {i < etapas.length - 1 && (
+                  <div style={{
+                    flex: 1, width: "1px",
+                    background: "linear-gradient(to bottom, rgba(255,255,255,0.15), rgba(255,255,255,0.04))",
+                    marginTop: "8px",
+                  }} />
+                )}
+              </div>
+
+              {/* Conteúdo */}
+              <div style={{ paddingBottom: "8px" }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: "12px", marginBottom: "8px" }}>
+                  <span style={{
+                    fontFamily: "var(--font-space-grotesk)",
+                    fontSize: "0.5625rem", fontWeight: 700,
+                    color: "var(--text-3)", letterSpacing: "0.06em",
+                  }}>{e.numero}</span>
+                  <h3 style={{
+                    fontSize: "1.0625rem", fontWeight: 700,
+                    letterSpacing: "-0.02em", color: "#f5f5f5",
+                  }}>{e.titulo}</h3>
+                </div>
+                <p style={{
+                  fontSize: "0.875rem", color: "var(--text-2)",
+                  lineHeight: 1.7, marginBottom: "12px",
+                }}>{e.descricao}</p>
+                <div style={{
+                  display: "inline-flex", alignItems: "center", gap: "8px",
+                  padding: "6px 12px",
+                  background: "var(--accent-dim)",
+                  border: "1px solid var(--accent-border)",
+                  borderRadius: "6px",
+                }}>
+                  <span style={{ fontSize: "0.625rem", color: "var(--accent)" }}>✓</span>
+                  <span style={{
+                    fontSize: "0.75rem", color: "var(--text-2)",
+                    fontFamily: "var(--font-space-grotesk)",
+                  }}>{e.entregavel}</span>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Bridge to solution */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
+        {/* Bottom note */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.7 }}
           style={{
-            marginTop: "40px",
-            padding: "24px 28px",
-            background: "rgba(255,255,255,0.02)",
-            border: "1px solid rgba(255,255,255,0.07)",
-            borderRadius: "12px",
-            borderLeft: "3px solid rgba(255,255,255,0.15)",
+            marginTop: "48px", textAlign: "center",
+            fontSize: "0.8125rem", color: "var(--text-3)",
+            fontStyle: "italic",
           }}
         >
-          <p style={{ fontSize: "1rem", fontWeight: 600, color: "#f5f5f5", marginBottom: "8px", lineHeight: 1.4 }}>
-            A Scala implementa o sistema que resolve os dois em menos de 7 dias.
-          </p>
-          <p style={{ fontSize: "0.875rem", color: "var(--text-2)", lineHeight: 1.7 }}>
-            Resposta automática em segundos via WhatsApp, qualificação inteligente e follow-up programado —{" "}
-            <strong style={{ color: "rgba(245,245,245,0.7)" }}>sem você mover um dedo.</strong>
-          </p>
-        </motion.div>
+          Não conseguindo em 7 dias? <span style={{ color: "var(--text-2)" }}>Reembolso total — sem perguntas.</span>
+        </motion.p>
       </div>
     </section>
   )
